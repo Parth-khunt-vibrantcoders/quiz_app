@@ -16,3 +16,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::match(['get', 'post'], 'my-login', ['as' => 'my-login', 'uses' => 'backend\admin\LoginController@login']);
 Route::match(['get', 'post'], 'admin-logout', ['as' => 'admin-logout', 'uses' => 'backend\admin\LoginController@logout']);
+
+$prefix = 'admin';
+Route::group(['prefix' => $prefix, 'middleware' => ['admin']], function() {
+    // Dashboard
+    Route::match(['get', 'post'], 'my-dashboard', ['as' => 'my-dashboard', 'uses' => 'backend\admin\dashboard\DashboardController@dashboard']);
+});

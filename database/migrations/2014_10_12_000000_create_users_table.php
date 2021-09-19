@@ -20,7 +20,6 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique()->nullable();
             $table->string('password')->nullable();
             $table->string('userimage')->nullable();
-            $table->timestamp('email_verified_at')->nullable();
             $table->enum('user_type',['A','U'])->default('A')->commentm('A for Admin,U for Users');
             $table->enum('is_deleted',['Y','N'])->default("N")->comment("Y for deleted, N for not deleted");
             $table->enum('is_active',['Y','N'])->default("Y")->comment("Y for Active, N for Inactive");
