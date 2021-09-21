@@ -2,12 +2,36 @@
     <div class="page-header">
       <div class="row">
         <div class="col-sm-6">
-          <h3>Payment Details</h3>
+          <h3>{{ $header['title']}}</h3>
           <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-            <li class="breadcrumb-item">Pages   </li>
-            <li class="breadcrumb-item">Ecommerce</li>
-            <li class="breadcrumb-item active">Payment Details</li>
+            @php
+              $count = count($header['breadcrumb']);
+              $temp = 1;
+            @endphp
+                @foreach($header['breadcrumb'] as $key => $value)
+
+                  @php
+                      $value = (empty($value)) ? 'javascript:;' : $value;
+                  @endphp
+
+                    @if($temp!=$count)
+                      <li class="breadcrumb-item">
+                          <a href="{{ $value }}" class="" style="color: #4e5161;">
+                              @if($temp == 1)
+                                  <i class="fa fa-home" style="color: #4e5161;"></i>&nbsp;&nbsp;&nbsp;{{ $key }}
+                              @else
+                                  {{ $key }}
+                              @endif
+                          </a>
+                      </li>
+                      @else
+                      <li class="breadcrumb-item ">{{ $key }}</li>
+                    @endif
+
+                    @php
+                      $temp = $temp+1;
+                    @endphp
+                @endforeach
           </ol>
         </div>
 

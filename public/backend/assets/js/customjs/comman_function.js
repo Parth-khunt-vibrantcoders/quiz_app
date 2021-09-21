@@ -230,6 +230,7 @@ function handleFormValidate(form, rules, submitCallback, showToaster) {
         highlight: function(element) { // hightlight error inputs
 
             $(element).closest('.input-group').addClass('has-error'); // set error class to the control group
+            $(element).closest('.form-control').addClass('has-error'); // set error class to the control group
 
             $(element).parent().parent().find('.select2').addClass('has-error');
 
@@ -238,10 +239,13 @@ function handleFormValidate(form, rules, submitCallback, showToaster) {
             $(element)
                 .closest('.input-group').removeClass('has-error'); // set error class to the control group
             $(element)
+                .closest('.form-control').removeClass('has-error'); // set error class to the control group
+            $(element)
                 .closest('.input-group').removeClass('is-valid'); // set error class to the control group
         },
         success: function(label) {
             label.closest('.input-group').removeClass('has-error'); // set success class to the control group
+            label.closest('.form-control').removeClass('has-error'); // set success class to the control group
             label.closest('.input-group').removeClass('is-valid'); // set error class to the control group
         },
         errorPlacement: function(error, element) {

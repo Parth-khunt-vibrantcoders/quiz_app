@@ -37,7 +37,28 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('public/backend/assets/css/bootstrap.css') }}">
     <!-- App css-->
     <link rel="stylesheet" type="text/css" href="{{ asset('public/backend/assets/css/style.css') }}">
-    <link id="color" rel="stylesheet" href="../assets/css/color-1.css" media="screen">
+    <link id="color" rel="stylesheet" href="{{ asset('public/backend/assets/css/color-1.css') }}" media="screen">
     <!-- Responsive css-->
     <link rel="stylesheet" type="text/css" href="{{ asset('public/backend/assets/css/responsive.css') }}">
+
+    @if (!empty($css))
+        @foreach ($css as $value)
+            @if(!empty($value))
+                <link rel="stylesheet" href="{{ asset('public/backend/assets/css/customcss/'.$value) }}">
+            @endif
+        @endforeach
+    @endif
+
+
+    @if (!empty($plugincss))
+        @foreach ($plugincss as $value)
+            @if(!empty($value))
+                <link rel="stylesheet" href="{{ asset('public/backend/assets/'.$value) }}">
+            @endif
+        @endforeach
+    @endif
+
+    <script>
+        var baseurl = "{{ asset('/') }}";
+    </script>
  </head>

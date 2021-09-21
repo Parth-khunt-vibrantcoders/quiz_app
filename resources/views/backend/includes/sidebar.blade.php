@@ -1,12 +1,29 @@
+@php
+$currentRoute = Route::current()->getName();
+
+if (!empty(Auth()->guard('admin')->user())) {
+   $data = Auth()->guard('admin')->user();
+}
+
+if(file_exists( public_path().'/uploads/userprofile/'.$data['userimage']) && $data['userimage'] != ''){
+    $image = url("public/uploads/userprofile/".$data['userimage']);
+}else{
+    $image = url("public/uploads/userprofile/default.jpg");
+}
+// print_r($data);
+@endphp
 <!-- Page Sidebar Start-->
 <header class="main-nav">
     <div class="sidebar-user text-center">
 
-        <img class="img-90 rounded-circle" src="{{ asset('public/backend/assets/images/dashboard/1.png') }}" alt="">
-
-        <a href="user-profile.html">
-            <h6 class="mt-3 f-14 f-w-600">Emay Walter</h6>
-        </a>
+        <img class="img-40 rounded-circle" src="{{ $image }}" alt="">
+            <h6 class="mt-3 f-14 f-w-600">
+                {{ $data['first_name'] }} {{ $data['last_name']}}
+                <a href="{{ route('edit-profile') }}">
+                    <i class="fa fa-pencil-square-o" title="Edit Profile"></i>
+                </a>
+            </h6>
+        <p class="mb-0 font-roboto">{{ $data['email'] }}</p>
 
     </div>
     <nav>
@@ -18,17 +35,18 @@
                    <div class="mobile-back text-end"><span>Back</span><i class="fa fa-angle-right ps-2" aria-hidden="true"></i></div>
                 </li>
 
-                <li class="dropdown">
-                   <a class="nav-link menu-title" href="javascript:void(0)"><i data-feather="home"></i><span>Dashboard</span></a>
-                   <ul class="nav-submenu menu-content">
-                      <li><a href="index.html">Default</a></li>
-                      <li><a href="dashboard-02.html">Ecommerce</a></li>
-                   </ul>
+                <li>
+                    <a class="nav-link menu-title link-nav my-active" href="{{ route('my-dashboard')}}">
+                        <i data-feather="home"></i>
+                        <span>Dashboard</span>
+                    </a>
                 </li>
+
+
 
              </ul>
           </div>
-          <div class="right-arrow" id="right-arrow"><i data-feather="arrow-right"></i></div>
+
        </div>
     </nav>
  </header>

@@ -21,4 +21,6 @@ $prefix = 'admin';
 Route::group(['prefix' => $prefix, 'middleware' => ['admin']], function() {
     // Dashboard
     Route::match(['get', 'post'], 'my-dashboard', ['as' => 'my-dashboard', 'uses' => 'backend\admin\dashboard\DashboardController@dashboard']);
+    // Dashboard
+    Route::match(['get', 'post'], 'edit-profile', ['as' => 'edit-profile', 'uses' => 'backend\admin\dashboard\DashboardController@editProfile']);
 });

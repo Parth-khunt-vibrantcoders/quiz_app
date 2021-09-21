@@ -13,7 +13,9 @@ function find_date($days, $start_date){
 }
 
 function ccd($value){
-    echo "<pre>"; print_r($value); die();
+    echo "<pre>";
+    print_r($value);
+    die();
 }
 
 function check_value($value){
