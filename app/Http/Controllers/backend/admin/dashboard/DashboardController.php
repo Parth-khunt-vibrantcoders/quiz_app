@@ -91,4 +91,58 @@ class DashboardController extends Controller
         );
         return view('backend.pages.dashboard.editProfile', $data);
     }
+
+    public function changePassword(Request $request){
+        if ($request->isMethod('post')) {
+            $objUsers = new Users();
+            $result = $objUsers->change_password($request);
+            if ($result == "true") {
+                $return['status'] = 'success';
+                 $return['jscode'] = '$(".submitbtn:visible").removeAttr("disabled");$("#loader").hide();';
+                $return['message'] = 'Password successfully changed.';
+                $return['redirect'] = route('admin-logout');
+            } else {
+                if ($result == "password_not_match") {
+                    $return['status'] = 'warning';
+                     $return['jscode'] = '$(".submitbtn:visible").removeAttr("disabled");$("#loader").hide();';
+                    $return['message'] = 'Old Password not match with new passsword';
+                }else{
+                    $return['status'] = 'error';
+                     $return['jscode'] = '$(".submitbtn:visible").removeAttr("disabled");$("#loader").hide();';
+                    $return['message'] = 'Something goes to wrong';
+                }
+            }
+            echo json_encode($return);
+            exit;
+        }
+        $data['title'] = 'Change Password || '.Config::get('constants.PROJECT_NAME') ;
+        $data['keywords'] = 'Change Password || '.Config::get('constants.PROJECT_NAME') ;
+        $data['description'] = 'Change Password || '.Config::get('constants.PROJECT_NAME') ;
+        $data['css'] = array(
+            'toastr/toastr.min.css'
+        );
+        $data['plugincss'] = array(
+        );
+        $data['pluginjs'] = array(
+            'toastr/toastr.min.js',
+            'validate/jquery.validate.min.js',
+        );
+        $data['js'] = array(
+            'comman_function.js',
+            'ajaxfileupload.js',
+            'jquery.form.min.js',
+            'dashboard.js'
+        );
+        $data['funinit'] = array(
+            'Dashboard.changepassword()'
+        );
+        $data['header'] = array(
+            'title' => 'Change password',
+            'breadcrumb' => array(
+                'Dashboard' => route('my-dashboard'),
+                'Change password' => 'Change password',
+            )
+        );
+        return view('backend.pages.dashboard.changepassword', $data);
+    }
 }

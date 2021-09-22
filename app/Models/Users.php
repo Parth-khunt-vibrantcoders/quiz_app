@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Hash;
 
 class Users extends Model
 {
@@ -40,5 +41,30 @@ class Users extends Model
             return "email_exist";
         }
 
+    }
+
+    public function change_password($request){
+
+        // ccd($request->input());
+        if (Hash::check($request->input('old_password'), $request->input('db_password'))) {
+
+            $countUser = Users::where("id",'=',$request->input('editId'))->count();
+
+            if($countUser == 1){
+                $objUsers = Users::find($request->input('editId'));
+                $objUsers->password =  Hash::make($request->input('new_password'));
+                $objUsers->updated_at = date('Y-m-d h:i:s');
+                if($objUsers->save()){
+                    return 'true';
+                }else{
+                    return 'false';
+                }
+            }else{
+                return 'false';
+            }
+
+        }else{
+            return "password_not_match";
+        }
     }
 }

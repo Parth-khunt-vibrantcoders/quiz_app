@@ -36,9 +36,21 @@ if(file_exists( public_path().'/uploads/userprofile/'.$data['userimage']) && $da
                 </li>
 
                 <li>
-                    <a class="nav-link menu-title link-nav my-active" href="{{ route('my-dashboard')}}">
+                    <a class="nav-link menu-title link-nav {{ $currentRoute == 'my-dashboard' ? 'my-active' : ''}}" href="{{ route('my-dashboard')}}">
                         <i data-feather="home"></i>
                         <span>Dashboard</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="nav-link menu-title link-nav {{ $currentRoute == 'edit-profile'  ? 'my-active' : ''}}" href="{{ route('edit-profile')}}">
+                        <i data-feather="edit"></i>
+                        <span>Edit Profile</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="nav-link menu-title link-nav {{  $currentRoute == 'change-password' ? 'my-active' : ''}}" href="{{ route('change-password')}}">
+                        <i data-feather="lock"></i>
+                        <span>Change Password</span>
                     </a>
                 </li>
 
