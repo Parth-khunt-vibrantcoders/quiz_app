@@ -32,3 +32,11 @@ Route::group(['prefix' => $prefix, 'middleware' => ['admin']], function() {
     // Dashboard
     Route::match(['get', 'post'], 'change-password', ['as' => 'change-password', 'uses' => 'backend\admin\dashboard\DashboardController@changePassword']);
 });
+
+$prefix = 'users';
+Route::group(['prefix' => $prefix, 'middleware' => ['admin']], function() {
+
+    Route::match(['get', 'post'], 'user-list', ['as' => 'user-list', 'uses' => 'backend\admin\users\UsersController@list']);
+    Route::match(['get', 'post'], 'user-ajaxcall', ['as' => 'user-ajaxcall', 'uses' => 'backend\admin\users\UsersController@ajaxcall']);
+
+});
