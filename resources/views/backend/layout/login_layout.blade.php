@@ -71,7 +71,7 @@
     <!-- Loader ends-->
     @yield('section')
     <!-- latest jquery-->
-
+    <div id="loader"></div>
 
     <script src="{{ asset('public/backend/assets/js/jquery-3.5.1.min.js') }}"></script>
     <!-- feather icon js-->
@@ -86,6 +86,14 @@
     <!-- Theme js-->
     <script src="{{ asset('public/backend/assets/js/script.js') }}"></script>
     <!-- login js-->
+
+    <script type="text/javascript">
+        jQuery(document).ready(function () {
+            $('#loader').show();
+            $('#loader').fadeOut(2000);
+        });
+    </script>
+
     @if (!empty($pluginjs))
         @foreach ($pluginjs as $value)
             <script src="{{ asset('public/backend/assets/js/'.$value) }}" type="text/javascript"></script>

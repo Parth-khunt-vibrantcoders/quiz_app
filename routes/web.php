@@ -24,4 +24,8 @@ Route::get('/clear-cache', function() {
     echo "view is cleared<br>";
 });
 
-Route::match(['get','post'],'page-not-found',['as'=>'page-not-found','uses'=>'backend\admin\LoginController@pagenotfound']);
+Route::match(['get','post'],'/',['as'=>'home','uses'=>'frontend\home\HomeController@home']);
+Route::match(['get','post'],'sign-in',['as'=>'sign-in','uses'=>'frontend\login\LoginController@login']);
+Route::match(['get','post'],'sign-up',['as'=>'sign-up','uses'=>'frontend\login\LoginController@register']);
+Route::match(['get','post'],'page-not-found',['as'=>'page-not-found','uses'=>'frontend\home\HomeController@pagenotfound']);
+

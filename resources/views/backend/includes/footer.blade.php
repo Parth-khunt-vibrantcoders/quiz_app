@@ -12,6 +12,15 @@
 
 
  <!-- Plugins JS Ends-->
+
+ <script type="text/javascript">
+    jQuery(document).ready(function () {
+        $('#loader').show();
+        $('#loader').fadeOut(2000);
+    });
+</script>
+
+
  <!-- Theme js-->
  <script src="{{ asset('public/backend/assets/js/script.js') }}"></script>
  @if (!empty($pluginjs))
