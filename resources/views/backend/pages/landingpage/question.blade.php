@@ -12,9 +12,7 @@
                 @csrf
                 <div class="row g-3">
                     <div class="col-md-12">
-                        <img src="{{ asset('public/uploads/landingpages/'.$details['image'] )}}" style="border:3px solid #337467; padding: 10px; width: 200px;height: 200px;" alt="landing_page_background_image">
-                        <br><br><label class="form-label" for="profile_image">Background Image</label>
-                        <input class="form-control" type="file" aria-label="file example" name="image">
+
                     </div>
                 </div>
                 <br>

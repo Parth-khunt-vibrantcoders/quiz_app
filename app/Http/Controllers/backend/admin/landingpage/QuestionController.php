@@ -30,10 +30,10 @@ class QuestionController extends Controller
             'comman_function.js',
             'ajaxfileupload.js',
             'jquery.form.min.js',
-            'bgimage.js'
+            'question.js'
         );
         $data['funinit'] = array(
-            'Bgimage.init()'
+            'Question.init()'
         );
         $data['header'] = array(
             'title' => 'Background Image',
