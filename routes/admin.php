@@ -33,6 +33,22 @@ Route::group(['prefix' => $prefix, 'middleware' => ['admin']], function() {
     Route::match(['get', 'post'], 'change-password', ['as' => 'change-password', 'uses' => 'backend\admin\dashboard\DashboardController@changePassword']);
 });
 
+
+$prefix = 'landing-page';
+Route::group(['prefix' => $prefix, 'middleware' => ['admin']], function() {
+    // Dashboard
+    Route::match(['get', 'post'], 'landing-page-background-image', ['as' => 'landing-page-background-image', 'uses' => 'backend\admin\landingpage\ImageController@image']);
+    // Dashboard
+    Route::match(['get', 'post'], 'landing-page-question', ['as' => 'landing-page-question', 'uses' => 'backend\admin\landingpage\QuestionController@question']);
+});
+
+$prefix = 'result-page';
+Route::group(['prefix' => $prefix, 'middleware' => ['admin']], function() {
+    // Dashboard
+    Route::match(['get', 'post'], 'result-background-image', ['as' => 'result-background-image', 'uses' => 'backend\admin\resultpage\ImageController@image']);
+
+});
+
 $prefix = 'users';
 Route::group(['prefix' => $prefix, 'middleware' => ['admin']], function() {
 

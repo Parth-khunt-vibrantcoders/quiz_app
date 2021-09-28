@@ -30953,6 +30953,11 @@ span.twitter-typeahead .tt-suggestion {
     color: white !important;
 }
 
+.sub-active{
+    color: #24695c !important;
+    font-weight: bold !important;
+}
+
 #loader {
     display: none;
     position: fixed;

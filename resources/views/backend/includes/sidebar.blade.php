@@ -41,12 +41,14 @@ if(file_exists( public_path().'/uploads/userprofile/'.$data['userimage']) && $da
                         <span>Dashboard</span>
                     </a>
                 </li>
+
                 <li>
                     <a class="nav-link menu-title link-nav {{ $currentRoute == 'edit-profile'  ? 'my-active' : ''}}" href="{{ route('edit-profile')}}">
                         <i data-feather="edit"></i>
                         <span>Edit Profile</span>
                     </a>
                 </li>
+
                 <li>
                     <a class="nav-link menu-title link-nav {{  $currentRoute == 'change-password' ? 'my-active' : ''}}" href="{{ route('change-password')}}">
                         <i data-feather="lock"></i>
@@ -54,7 +56,22 @@ if(file_exists( public_path().'/uploads/userprofile/'.$data['userimage']) && $da
                     </a>
                 </li>
 
+                <li class="dropdown"><a class="nav-link menu-title {{  $currentRoute == 'landing-page-background-image' || $currentRoute == 'landing-page-question'  ? 'my-active' : ''}}" href="javascript:void(0)">
+                    <i data-feather="shopping-bag"></i>
+                    <span>Landing Page</span></a>
+                    <ul class="nav-submenu menu-content">
+                      <li><a href="{{ route('landing-page-background-image') }}" class="{{  $currentRoute == 'landing-page-background-image'   ? 'sub-active active' : ''}}">Image</a></li>
+                      <li><a href="{{  route('landing-page-question') }}" class="{{  $currentRoute == 'landing-page-question'   ? 'sub-active active' : ''}}">Question</a></li>
+                    </ul>
+                </li>
 
+                <li class="dropdown"><a class="nav-link menu-title {{  $currentRoute == 'result-background-image'   ? 'my-active' : ''}}" href="javascript:void(0)">
+                    <i data-feather="shopping-bag"></i>
+                    <span>Result Page</span></a>
+                    <ul class="nav-submenu menu-content">
+                      <li><a href="{{ route('result-background-image') }}" class="{{  $currentRoute == 'result-background-image'   ? 'sub-active active' : ''}}">Image</a></li>
+                    </ul>
+                </li>
 
              </ul>
           </div>
