@@ -1,28 +1,127 @@
-<!-- Page Header Start-->
-<div class="page-main-header">
-    <div class="main-header-right row m-0">
-       <div class="main-header-left">
-          <div class="logo-wrapper"><a href="{{ route('my-dashboard') }}"><img class="img-fluid" src="{{ asset('public/backend/assets/images/logo/logo.png') }}" alt="logo"></a></div>
-          <div class="dark-logo-wrapper"><a href="{{ route('my-dashboard') }}"><img class="img-fluid" src="{{ asset('public/backend/assets/images/logo/dark-logo.png') }}" alt="logo"></a></div>
-          <div class="toggle-sidebar"><i class="status_toggle middle" data-feather="align-center" id="sidebar-toggle"></i></div>
+@php
+$currentRoute = Route::current()->getName();
+
+if (!empty(Auth()->guard('admin')->user())) {
+   $data = Auth()->guard('admin')->user();
+}
+
+if(file_exists( public_path().'/uploads/userprofile/'.$data['userimage']) && $data['userimage'] != ''){
+    $image = url("public/uploads/userprofile/".$data['userimage']);
+}else{
+    $image = url("public/uploads/userprofile/default.jpg");
+}
+
+
+@endphp
+<!--begin::Header-->
+<div id="kt_header" style="" class="header align-items-stretch">
+    <!--begin::Container-->
+    <div class="container-fluid d-flex align-items-stretch justify-content-between">
+       <!--begin::Aside mobile toggle-->
+       <div class="d-flex align-items-center d-lg-none ms-n3 me-1" title="Show aside menu">
+          <div class="btn btn-icon btn-active-color-white" id="kt_aside_mobile_toggle">
+             <i class="bi bi-list fs-1"></i>
+          </div>
        </div>
-
-       <div class="nav-right col pull-right right-menu p-0">
-          <ul class="nav-menus">
-             <li><a class="text-dark" href="javascript:;" onclick="javascript:toggleFullScreen()"><i data-feather="maximize"></i></a></li>
-
-             <li>
-                <div class="mode"><i class="fa fa-moon-o"></i></div>
-             </li>
-
-             <li class="onhover-dropdown p-0">
-                <button class="btn btn-primary-light" type="button">
-                    <a href="{{ route('admin-logout') }}"><i data-feather="log-out"></i>Log out</a>
-                </button>
-             </li>
-          </ul>
+       <!--end::Aside mobile toggle-->
+       <!--begin::Mobile logo-->
+       <div class="d-flex align-items-center flex-grow-1 flex-lg-grow-0">
+          <a href="{{ route('my-dashboard') }}" class="d-lg-none">
+          <img alt="Logo" src="{{ $image }}" class="h-25px" />
+          </a>
        </div>
-       <div class="d-lg-none mobile-toggle pull-right w-auto"><i data-feather="more-horizontal"></i></div>
+       <!--end::Mobile logo-->
+       <!--begin::Wrapper-->
+       <div class="d-flex align-items-stretch justify-content-between flex-lg-grow-1">
+          <!--begin::Navbar-->
+          <div class="d-flex align-items-stretch" id="kt_header_nav">
+
+          </div>
+          <!--end::Navbar-->
+          <!--begin::Topbar-->
+          <div class="d-flex align-items-stretch flex-shrink-0">
+             <!--begin::Toolbar wrapper-->
+             <div class="topbar d-flex align-items-stretch flex-shrink-0">
+
+                <!--begin::User-->
+
+                <div class="d-flex align-items-stretch" id="kt_header_user_menu_toggle">
+                   <!--begin::Menu wrapper-->
+                   <div class="topbar-item cursor-pointer symbol px-3 px-lg-5 me-n3 me-lg-n5 symbol-30px symbol-md-35px" data-kt-menu-trigger="click" data-kt-menu-attach="parent" data-kt-menu-placement="bottom-end" data-kt-menu-flip="bottom">
+                    <div class="btn btn-icon btn-icon-mobile w-auto btn-clean d-flex align-items-center btn-lg px-2" id="kt_quick_user_toggle">
+                        <span class="text-muted font-weight-bold font-size-base d-none d-md-inline mr-1">Hi, </span>
+                        <span class="text-muted font-weight-bold font-size-base d-none d-md-inline mr-1 ml-2" style="padding-left: 2px">{{ $data['first_name'] }}</span>
+
+                    </div>
+                    <img src="{{  $image }}" alt="metronic" />
+                   </div>
+
+
+                   <!--begin::Menu-->
+                   <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg menu-state-primary fw-bold py-4 fs-6 w-275px" data-kt-menu="true">
+                      <!--begin::Menu item-->
+                      <div class="menu-item px-3">
+
+                         <div class="menu-content d-flex align-items-center px-3">
+                            <!--begin::Avatar-->
+                            <div class="symbol symbol-50px me-5">
+                               <img alt="Logo" src="{{  $image }}" />
+                            </div>
+                            <!--end::Avatar-->
+                            <!--begin::Username-->
+
+
+                            <div class="d-flex flex-column">
+                                <div class="fw-bolder d-flex align-items-center fs-5">
+                                    {{ $data['first_name'] }} {{ $data['last_name'] }}
+                                </div>
+                               <a href="#" class="fw-bold text-muted text-hover-primary fs-7">{{ $data['email'] }}</a>
+                            </div>
+                            <!--end::Username-->
+                         </div>
+                      </div>
+                      <!--end::Menu item-->
+                      <!--begin::Menu separator-->
+                      <div class="separator my-2"></div>
+                      <!--end::Menu separator-->
+                      <!--begin::Menu item-->
+                      <div class="menu-item px-5">
+                         <a href="{{ route('edit-profile')}}" class="menu-link px-5">My Profile</a>
+                      </div>
+                      <!--end::Menu item-->
+
+                      <!--begin::Menu item-->
+                      <div class="menu-item px-5">
+                         <a href="{{ route('change-password')}}" class="menu-link px-5">Change Password</a>
+                      </div>
+                      <!--end::Menu item-->
+
+
+                      <!--begin::Menu item-->
+                      <div class="menu-item px-5">
+                         <a href="{{ route('admin-logout') }}" class="menu-link px-5">Sign Out</a>
+                      </div>
+                      <!--end::Menu item-->
+
+                   </div>
+                   <!--end::Menu-->
+                   <!--end::Menu wrapper-->
+                </div>
+                <!--end::User -->
+                <!--begin::Heaeder menu toggle-->
+                <div class="d-flex align-items-stretch d-lg-none px-3 me-n3" title="Show header menu">
+                   <div class="topbar-item" id="kt_header_menu_mobile_toggle">
+                      <i class="bi bi-text-left fs-1"></i>
+                   </div>
+                </div>
+                <!--end::Heaeder menu toggle-->
+             </div>
+             <!--end::Toolbar wrapper-->
+          </div>
+          <!--end::Topbar-->
+       </div>
+       <!--end::Wrapper-->
     </div>
+    <!--end::Container-->
  </div>
- <!-- Page Header Ends  -->
+ <!--end::Header-->

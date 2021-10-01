@@ -229,24 +229,21 @@ function handleFormValidate(form, rules, submitCallback, showToaster) {
         },
         highlight: function(element) { // hightlight error inputs
 
-            $(element).closest('.input-group').addClass('has-error'); // set error class to the control group
-            $(element).closest('.form-control').addClass('has-error'); // set error class to the control group
+            $(element)
+                .closest('.c-input, .form-control').addClass('has-error'); // set error class to the control group
 
             $(element).parent().parent().find('.select2').addClass('has-error');
 
         },
         unhighlight: function(element) { // revert the change done by hightlight
             $(element)
-                .closest('.input-group').removeClass('has-error'); // set error class to the control group
+                .closest('.c-input, .form-control').removeClass('has-error'); // set error class to the control group
             $(element)
-                .closest('.form-control').removeClass('has-error'); // set error class to the control group
-            $(element)
-                .closest('.input-group').removeClass('is-valid'); // set error class to the control group
+                .closest('.c-input, .form-control').addClass('is-valid'); // set error class to the control group
         },
         success: function(label) {
-            label.closest('.input-group').removeClass('has-error'); // set success class to the control group
-            label.closest('.form-control').removeClass('has-error'); // set success class to the control group
-            label.closest('.input-group').removeClass('is-valid'); // set error class to the control group
+            label.closest('.c-input, .form-control').removeClass('has-error'); // set success class to the control group
+            label.closest('.c-input, .form-control').addClass('is-valid'); // set error class to the control group
         },
         errorPlacement: function(error, element) {
             return true;
@@ -279,7 +276,7 @@ function handleFormValidateWithMsg(form, rules, messages, submitCallback, showTo
     var success = $('.alert-success', form);
     form.validate({
         errorElement: 'span', //default input error message container
-        errorClass: 'help-block', // default input error message class
+        errorClass: 'invalid-feedback', // default input error message class
         focusInvalid: false, // do not focus the last invalid input
         ignore: ":hidden",
         rules: rules,
@@ -295,15 +292,19 @@ function handleFormValidateWithMsg(form, rules, messages, submitCallback, showTo
         },
         highlight: function(element) { // hightlight error inputs
             $(element)
-                    .closest('.form-control').addClass('has-error'); // set error class to the control group
+                    .closest('.form-control').addClass('is-invalid'); // set error class to the control group
         },
         unhighlight: function(element) { // revert the change done by hightlight
             $(element)
-                    .closest('.form-control').removeClass('has-error'); // set error class to the control group
+                    .closest('.form-control').removeClass('is-invalid'); // set error class to the control group
+            $(element)
+                    .closest('.form-control').addClass('is-valid'); // set error class to the control group
         },
         success: function(label) {
             label
-                    .closest('.form-control').removeClass('has-error'); // set success class to the control group
+                    .closest('.form-control').removeClass('is-invalid'); // set success class to the control group
+            label
+                    .closest('.form-control').addClass('is-valid'); // set success class to the control group
         },
         messages: messages,
         submitHandler: function(form) {

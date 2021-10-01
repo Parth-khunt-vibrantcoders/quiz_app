@@ -1,42 +1,67 @@
-@extends('backend.layout.login_layout')
+@extends('backend.layouts.login_layout')
 @section('section')
-<!-- page-wrapper Start-->
-<section>
-   <div class="container-fluid">
-      <div class="row">
-         <div class="col-xl-7"><img class="bg-img-cover bg-center" src="{{ asset('public/backend/assets/images/login/2.jpg') }}" alt="looginpage"></div>
-            <div class="col-xl-5 p-0">
-                <div class="login-card">
-                    <form class="theme-form login-form " id="login-form" enctype="multipart/form-data" method="POST">
-                        @csrf
-                            <h4>Login</h4>
-                            <h6>Welcome back! Log in to your account.</h6>
-                            <div class="form-group">
-                                <label>Email Address</label>
-                                <div class="input-group">
-                                    <span class="input-group-text">
-                                        <i class="icon-email"></i>
-                                    </span>
-                                    <input class="form-control" type="email" name="email" placeholder="Please enter your register mail" >
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label>Password</label>
-                                <div class="input-group">
-                                    <span class="input-group-text">
-                                        <i class="icon-lock"></i>
-                                    </span>
-                                    <input class="form-control" type="password" name="password"  placeholder="Please enter your password">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <button class="btn btn-primary btn-block" type="submit">Sign in</button>
-                            </div>
-                    </form>
-                </div>
+
+<!--begin::Content-->
+<div class="d-flex flex-center flex-column flex-column-fluid p-10 pb-lg-20">
+    <!--begin::Logo-->
+    <a href="{{ route('my-login') }}" class="mb-12">
+        <img alt="Logo" src="{{  asset('public/uploads/systeamsetting/logo.png') }}" class="h-40px" />
+    </a>
+    <!--end::Logo-->
+    <!--begin::Wrapper-->
+    <div class="w-lg-500px bg-body rounded shadow-sm p-10 p-lg-15 mx-auto">
+        <!--begin::Form-->
+        <form class="form w-100" id="login-form" method="POST">
+            @csrf
+            <!--begin::Heading-->
+            <div class="text-center mb-10">
+                <!--begin::Title-->
+                <h1 class="text-dark mb-3">Sign In to {{ Config::get( 'constants.PROJECT_NAME' ) }}</h1>
+                <!--end::Title-->
+
             </div>
-      </div>
-   </div>
-</section>
-<!-- page-wrapper end-->
+            <!--begin::Heading-->
+            <!--begin::Input group-->
+            <div class="fv-row mb-10">
+                <!--begin::Label-->
+                <label class="form-label fs-6 fw-bolder text-dark">Email</label>
+                <!--end::Label-->
+                <!--begin::Input-->
+                <input class="form-control form-control-lg form-control-solid" type="text" name="email" autocomplete="off" placeholder="Please enter your register email" />
+                <!--end::Input-->
+            </div>
+            <!--end::Input group-->
+            <!--begin::Input group-->
+            <div class="fv-row mb-10">
+                <!--begin::Wrapper-->
+                <div class="d-flex flex-stack mb-2">
+                    <!--begin::Label-->
+                    <label class="form-label fw-bolder text-dark fs-6 mb-0">Password</label>
+                    <!--end::Label-->
+                </div>
+                <!--end::Wrapper-->
+                <!--begin::Input-->
+                <input class="form-control form-control-lg form-control-solid" type="password" name="password" autocomplete="off" placeholder="Please enter your password" />
+                <!--end::Input-->
+            </div>
+            <!--end::Input group-->
+            <!--begin::Actions-->
+            <div class="text-center">
+                <!--begin::Submit button-->
+                <button type="submit" id="kt_sign_in_submit" class="btn btn-lg btn-primary w-100 mb-5">
+                    <span class="indicator-label">Continue</span>
+                    <span class="indicator-progress">Please wait...
+                    <span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
+                </button>
+                <!--end::Submit button-->
+
+            </div>
+            <!--end::Actions-->
+        </form>
+        <!--end::Form-->
+    </div>
+    <!--end::Wrapper-->
+</div>
+<!--end::Content-->
+
 @endsection

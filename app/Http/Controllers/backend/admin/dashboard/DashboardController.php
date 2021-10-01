@@ -35,7 +35,7 @@ class DashboardController extends Controller
                 'My Dashboard' => 'My Dashboard',
             )
         );
-        return view('backend.pages.dashboard.dashboard', $data);
+        return view('backend.pages.admin.dashboard.dashboard', $data);
     }
 
     public function editProfile (Request $request) {
@@ -64,14 +64,12 @@ class DashboardController extends Controller
         $data['title'] = 'Edit Profile || '.Config::get('constants.PROJECT_NAME') ;
         $data['keywords'] = 'Edit Profile || '.Config::get('constants.PROJECT_NAME') ;
         $data['description'] = 'Edit Profile || '.Config::get('constants.PROJECT_NAME') ;
-        $data['css'] = array(
-            'toastr/toastr.min.css'
-        );
         $data['plugincss'] = array(
+            'plugins/toastr/toastr.min.css'
         );
         $data['pluginjs'] = array(
-            'toastr/toastr.min.js',
-            'validate/jquery.validate.min.js',
+            'plugins/toastr/toastr.min.js',
+            'plugins/validate/jquery.validate.min.js',
         );
         $data['js'] = array(
             'comman_function.js',
@@ -89,7 +87,7 @@ class DashboardController extends Controller
                 'Edit Profile' => 'Edit Profile',
             )
         );
-        return view('backend.pages.dashboard.editProfile', $data);
+        return view('backend.pages.admin.profile.editProfile', $data);
     }
 
     public function changePassword(Request $request){
@@ -118,14 +116,12 @@ class DashboardController extends Controller
         $data['title'] = 'Change Password || '.Config::get('constants.PROJECT_NAME') ;
         $data['keywords'] = 'Change Password || '.Config::get('constants.PROJECT_NAME') ;
         $data['description'] = 'Change Password || '.Config::get('constants.PROJECT_NAME') ;
-        $data['css'] = array(
-            'toastr/toastr.min.css'
-        );
         $data['plugincss'] = array(
+            'plugins/toastr/toastr.min.css'
         );
         $data['pluginjs'] = array(
-            'toastr/toastr.min.js',
-            'validate/jquery.validate.min.js',
+            'plugins/toastr/toastr.min.js',
+            'plugins/validate/jquery.validate.min.js',
         );
         $data['js'] = array(
             'comman_function.js',
@@ -143,6 +139,6 @@ class DashboardController extends Controller
                 'Change password' => 'Change password',
             )
         );
-        return view('backend.pages.dashboard.changepassword', $data);
+        return view('backend.pages.admin.profile.changepassword', $data);
     }
 }

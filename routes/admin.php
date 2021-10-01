@@ -39,7 +39,10 @@ Route::group(['prefix' => $prefix, 'middleware' => ['admin']], function() {
     // Dashboard
     Route::match(['get', 'post'], 'landing-page-background-image', ['as' => 'landing-page-background-image', 'uses' => 'backend\admin\landingpage\ImageController@image']);
     // Dashboard
-    Route::match(['get', 'post'], 'landing-page-question', ['as' => 'landing-page-question', 'uses' => 'backend\admin\landingpage\QuestionController@question']);
+    Route::match(['get', 'post'], 'landing-page-question-list', ['as' => 'landing-page-question-list', 'uses' => 'backend\admin\landingpage\QuestionController@list']);
+    Route::match(['get', 'post'], 'landing-page-question-add', ['as' => 'landing-page-question-add', 'uses' => 'backend\admin\landingpage\QuestionController@add']);
+    Route::match(['get', 'post'], 'landing-page-question-edit/{id}', ['as' => 'landing-page-question-edit', 'uses' => 'backend\admin\landingpage\QuestionController@edit']);
+    Route::match(['get', 'post'], 'landing-page-question-ajaxcall', ['as' => 'landing-page-question-ajaxcall', 'uses' => 'backend\admin\landingpage\QuestionController@ajaxcall']);
 });
 
 $prefix = 'result-page';
