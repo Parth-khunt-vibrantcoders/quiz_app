@@ -35,6 +35,7 @@ $currentRoute = Route::current()->getName();
                     <span class="menu-section text-muted text-uppercase fs-8 ls-1">&nbsp;</span>
                 </div>
             </div>
+
             <div class="menu-item">
                 <a class="menu-link {{ $currentRoute == 'my-dashboard' || $currentRoute == 'edit-profile' || $currentRoute ==  'change-password' ? 'active' : '' }}" href="{{ route('my-dashboard') }}">
                     <span class="menu-icon">
@@ -48,7 +49,7 @@ $currentRoute = Route::current()->getName();
             <div data-kt-menu-trigger="click" class="menu-item menu-accordion {{  $currentRoute == 'landing-page-background-image' || $currentRoute == 'landing-page-question-list' || $currentRoute == 'landing-page-question-add' || $currentRoute == 'landing-page-question-edit'  ? 'here show' : ''}}">
                 <span class="menu-link">
                     <span class="menu-icon">
-                        <i class="bi-chat-left fs-3"></i>
+                        <i class="fa fa-paper-plane fs-3"></i>
                     </span>
                     <span class="menu-title">Landing Page</span>
                     <span class="menu-arrow"></span>
@@ -76,7 +77,8 @@ $currentRoute = Route::current()->getName();
             <div data-kt-menu-trigger="click" class="menu-item menu-accordion {{  $currentRoute == 'result-background-image'  ? 'here show' : ''}}">
                 <span class="menu-link">
                     <span class="menu-icon">
-                        <i class="bi-chat-left fs-3"></i>
+                        <i class="fa fa-trophy fs-3" aria-hidden="true"></i>
+                        {{-- <i class="bi-chat-left fs-3"></i> --}}
                     </span>
                     <span class="menu-title">Result Page</span>
                     <span class="menu-arrow"></span>
@@ -92,6 +94,15 @@ $currentRoute = Route::current()->getName();
                     </div>
 
                 </div>
+            </div>
+
+            <div class="menu-item">
+                <a class="menu-link {{ $currentRoute == 'adsense-management-list' || $currentRoute == 'adsense-management-add' || $currentRoute ==  'adsense-management-edit' ? 'active' : '' }}" href="{{ route('adsense-management-list') }}">
+                    <span class="menu-icon">
+                        <i class="fab fa-adversal fs-3"></i>
+                    </span>
+                    <span class="menu-title">Adsense management</span>
+                </a>
             </div>
 
           </div>

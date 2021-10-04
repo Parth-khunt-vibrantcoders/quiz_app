@@ -16,7 +16,7 @@ if(file_exists( public_path().'/uploads/userprofile/'.$data['userimage']) && $da
 <!--begin::Post-->
 <div class="post d-flex flex-column-fluid" id="kt_post">
     <!--begin::Container-->
-    <div id="kt_content_container" class="container-xxl">
+    <div id="kt_content_container" class="container-adsense">
 
         <!--begin::Basic info-->
         <div class="card mb-5 mb-xl-10">

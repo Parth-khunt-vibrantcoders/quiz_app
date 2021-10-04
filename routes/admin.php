@@ -54,8 +54,14 @@ Route::group(['prefix' => $prefix, 'middleware' => ['admin']], function() {
 
 $prefix = 'users';
 Route::group(['prefix' => $prefix, 'middleware' => ['admin']], function() {
-
     Route::match(['get', 'post'], 'user-list', ['as' => 'user-list', 'uses' => 'backend\admin\users\UsersController@list']);
     Route::match(['get', 'post'], 'user-ajaxcall', ['as' => 'user-ajaxcall', 'uses' => 'backend\admin\users\UsersController@ajaxcall']);
+});
 
+$prefix = 'adsense';
+Route::group(['prefix' => $prefix, 'middleware' => ['admin']], function() {
+    Route::match(['get', 'post'], 'adsense-management-list', ['as' => 'adsense-management-list', 'uses' => 'backend\admin\adsense\AdsenseController@list']);
+    Route::match(['get', 'post'], 'adsense-management-add', ['as' => 'adsense-management-add', 'uses' => 'backend\admin\adsense\AdsenseController@add']);
+    Route::match(['get', 'post'], 'adsense-management-edit/{id}', ['as' => 'adsense-management-edit', 'uses' => 'backend\admin\adsense\AdsenseController@edit']);
+    Route::match(['get', 'post'], 'adsense-management-ajaxcall', ['as' => 'adsense-management-ajaxcall', 'uses' => 'backend\admin\adsense\AdsenseController@ajaxcall']);
 });

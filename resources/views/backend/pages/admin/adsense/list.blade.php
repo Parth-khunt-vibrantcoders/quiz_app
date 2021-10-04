@@ -13,9 +13,21 @@
             <div class="card-header border-0 cursor-pointer" role="button" data-bs-toggle="collapse" data-bs-target="#kt_account_profile_details" aria-expanded="true" aria-controls="kt_account_profile_details">
                 <!--begin::Card title-->
                 <div class="card-title m-0">
-                    <span class="card-label fw-bolder fs-3 mb-1">Landing Pages Question</span>
+                    <span class="card-label fw-bolder fs-3 mb-1">Adsense users-list</span>
                 </div>
                 <!--end::Card title-->
+                <!--begin::Card title-->
+
+                <div class="card-title m-0" style="text-align: right">
+                    <a href="{{ route('adsense-management-add') }}">
+                        <button class="btn btn-danger">
+                            <i class="fas fa-plus-circle"></i>Add New User
+                        </button>
+                    </a>
+                </div>
+                <!--end::Card title-->
+
+
             </div>
 
             <!--begin::Body-->
@@ -23,13 +35,16 @@
                 <!--begin::Table container-->
                 <div class="table-responsive">
                     <!--begin::Table-->
-                    <table class="table table-row-bordered table-row-gray-100 align-middle gs-0 gy-3" id="question-answer">
+                    <table class="table table-row-bordered table-row-gray-100 align-middle gs-0 gy-3" id="adsense-list">
                         <!--begin::Table head-->@csrf
                         <thead>
                             <tr class="fw-bolder text-muted">
-
                                 <th>Sr. No</th>
-                                <th>Question</th>
+                                <th>Unique Id</th>
+                                <th>Name</th>
+                                <th>Ph. No</th>
+                                <th>Pan Number</th>
+                                <th>DOJ</th>
                                 <th>Action</th>
                             </tr>
                         </thead>

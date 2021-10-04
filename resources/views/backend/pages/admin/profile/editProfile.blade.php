@@ -16,7 +16,7 @@ if(file_exists( public_path().'/uploads/userprofile/'.$data['userimage']) && $da
 <!--begin::Post-->
 <div class="post d-flex flex-column-fluid" id="kt_post">
     <!--begin::Container-->
-    <div id="kt_content_container" class="container-xxl">
+    <div id="kt_content_container" class="container-fluid">
 
         <!--begin::Basic info-->
         <div class="card mb-5 mb-xl-10">
@@ -39,10 +39,10 @@ if(file_exists( public_path().'/uploads/userprofile/'.$data['userimage']) && $da
                         <!--begin::Input group-->
                         <div class="row mb-6">
                             <!--begin::Label-->
-                            <label class="col-lg-4 col-form-label fw-bold fs-6">Profile Image</label>
+                            <label class="col-lg-3 col-form-label fw-bold fs-6">Profile Image</label>
                             <!--end::Label-->
                             <!--begin::Col-->
-                            <div class="col-lg-8">
+                            <div class="col-lg-9">
                                 <!--begin::Image input-->
                                 <div class="image-input image-input-outline" data-kt-image-input="true" style="background-image: url({{ asset('public/backend/assets/media/avatars/blank.png') }})">
                                     <!--begin::Preview existing avatar-->
@@ -79,10 +79,10 @@ if(file_exists( public_path().'/uploads/userprofile/'.$data['userimage']) && $da
                         <!--begin::Input group-->
                         <div class="row mb-6">
                             <!--begin::Label-->
-                            <label class="col-lg-4 col-form-label required fw-bold fs-6">First name</label>
+                            <label class="col-lg-3 col-form-label required fw-bold fs-6">First name</label>
                             <!--end::Label-->
                             <!--begin::Col-->
-                            <div class="col-lg-8">
+                            <div class="col-lg-9">
                                 <!--begin::Row-->
                                 <div class="row">
                                     <!--begin::Col-->
@@ -101,10 +101,10 @@ if(file_exists( public_path().'/uploads/userprofile/'.$data['userimage']) && $da
                         <!--begin::Input group-->
                         <div class="row mb-6">
                             <!--begin::Label-->
-                            <label class="col-lg-4 col-form-label required fw-bold fs-6">Last name</label>
+                            <label class="col-lg-3 col-form-label required fw-bold fs-6">Last name</label>
                             <!--end::Label-->
                             <!--begin::Col-->
-                            <div class="col-lg-8 fv-row">
+                            <div class="col-lg-9 fv-row">
                                 <input type="text"  class="form-control form-control-lg form-control-solid" name="last_name" placeholder="Please enter last name" value="{{ $data['last_name'] }}" />
                             </div>
                             <!--end::Col-->
@@ -113,10 +113,10 @@ if(file_exists( public_path().'/uploads/userprofile/'.$data['userimage']) && $da
                         <!--begin::Input group-->
                         <div class="row mb-6">
                             <!--begin::Label-->
-                            <label class="col-lg-4 col-form-label required fw-bold fs-6">Email</label>
+                            <label class="col-lg-3 col-form-label required fw-bold fs-6">Email</label>
                             <!--end::Label-->
                             <!--begin::Col-->
-                            <div class="col-lg-8 fv-row">
+                            <div class="col-lg-9 fv-row">
                                 <input type="email"  class="form-control form-control-lg form-control-solid" name="email" placeholder="Please enter first name" value="{{ $data['email']}}" />
                             </div>
                             <!--end::Col-->
