@@ -13,6 +13,8 @@ class HomeController extends Controller
     }
 
     public function home(Request $request){
+
+
         $data['title'] =  'Home || '. Config::get('constants.PROJECT_NAME');
         $data['description'] =  'Home || '. Config::get('constants.PROJECT_NAME');
         $data['keywords'] =  'Home || '. Config::get('constants.PROJECT_NAME');

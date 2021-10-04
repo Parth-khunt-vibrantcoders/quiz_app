@@ -14,6 +14,12 @@
       <!--end::Page Custom Javascript-->
       <!--end::Javascript-->
 
+      <script type="text/javascript">
+        jQuery(document).ready(function () {
+            $('#loader').show();
+            $('#loader').fadeOut(2000);
+        });
+    </script>
       @if (!empty($pluginjs))
       @foreach ($pluginjs as $value)
           <script src="{{ asset('public/backend/assets/'.$value) }}" type="text/javascript"></script>
@@ -44,3 +50,4 @@
       @endif
   });
   </script>
+

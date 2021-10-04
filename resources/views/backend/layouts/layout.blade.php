@@ -43,6 +43,7 @@
          </span>
          <!--end::Svg Icon-->
       </div>
+      <div id="loader"></div>
       <!--end::Scrolltop-->
       <!--end::Main-->
         @include('backend.includes.footer')

@@ -36,17 +36,15 @@ class ImageController extends Controller
         $objResultpageimage = new Resultpageimage();
         $data['details'] = $objResultpageimage->get_result_page_image_details();
 
-        $data['title'] = 'Background Image || '.Config::get('constants.PROJECT_NAME') ;
-        $data['keywords'] = 'Background Image || '.Config::get('constants.PROJECT_NAME') ;
-        $data['description'] = 'Background Image || '.Config::get('constants.PROJECT_NAME') ;
-        $data['css'] = array(
-            'toastr/toastr.min.css'
-        );
+        $data['title'] = 'Result Page Image || '.Config::get('constants.PROJECT_NAME') ;
+        $data['keywords'] = 'Result Page Image || '.Config::get('constants.PROJECT_NAME') ;
+        $data['description'] = 'Result Page Image || '.Config::get('constants.PROJECT_NAME') ;
         $data['plugincss'] = array(
+            'plugins/toastr/toastr.min.css'
         );
         $data['pluginjs'] = array(
-            'toastr/toastr.min.js',
-            'validate/jquery.validate.min.js',
+            'plugins/toastr/toastr.min.js',
+            'plugins/validate/jquery.validate.min.js',
         );
         $data['js'] = array(
             'comman_function.js',
@@ -58,12 +56,12 @@ class ImageController extends Controller
             'Bgimage.result()'
         );
         $data['header'] = array(
-            'title' => 'Background Image',
+            'title' => 'Result Page Image',
             'breadcrumb' => array(
                 'Dashboard' => route('my-dashboard'),
-                'Background Image' => 'Background Image',
+                'Result Page Image' => 'Result Page Image',
             )
         );
-        return view('backend.pages.resultpage.image', $data);
+        return view('backend.pages.admin.resultpage.image', $data);
     }
 }

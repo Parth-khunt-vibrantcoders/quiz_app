@@ -39,14 +39,12 @@ class ImageController extends Controller
         $data['title'] = 'Background Image || '.Config::get('constants.PROJECT_NAME') ;
         $data['keywords'] = 'Background Image || '.Config::get('constants.PROJECT_NAME') ;
         $data['description'] = 'Background Image || '.Config::get('constants.PROJECT_NAME') ;
-        $data['css'] = array(
-            'toastr/toastr.min.css'
-        );
         $data['plugincss'] = array(
+            'plugins/toastr/toastr.min.css'
         );
         $data['pluginjs'] = array(
-            'toastr/toastr.min.js',
-            'validate/jquery.validate.min.js',
+            'plugins/toastr/toastr.min.js',
+            'plugins/validate/jquery.validate.min.js',
         );
         $data['js'] = array(
             'comman_function.js',
@@ -64,6 +62,6 @@ class ImageController extends Controller
                 'Background Image' => 'Background Image',
             )
         );
-        return view('backend.pages.landingpage.image', $data);
+        return view('backend.pages.admin.landingpage.image', $data);
     }
 }

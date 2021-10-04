@@ -19,18 +19,14 @@ class QuestionController extends Controller
         $data['title'] = 'Landing Pages Question || '.Config::get('constants.PROJECT_NAME') ;
         $data['keywords'] = 'Landing Pages Question || '.Config::get('constants.PROJECT_NAME') ;
         $data['description'] = 'Landing Pages Question || '.Config::get('constants.PROJECT_NAME') ;
-        $data['css'] = array(
-            'toastr/toastr.min.css'
-        );
         $data['plugincss'] = array(
-            'css/datatables.css',
+            'plugins/toastr/toastr.min.css',
+            'plugins/custom/datatables/datatables.bundle.css'
         );
         $data['pluginjs'] = array(
-            'toastr/toastr.min.js',
-            'validate/jquery.validate.min.js',
-            'datatable/datatables/jquery.dataTables.min.js',
-            'datatable/datatables/datatable.custom.js',
-            'tooltip-init.js'
+            'plugins/toastr/toastr.min.js',
+            'plugins/validate/jquery.validate.min.js',
+            'plugins/custom/datatables/datatables.bundle.js'
         );
         $data['js'] = array(
             'comman_function.js',
@@ -48,7 +44,7 @@ class QuestionController extends Controller
                 'Landing Pages Question' => 'Landing Pages Question',
             )
         );
-        return view('backend.pages.landingpage.question.list', $data);
+        return view('backend.pages.admin.landingpage.list', $data);
     }
 
     public function add(Request $request){
@@ -101,7 +97,7 @@ class QuestionController extends Controller
                 'Add landing page question' => 'Add landing page question',
             )
         );
-        return view('backend.pages.landingpage.question.add', $data);
+        return view('backend.pages.admin.landingpage.add', $data);
     }
     public function edit(Request $request){
         if($request->isMethod('post')){
@@ -153,7 +149,7 @@ class QuestionController extends Controller
                 'Edit landing page question' => 'Edit landing page question',
             )
         );
-        return view('backend.pages.landingpage.question.edit', $data);
+        return view('backend.pages.admin.landingpage.edit', $data);
     }
 
     public function ajaxcall(Request $request){

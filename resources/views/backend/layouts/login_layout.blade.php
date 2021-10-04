@@ -15,6 +15,7 @@
 		<!--begin::Global Stylesheets Bundle(used by all pages)-->
 		<link href="{{  asset('public/backend/assets/plugins/global/plugins.bundle.css') }}" rel="stylesheet" type="text/css" />
 		<link href="{{  asset('public/backend/assets/css/style.bundle.css') }}" rel="stylesheet" type="text/css" />
+		<link href="{{  asset('public/backend/assets/css/style.css') }}" rel="stylesheet" type="text/css" />
 		<!--end::Global Stylesheets Bundle-->
 
         @if (!empty($css))
@@ -65,7 +66,7 @@
 			<!--end::Authentication - Sign-in-->
 		</div>
 		<!--end::Main-->
-
+        <div id="loader"></div>
 		<!--begin::Javascript-->
 		<!--begin::Global Javascript Bundle(used by all pages)-->
 		<script src="{{  asset('public/backend/assets/plugins/global/plugins.bundle.js') }}"></script>

@@ -44,6 +44,56 @@ $currentRoute = Route::current()->getName();
                 </a>
             </div>
 
+
+            <div data-kt-menu-trigger="click" class="menu-item menu-accordion {{  $currentRoute == 'landing-page-background-image' || $currentRoute == 'landing-page-question-list' || $currentRoute == 'landing-page-question-add' || $currentRoute == 'landing-page-question-edit'  ? 'here show' : ''}}">
+                <span class="menu-link">
+                    <span class="menu-icon">
+                        <i class="bi-chat-left fs-3"></i>
+                    </span>
+                    <span class="menu-title">Landing Page</span>
+                    <span class="menu-arrow"></span>
+                </span>
+                <div class="menu-sub menu-sub-accordion">
+                    <div class="menu-item">
+                        <a class="menu-link {{  $currentRoute == 'landing-page-background-image'   ? 'active' : ''}}" href="{{ route('landing-page-background-image') }}">
+                            <span class="menu-bullet">
+                                <span class="bullet bullet-dot"></span>
+                            </span>
+                            <span class="menu-title">Image</span>
+                        </a>
+                    </div>
+                    <div class="menu-item">
+                        <a class="menu-link {{   $currentRoute == 'landing-page-question-list' || $currentRoute == 'landing-page-question-add' || $currentRoute == 'landing-page-question-edit'   ? 'active' : ''}}" href="{{ route('landing-page-question-list') }}">
+                            <span class="menu-bullet">
+                                <span class="bullet bullet-dot"></span>
+                            </span>
+                            <span class="menu-title">Question</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div data-kt-menu-trigger="click" class="menu-item menu-accordion {{  $currentRoute == 'result-background-image'  ? 'here show' : ''}}">
+                <span class="menu-link">
+                    <span class="menu-icon">
+                        <i class="bi-chat-left fs-3"></i>
+                    </span>
+                    <span class="menu-title">Result Page</span>
+                    <span class="menu-arrow"></span>
+                </span>
+                <div class="menu-sub menu-sub-accordion">
+                    <div class="menu-item">
+                        <a class="menu-link {{  $currentRoute == 'result-background-image'   ? 'active' : ''}}" href="{{ route('result-background-image') }}">
+                            <span class="menu-bullet">
+                                <span class="bullet bullet-dot"></span>
+                            </span>
+                            <span class="menu-title">Image</span>
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+
           </div>
           <!--end::Menu-->
        </div>

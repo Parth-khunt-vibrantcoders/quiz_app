@@ -15,7 +15,9 @@ class Landingpageimage extends Model
     }
 
     public function update_image($request){
+
         $objLandingpageimage = Landingpageimage::find($request->input('editId'));
+
         if($request->file('image')){
             $image = $request->file('image');
             $imagename = time().'.'.$image->getClientOriginalExtension();
