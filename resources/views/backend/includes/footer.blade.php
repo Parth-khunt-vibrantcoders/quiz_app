@@ -2,6 +2,7 @@
       <!--begin::Global Javascript Bundle(used by all pages)-->
       <script src="{{  asset('public/backend/assets/plugins/global/plugins.bundle.js') }}"></script>
       <script src="{{  asset('public/backend/assets/js/scripts.bundle.js') }}"></script>
+
       <!--end::Global Javascript Bundle-->
       <!--begin::Page Vendors Javascript(used by this page)-->
       <script src="{{  asset('public/backend/assets/plugins/custom/fullcalendar/fullcalendar.bundle.js') }}"></script>
@@ -13,6 +14,7 @@
       <script src="{{  asset('public/backend/assets/js/custom/modals/upgrade-plan.js') }}"></script>
       <!--end::Page Custom Javascript-->
       <!--end::Javascript-->
+
 
       <script type="text/javascript">
         jQuery(document).ready(function () {

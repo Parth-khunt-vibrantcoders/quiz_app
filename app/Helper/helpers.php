@@ -1,7 +1,7 @@
 <?php
 
 function date_formate($date){
-    return date("d-M-Y", strtotime($date));
+    return date("d-m-Y", strtotime($date));
 }
 
 function remaing_days($start_date, $end_date){

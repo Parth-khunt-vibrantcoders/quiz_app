@@ -10,7 +10,7 @@
          </div>
          <div id="kt_account_profile_details" class="collapse show">
             <form id="add-adsense" enctype="multipart/form-data" method="POST">
-               @csrf
+              @csrf
                <div class="card-body border-top p-9">
                   <div class="row mb-6">
                      <label class="col-lg-3 col-form-label fw-bold fs-6">Profile Image</label>
@@ -45,7 +45,7 @@
                   <div class="row mb-6">
                      <label class="col-lg-3 col-form-label required fw-bold fs-6">Mobile Number</label>
                      <div class="col-lg-9 fv-row">
-                        <input type="text"  class="form-control form-control-lg form-control-solid" name="mo_no" placeholder="Please enter mobile number"  />
+                        <input type="text"  class="form-control form-control-lg form-control-solid onlyNumber" name="mo_no" placeholder="Please enter mobile number"  />
                      </div>
                   </div>
                   <div class="row mb-6">
@@ -57,7 +57,8 @@
                   <div class="row mb-6">
                      <label class="col-lg-3 col-form-label required fw-bold fs-6">Date of Joining</label>
                      <div class="col-lg-9 fv-row">
-                        <input type="text"   class="form-control form-control-lg form-control-solid" name="doj" placeholder="Please enter date of joining"  />
+
+                        <input type="date"  id="datepicker_date1"  class="form-control form-control-lg form-control-solid" name="doj" placeholder="Please enter date of joining"  />
                      </div>
                   </div>
                   <div class="row mb-6">
@@ -72,11 +73,12 @@
                         <textarea  rows="4" class="form-control form-control-lg form-control-solid" placeholder="Please enter note" name="note"></textarea>
                      </div>
                   </div>
+
                </div>
 
                <div class="card-footer d-flex justify-content-end py-6 px-9">
                   <button type="reset" class="btn btn-light btn-active-light-primary me-2">Discard</button>
-                  <button type="submit" class="btn btn-primary" id="kt_account_profile_details_submit">Save Changes</button>
+                  <button type="submit" class="btn btn-primary submitbtn" >Save Changes</button>
                </div>
             </form>
          </div>

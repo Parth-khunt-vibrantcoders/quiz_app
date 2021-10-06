@@ -46,6 +46,7 @@
       <div id="loader"></div>
       <!--end::Scrolltop-->
       <!--end::Main-->
+        @include('backend.includes.model')
         @include('backend.includes.footer')
    </body>
    <!--end::Body-->

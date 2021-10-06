@@ -5,6 +5,7 @@ namespace App\Http\Controllers\backend\admin\adsense;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Config;
+use App\Models\Adsense;
 class AdsenseController extends Controller
 {
     //
@@ -47,15 +48,15 @@ class AdsenseController extends Controller
     }
 
     public function add(Request $request){
-
         if($request->isMethod('post')){
-            $objadsense = new adsense();
+            // ccd("Hello");
+            $objadsense = new Adsense();
             $result= $objadsense->add_adsense($request);
             if ($result) {
                 $return['status'] = 'success';
                  $return['jscode'] = '$(".submitbtn:visible").removeAttr("disabled");$("#loader").hide();';
-                $return['message'] = 'Landing page question successfully added.';
-                $return['redirect'] = route('landing-page-background-image');
+                $return['message'] = 'Adsense users successfully added.';
+                $return['redirect'] = route('users-management-list');
             } else {
 
                 $return['status'] = 'error';
@@ -71,6 +72,9 @@ class AdsenseController extends Controller
         $data['title'] = 'Add Adsense Users || '.Config::get('constants.PROJECT_NAME') ;
         $data['keywords'] = 'Add Adsense Users || '.Config::get('constants.PROJECT_NAME') ;
         $data['description'] = 'Add Adsense Users || '.Config::get('constants.PROJECT_NAME') ;
+        $data['css'] = array(
+            'jquery-ui.min.css'
+        );
         $data['plugincss'] = array(
             'plugins/toastr/toastr.min.css'
         );
@@ -79,6 +83,7 @@ class AdsenseController extends Controller
             'plugins/validate/jquery.validate.min.js',
         );
         $data['js'] = array(
+            'jquery-ui.js',
             'comman_function.js',
             'ajaxfileupload.js',
             'jquery.form.min.js',
@@ -91,10 +96,139 @@ class AdsenseController extends Controller
             'title' => 'Add Adsense Users',
             'breadcrumb' => array(
                 'Dashboard' => route('my-dashboard'),
-                'Adsense Users' => route('adsense-management-list'),
+                'Adsense Users' => route('users-management-list'),
                 'Add Adsense Users' => 'Add Adsense Users',
             )
         );
         return view('backend.pages.admin.adsense.add', $data);
+    }
+
+    public function edit(Request $request, $id){
+        if($request->isMethod('post')){
+            // ccd("Hello");
+            $objadsense = new Adsense();
+            $result= $objadsense->edit_adsense($request);
+            if ($result) {
+                $return['status'] = 'success';
+                 $return['jscode'] = '$(".submitbtn:visible").removeAttr("disabled");$("#loader").hide();';
+                $return['message'] = 'Adsense users successfully updated.';
+                $return['redirect'] = route('users-management-list');
+            } else {
+
+                $return['status'] = 'error';
+                $return['jscode'] = '$(".submitbtn:visible").removeAttr("disabled");$("#loader").hide();';
+                $return['message'] = 'Something goes to wrong';
+
+            }
+            echo json_encode($return);
+            exit;
+        }
+
+        $objadsense = new Adsense();
+        $data['details']= $objadsense->get_adsense_details($id);
+
+        $data['title'] = 'Edit Adsense Users || '.Config::get('constants.PROJECT_NAME') ;
+        $data['keywords'] = 'Edit Adsense Users || '.Config::get('constants.PROJECT_NAME') ;
+        $data['description'] = 'Edit Adsense Users || '.Config::get('constants.PROJECT_NAME') ;
+        $data['css'] = array(
+            // 'jquery-ui.min.css'
+        );
+        $data['plugincss'] = array(
+            'plugins/toastr/toastr.min.css'
+        );
+        $data['pluginjs'] = array(
+            'plugins/toastr/toastr.min.js',
+            'plugins/validate/jquery.validate.min.js',
+        );
+        $data['js'] = array(
+            // 'jquery-ui.js',
+            'comman_function.js',
+            'ajaxfileupload.js',
+            'jquery.form.min.js',
+            'adsense.js'
+        );
+        $data['funinit'] = array(
+            'Adsense.edit()'
+        );
+        $data['header'] = array(
+            'title' => 'Edit Adsense Users',
+            'breadcrumb' => array(
+                'Dashboard' => route('my-dashboard'),
+                'Adsense Users' => route('users-management-list'),
+                'Edit Adsense Users' => 'Edit Adsense Users',
+            )
+        );
+        return view('backend.pages.admin.adsense.edit', $data);
+    }
+
+    public function ajaxcall(Request $request){
+        $action = $request->input('action');
+
+        switch ($action) {
+
+
+            case 'getdatatable':
+
+                $objAdsense = new Adsense();
+                $list = $objAdsense->getdatatable();
+
+                echo json_encode($list);
+                break;
+
+            case 'deleteadsenseusers':
+
+                $objadsense = new Adsense();
+                $result = $objadsense->common_activity_user($request->input('data'),0);
+
+                if ($result) {
+                    $return['status'] = 'success';
+                    $return['message'] = 'Adsense successfully deleted';
+                    $return['redirect'] = route('users-management-list');
+                } else {
+                    $return['status'] = 'error';
+                    $return['jscode'] = '$("#loader").hide();';
+                    $return['message'] = 'Something goes to wrong.';
+                }
+                echo json_encode($return);
+                exit;
+
+
+            case 'activeadsenseusers':
+
+                $objadsense = new Adsense();
+                $result = $objadsense->common_activity_user($request->input('data'),1);
+
+                if ($result) {
+                    $return['status'] = 'success';
+                    $return['message'] = 'Adsense successfully actived';
+                    $return['redirect'] = route('users-management-list');
+                } else {
+                    $return['status'] = 'error';
+                    $return['jscode'] = '$("#loader").hide();';
+                    $return['message'] = 'Something goes to wrong.';
+                }
+                echo json_encode($return);
+                exit;
+
+
+            case 'deactiveadsenseusers':
+
+                $objadsense = new Adsense();
+                $result = $objadsense->common_activity_user($request->input('data'),2);
+
+                if ($result) {
+                    $return['status'] = 'success';
+                    $return['message'] = 'Adsense successfully deactived';
+                    $return['redirect'] = route('users-management-list');
+                } else {
+                    $return['status'] = 'error';
+                    $return['jscode'] = '$("#loader").hide();';
+                    $return['message'] = 'Something goes to wrong.';
+                }
+                echo json_encode($return);
+                exit;
+
+
+        }
     }
 }

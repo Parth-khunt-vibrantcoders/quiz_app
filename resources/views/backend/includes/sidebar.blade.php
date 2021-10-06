@@ -97,7 +97,7 @@ $currentRoute = Route::current()->getName();
             </div>
 
             <div class="menu-item">
-                <a class="menu-link {{ $currentRoute == 'adsense-management-list' || $currentRoute == 'adsense-management-add' || $currentRoute ==  'adsense-management-edit' ? 'active' : '' }}" href="{{ route('adsense-management-list') }}">
+                <a class="menu-link {{ $currentRoute == 'users-management-list' || $currentRoute == 'users-management-add' || $currentRoute ==  'users-management-edit' ? 'active' : '' }}" href="{{ route('users-management-list') }}">
                     <span class="menu-icon">
                         <i class="fab fa-adversal fs-3"></i>
                     </span>

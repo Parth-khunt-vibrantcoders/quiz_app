@@ -17,7 +17,7 @@
     <link href="{{  asset('public/backend/assets/css/style.bundle.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{  asset('public/backend/assets/css/style.css') }}" rel="stylesheet" type="text/css" />
     <!--end::Global Stylesheets Bundle-->
-
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     @if (!empty($css))
     @foreach ($css as $value)
             @if(!empty($value))
