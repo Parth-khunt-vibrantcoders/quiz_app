@@ -43,8 +43,9 @@ class ImageController extends Controller
             'plugins/toastr/toastr.min.css'
         );
         $data['pluginjs'] = array(
-            'plugins/toastr/toastr.min.js',
             'plugins/validate/jquery.validate.min.js',
+            'js/pages/crud/forms/widgets/select2.js',
+            'js/pages/crud/file-upload/image-input.js'
         );
         $data['js'] = array(
             'comman_function.js',

@@ -19,14 +19,17 @@ class QuestionController extends Controller
         $data['title'] = 'Landing Pages Question || '.Config::get('constants.PROJECT_NAME') ;
         $data['keywords'] = 'Landing Pages Question || '.Config::get('constants.PROJECT_NAME') ;
         $data['description'] = 'Landing Pages Question || '.Config::get('constants.PROJECT_NAME') ;
+        $data['css'] = array(
+            'toastr/toastr.min.css'
+        );
         $data['plugincss'] = array(
             'plugins/toastr/toastr.min.css',
             'plugins/custom/datatables/datatables.bundle.css'
         );
         $data['pluginjs'] = array(
-            'plugins/toastr/toastr.min.js',
-            'plugins/validate/jquery.validate.min.js',
-            'plugins/custom/datatables/datatables.bundle.js'
+
+            'plugins/custom/datatables/datatables.bundle.js',
+            'js/pages/crud/datatables/data-sources/html.js'
         );
         $data['js'] = array(
             'comman_function.js',

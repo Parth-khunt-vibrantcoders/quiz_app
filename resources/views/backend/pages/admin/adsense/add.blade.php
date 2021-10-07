@@ -1,88 +1,105 @@
 @extends('backend.layouts.layout')
 @section('section')
-<div class="post d-flex flex-column-fluid" id="kt_post">
-   <div id="kt_content_container" class="container-fluid">
-      <div class="card mb-5 mb-xl-10">
-         <div class="card-header border-0 cursor-pointer" role="button" data-bs-toggle="collapse" data-bs-target="#kt_account_profile_details" aria-expanded="true" aria-controls="kt_account_profile_details">
-            <div class="card-title m-0">
-               <h3 class="fw-bolder m-0">Add Adsense</h3>
+
+<div class="row">
+    <div class="col-md-12">
+        <!--begin::Card-->
+        <div class="card card-custom gutter-b example example-compact">
+            <div class="card-header">
+                <h3 class="card-title">{{ $header['title'] }}</h3>
             </div>
-         </div>
-         <div id="kt_account_profile_details" class="collapse show">
+            <!--begin::Form-->
             <form id="add-adsense" enctype="multipart/form-data" method="POST">
-              @csrf
-               <div class="card-body border-top p-9">
-                  <div class="row mb-6">
-                     <label class="col-lg-3 col-form-label fw-bold fs-6">Profile Image</label>
-                     <div class="col-lg-9">
-                        <div class="image-input image-input-outline" data-kt-image-input="true" style="background-image: url({{ asset('public/backend/assets/media/avatars/blank.png') }})">
-                           <div class="image-input-wrapper w-125px h-125px" style="background-image: url({{ asset('public/backend/assets/media/avatars/blank.png') }})"></div>
-                           <label class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow" data-kt-image-input-action="change" data-bs-toggle="tooltip" title="Change avatar">
-                           <i class="bi bi-pencil-fill fs-7"></i>
-                           <input type="file" name="profile_image" accept=".png, .jpg, .jpeg" />
-                           <input type="hidden" name="avatar_remove" />
-                           </label>
-                           <span class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow" data-kt-image-input-action="cancel" data-bs-toggle="tooltip" title="Cancel avatar">
-                           <i class="bi bi-x fs-2"></i>
-                           </span>
-                           <span class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow" data-kt-image-input-action="remove" data-bs-toggle="tooltip" title="Remove avatar">
-                           <i class="bi bi-x fs-2"></i>
-                           </span>
+                @csrf
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>First name
+                                <span class="text-danger">*</span></label>
+                                <input type="text" name="first_name" placeholder="Please enter first name"  class="form-control"  >
+                            </div>
                         </div>
-                        <div class="form-text">Allowed file types: png, jpg, jpeg.</div>
-                     </div>
-                  </div>
-                  <div class="row mb-6">
-                     <label class="col-lg-3 col-form-label required fw-bold fs-6">Name</label>
-                     <div class="col-lg-9">
-                        <div class="row">
-                           <div class="col-lg-12 fv-row">
-                              <input type="text" name="name" placeholder="Please enter name"  class="form-control form-control-lg form-control-solid mb-3 mb-lg-0" />
-                           </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Last name
+                                <span class="text-danger">*</span></label>
+                                <input type="text" name="last_name" placeholder="Please enter last name"  class="form-control"  >
+                            </div>
                         </div>
-                     </div>
-                  </div>
-                  <div class="row mb-6">
-                     <label class="col-lg-3 col-form-label required fw-bold fs-6">Mobile Number</label>
-                     <div class="col-lg-9 fv-row">
-                        <input type="text"  class="form-control form-control-lg form-control-solid onlyNumber" name="mo_no" placeholder="Please enter mobile number"  />
-                     </div>
-                  </div>
-                  <div class="row mb-6">
-                     <label class="col-lg-3 col-form-label required fw-bold fs-6">Pan Number</label>
-                     <div class="col-lg-9 fv-row">
-                        <input type="text"  class="form-control form-control-lg form-control-solid" name="pan_no" placeholder="Please enter pan number"  />
-                     </div>
-                  </div>
-                  <div class="row mb-6">
-                     <label class="col-lg-3 col-form-label required fw-bold fs-6">Date of Joining</label>
-                     <div class="col-lg-9 fv-row">
+                    </div>
 
-                        <input type="date"  id="datepicker_date1"  class="form-control form-control-lg form-control-solid" name="doj" placeholder="Please enter date of joining"  />
-                     </div>
-                  </div>
-                  <div class="row mb-6">
-                     <label class="col-lg-3 col-form-label required fw-bold fs-6">Adseanse Script</label>
-                     <div class="col-lg-9 fv-row">
-                        <textarea  rows="4" class="form-control form-control-lg form-control-solid" name="adseanse_script" placeholder="Please enter adseanse Script"></textarea>
-                     </div>
-                  </div>
-                  <div class="row mb-6">
-                     <label class="col-lg-3 col-form-label  fw-bold fs-6">Note</label>
-                     <div class="col-lg-9 fv-row">
-                        <textarea  rows="4" class="form-control form-control-lg form-control-solid" placeholder="Please enter note" name="note"></textarea>
-                     </div>
-                  </div>
+                    <div class="row">
 
-               </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Email
+                                <span class="text-danger">*</span></label>
+                                <input type="email" name="email" class="form-control" placeholder="Enter your email" >
+                            </div>
+                        </div>
 
-               <div class="card-footer d-flex justify-content-end py-6 px-9">
-                  <button type="reset" class="btn btn-light btn-active-light-primary me-2">Discard</button>
-                  <button type="submit" class="btn btn-primary submitbtn" >Save Changes</button>
-               </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Mobile Number
+                                <span class="text-danger">*</span></label>
+                                <input type="text" name="mo_no" placeholder="Please enter mobile number"  class="form-control onlyNumber"  >
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Note
+                                <span class="text-danger">*</span></label>
+                                <textarea  rows="2" class="form-control" placeholder="Please enter note" name="note" ></textarea>
+                            </div>
+                        </div>
+
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Adseanse Script
+                                <span class="text-danger">*</span></label>
+                                <textarea  rows="2" class="form-control"name="adseanse_script" placeholder="Please enter adseanse Script" ></textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>Profile Image</label>
+                            <div class="">
+                                <div class="image-input image-input-outline" id="kt_image_1">
+                                    <div class="image-input-wrapper my-avtar" style="background-image: url({{  url("public/uploads/userprofile/default.jpg") }})"></div>
+
+                                    <label class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="change" data-toggle="tooltip" title="" data-original-title="Change profile image">
+                                        <i class="fas fa-pen icon-xs text-muted"></i>
+                                        <input type="file" name="profile_image" accept=".png, .jpg, .jpeg" />
+                                        <input type="hidden" name="profile_avatar_remove" />
+                                    </label>
+                                    <span class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="cancel" data-toggle="tooltip" title="Cancel profile image">
+                                        <i class="ki ki-bold-close icon-xs text-muted"></i>
+                                    </span>
+                                </div>
+                                <span class="form-text text-muted">Allowed file types: png, jpg, jpeg.</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="card-footer">
+                    <button type="submit" class="btn btn-primary mr-2 submitbtn">Save Change</button>
+                    <button type="reset" class="btn btn-secondary">Cancel</button>
+                </div>
             </form>
-         </div>
-      </div>
-   </div>
+            <!--end::Form-->
+        </div>
+        <!--end::Card-->
+
+    </div>
+
 </div>
+
 @endsection

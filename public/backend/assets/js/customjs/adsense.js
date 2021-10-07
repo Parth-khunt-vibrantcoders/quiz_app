@@ -1,7 +1,7 @@
 var Adsense = function(){
     var list = function(){
         var dataArr = {};
-        var columnWidth = [{ "width": "5%", "targets": 0 }, { "width": "5%", "targets": 2 }];
+        var columnWidth = { "width": "5%", "targets": 0 };
         var arrList = {
             'pageLength': 5,
             'tableID': '#adsense-users-list',
@@ -95,34 +95,31 @@ var Adsense = function(){
     }
 
     var add_adsense = function(){
-        $("#datepicker_date").datepicker({
-            format: 'd-M-yyyy',
-            todayHighlight: true,
-            autoclose: true,
-            orientation: "bottom auto"
-        });
-
 
 
         var form = $('#add-adsense');
         var rules = {
-            name: {required: true},
+            first_name: {required: true},
+            last_name: {required: true},
             mo_no: {required: true},
-            pan_no: {required: true},
-            doj: {required: true},
+            email: {required: true, email:true},
             adseanse_script: {required: true},
         };
 
         var message = {
 
-            name : {
-                required : "Please enter name"
+            first_name : {
+                required : "Please enter first name"
+            },
+            last_name : {
+                required : "Please enter last name"
             },
             mo_no : {
                 required : "Please enter mobile number"
             },
-            pan_no : {
-                required : "Please enter PAN card number"
+            email : {
+                required : "Please enter email",
+                email : "Please enter vail email"
             },
             doj : {
                 required : "Please enter date of joining"
@@ -137,33 +134,32 @@ var Adsense = function(){
     }
 
     var edit_adsense = function(){
-        $("#datepicker_date").datepicker({
-            format: 'd-M-yyyy',
-            todayHighlight: true,
-            autoclose: true,
-            orientation: "bottom auto"
-        });
+
 
         var form = $('#edit-adsense');
         var rules = {
-            editId: {required: true},
-            name: {required: true},
+            first_name: {required: true},
+            last_name: {required: true},
             mo_no: {required: true},
-            pan_no: {required: true},
+            email: {required: true,email:true},
             doj: {required: true},
             adseanse_script: {required: true},
         };
 
         var message = {
 
-            name : {
-                required : "Please enter name"
+            first_name : {
+                required : "Please enter first name"
+            },
+            last_name : {
+                required : "Please enter last name"
             },
             mo_no : {
                 required : "Please enter mobile number"
             },
-            pan_no : {
-                required : "Please enter PAN card number"
+            email : {
+                required : "Please enter email",
+                email : "Please enter vail email"
             },
             doj : {
                 required : "Please enter date of joining"

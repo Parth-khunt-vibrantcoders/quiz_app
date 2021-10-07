@@ -17,11 +17,12 @@ class Adsense extends Model
             0 => 'adsense.id',
             1 => 'adsense.image',
             2 => 'adsense.uniqe_id',
-            3 => 'adsense.name',
-            4 => 'adsense.phone_number',
-            5 => 'adsense.pan_number',
-            6 => 'adsense.doj',
-            7 => 'adsense.is_active',
+            3 => 'adsense.first_name',
+            4 => 'adsense.lasst_name',
+            5 => 'adsense.phone_number',
+            6 => 'adsense.pan_number',
+            7 => 'adsense.doj',
+            8=> 'adsense.is_active',
         );
 
         $query = Landingpagequestion ::from('adsense')->where('adsense.is_deleted', 'N');
@@ -52,8 +53,8 @@ class Adsense extends Model
 
         $resultArr = $query->skip($requestData['start'])
                         ->take($requestData['length'])
-                        ->select('adsense.id', 'adsense.image', 'adsense.uniqe_id','adsense.name', 'adsense.phone_number',
-                        'adsense.pan_number', 'adsense.doj', 'adsense.is_active')
+                        ->select('adsense.id', 'adsense.image', 'adsense.uniqe_id','adsense.first_name', 'adsense.last_name',
+                        'adsense.email', 'adsense.phone_number', 'adsense.doj', 'adsense.is_active')
                         ->get();
         $data = array();
         $i = 0;
@@ -66,17 +67,17 @@ class Adsense extends Model
                 $image = url("public/uploads/adsense/default.jpg");
             }
             $userimage = '<img src="'.$image.'" class="rounded-circle" alt="'.$row['full_name'].'" style="width:70px;height:70px">';
-            $actionhtml = '<a href="' . route('users-management-edit', $row['id']) . '" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1"><i class="fa fa-edit text-warning"> </i></a>';
+            $actionhtml = '<a href="' . route('users-management-edit', $row['id']) . '" class="btn btn-icon"><i class="fa fa-edit text-warning"> </i></a>';
 
             if($row['is_active'] == "Y"){
                 $status = '<span class="badge badge-lg badge-success badge-inline">Yes</span>';
-                $actionhtml =  $actionhtml. '<a href="javascript:;" data-bs-toggle="modal" data-bs-target="#deactiveModel" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1 deactiveadsenseusers" data-id="' . $row["id"] . '" ><i class="fa fa-times text-primary" ></i></a>';
+                $actionhtml =  $actionhtml. '<a href="javascript:;" data-toggle="modal" data-target="#deactiveModel" class="btn btn-icon  deactiveadsenseusers" data-id="' . $row["id"] . '" ><i class="fa fa-times text-primary" ></i></a>';
             }else{
                 $status = '<span class="badge badge-lg badge-danger  badge-inline">No</span>';
-                $actionhtml =  $actionhtml. '<a href="javascript:;" data-bs-toggle="modal" data-bs-target="#activeModel" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1 activeadsenseusers" data-id="' . $row["id"] . '" ><i class="fa fa-check text-primary" ></i></a>';
+                $actionhtml =  $actionhtml. '<a href="javascript:;" data-toggle="modal" data-target="#activeModel" class="btn btn-icon  activeadsenseusers" data-id="' . $row["id"] . '" ><i class="fa fa-check text-primary" ></i></a>';
             }
 
-            $actionhtml =  $actionhtml.'<a href="javascript:;" data-bs-toggle="modal" data-bs-target="#deleteModel" class="btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1 deleteadsenseusers" data-id="' . $row["id"] . '" ><i class="fa fa-trash text-danger" ></i></a>';
+            $actionhtml =  $actionhtml.'<a href="javascript:;" data-toggle="modal" data-target="#deleteModel" class="btn btn-icon deleteadsenseusers" data-id="' . $row["id"] . '" ><i class="fa fa-trash text-danger" ></i></a>';
 
             $i++;
 
@@ -84,9 +85,9 @@ class Adsense extends Model
             $nestedData[] = $i;
             $nestedData[] = $userimage;
             $nestedData[] = $row['uniqe_id'];
-            $nestedData[] = $row['name'];
+            $nestedData[] = $row['first_name'] . " " .  $row['last_name'];
+            $nestedData[] = $row['email'];
             $nestedData[] = $row['phone_number'];
-            $nestedData[] = $row['pan_number'];
             $nestedData[] = date_formate($row['doj']);
             $nestedData[] = $status;
             $nestedData[] = $actionhtml;
@@ -116,7 +117,7 @@ class Adsense extends Model
     }
 
     public function add_adsense($request){
-
+    
         $objAdsense = new Adsense();
         if($request->file('profile_image')){
             $image = $request->file('profile_image');
@@ -126,10 +127,11 @@ class Adsense extends Model
             $objAdsense->image  = $imagename ;
         }
         $objAdsense->uniqe_id = $this->check_id($this->create_token());
-        $objAdsense->name = $request->input('name');
+        $objAdsense->first_name = $request->input('first_name');
+        $objAdsense->last_name = $request->input('last_name');
         $objAdsense->phone_number = $request->input('mo_no');
-        $objAdsense->pan_number = $request->input('pan_no');
-        $objAdsense->doj = date("Y-m-d",strtotime($request->input('doj')));
+        $objAdsense->email = $request->input('email');
+        $objAdsense->doj = date("Y-m-d");
         $objAdsense->script = $request->input('adseanse_script');
         $objAdsense->note = $request->input('note');
         $objAdsense->is_active = "Y";

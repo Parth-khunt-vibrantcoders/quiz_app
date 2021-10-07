@@ -19,14 +19,16 @@ class AdsenseController extends Controller
         $data['title'] = 'Adsense users list || '.Config::get('constants.PROJECT_NAME') ;
         $data['keywords'] = 'Adsense users list || '.Config::get('constants.PROJECT_NAME') ;
         $data['description'] = 'Adsense users list || '.Config::get('constants.PROJECT_NAME') ;
+        $data['css'] = array(
+            'toastr/toastr.min.css'
+        );
         $data['plugincss'] = array(
             'plugins/toastr/toastr.min.css',
             'plugins/custom/datatables/datatables.bundle.css'
         );
         $data['pluginjs'] = array(
-            'plugins/toastr/toastr.min.js',
-            'plugins/validate/jquery.validate.min.js',
-            'plugins/custom/datatables/datatables.bundle.js'
+            'plugins/custom/datatables/datatables.bundle.js',
+            'js/pages/crud/datatables/data-sources/html.js'
         );
         $data['js'] = array(
             'comman_function.js',
@@ -72,18 +74,15 @@ class AdsenseController extends Controller
         $data['title'] = 'Add Adsense Users || '.Config::get('constants.PROJECT_NAME') ;
         $data['keywords'] = 'Add Adsense Users || '.Config::get('constants.PROJECT_NAME') ;
         $data['description'] = 'Add Adsense Users || '.Config::get('constants.PROJECT_NAME') ;
-        $data['css'] = array(
-            'jquery-ui.min.css'
-        );
         $data['plugincss'] = array(
             'plugins/toastr/toastr.min.css'
         );
         $data['pluginjs'] = array(
-            'plugins/toastr/toastr.min.js',
             'plugins/validate/jquery.validate.min.js',
+            'js/pages/crud/forms/widgets/select2.js',
+            'js/pages/crud/file-upload/image-input.js'
         );
         $data['js'] = array(
-            'jquery-ui.js',
             'comman_function.js',
             'ajaxfileupload.js',
             'jquery.form.min.js',

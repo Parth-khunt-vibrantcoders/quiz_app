@@ -44,7 +44,7 @@ class DashboardController extends Controller
             $result = $objUsers->edit_profile($request);
             if ($result == "true") {
                 $return['status'] = 'success';
-                 $return['jscode'] = '$(".submitbtn:visible").removeAttr("disabled");$("#loader").hide();';
+                 $return['jscode'] = '$("#loader").hide();';
                 $return['message'] = 'Your profile successfully updated.';
                 $return['redirect'] = route('edit-profile');
             } else {
@@ -68,8 +68,9 @@ class DashboardController extends Controller
             'plugins/toastr/toastr.min.css'
         );
         $data['pluginjs'] = array(
-            'plugins/toastr/toastr.min.js',
             'plugins/validate/jquery.validate.min.js',
+            'js/pages/crud/forms/widgets/select2.js',
+            'js/pages/crud/file-upload/image-input.js'
         );
         $data['js'] = array(
             'comman_function.js',
@@ -120,8 +121,9 @@ class DashboardController extends Controller
             'plugins/toastr/toastr.min.css'
         );
         $data['pluginjs'] = array(
-            'plugins/toastr/toastr.min.js',
             'plugins/validate/jquery.validate.min.js',
+            'js/pages/crud/forms/widgets/select2.js',
+            'js/pages/crud/file-upload/image-input.js'
         );
         $data['js'] = array(
             'comman_function.js',

@@ -4,106 +4,60 @@
 if (!empty(Auth()->guard('admin')->user())) {
     $data = Auth()->guard('admin')->user();
 }
-if(file_exists( public_path().'/uploads/userprofile/'.$data['userimage']) && $data['userimage'] != ''){
-    $image = url("public/uploads/userprofile/".$data['userimage']);
-}else{
-    $image = url("public/uploads/userprofile/default.jpg");
-}
-
 @endphp
 
-
-<!--begin::Post-->
-<div class="post d-flex flex-column-fluid" id="kt_post">
-    <!--begin::Container-->
-    <div id="kt_content_container" class="container-adsense">
-
-        <!--begin::Basic info-->
-        <div class="card mb-5 mb-xl-10">
-            <!--begin::Card header-->
-            <div class="card-header border-0 cursor-pointer" role="button" data-bs-toggle="collapse" data-bs-target="#kt_account_profile_details" aria-expanded="true" aria-controls="kt_account_profile_details">
-                <!--begin::Card title-->
-                <div class="card-title m-0">
-                    <h3 class="fw-bolder m-0">Change Password</h3>
+    <div class="row">
+        <div class="col-md-12">
+            <!--begin::Card-->
+            <div class="card card-custom gutter-b example example-compact">
+                <div class="card-header">
+                    <h3 class="card-title">{{ $header['title'] }}</h3>
                 </div>
-                <!--end::Card title-->
-            </div>
-            <!--begin::Card header-->
-            <!--begin::Content-->
-            <div id="kt_account_profile_details" class="collapse show">
                 <!--begin::Form-->
                 <form id="change-password" enctype="multipart/form-data" method="POST">
                     @csrf
-                    <!--begin::Card body-->
-                    <div class="card-body border-top p-9">
-
-                        <!--begin::Input group-->
-                        <div class="row mb-6">
-                            <!--begin::Label-->
-                            <label class="col-lg-3 col-form-label required fw-bold fs-6">Old Password</label>
-                            <!--end::Label-->
-                            <!--begin::Col-->
-                            <div class="col-lg-9">
-                                <!--begin::Row-->
-                                <div class="row">
-                                    <!--begin::Col-->
-                                    <div class="col-lg-12 fv-row">
-                                       <input class="form-control" id="editId" type="hidden" name="editId" placeholder="Please enter user id" value="{{ $data['id'] }}" >
-                                        <input class="form-control" id="db_password" type="hidden" name="db_password" placeholder="Please enter user id" value="{{ $data['password'] }}" >
-                                        <input id="old_password" type="password" name="old_password" placeholder="Please enter old passsword" class="form-control form-control-lg form-control-solid mb-3 mb-lg-0" />
-                                    </div>
-                                    <!--end::Col-->
-
-                                </div>
-                                <!--end::Row-->
+                    <div class="card-body">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Old Password
+                                <span class="text-danger">*</span></label>
+                                <input class="form-control" id="editId" type="hidden" name="editId" placeholder="Please enter user id" value="{{ $data['id'] }}" >
+                                <input class="form-control" id="db_password" type="hidden" name="db_password" placeholder="Please enter user id" value="{{ $data['password'] }}" >
+                                <input type="password" name="old_password" id="old_password" class="form-control" placeholder="Please enter old passsword">
                             </div>
-                            <!--end::Col-->
                         </div>
-                        <!--end::Input group-->
-                        <!--begin::Input group-->
-                        <div class="row mb-6">
-                            <!--begin::Label-->
-                            <label class="col-lg-3 col-form-label required fw-bold fs-6">New Password</label>
-                            <!--end::Label-->
-                            <!--begin::Col-->
-                            <div class="col-lg-9 fv-row">
-                                <input  class="form-control form-control-lg form-control-solid" id="new_password" type="password" name="new_password" placeholder="Please enter new passsword" />
-                            </div>
-                            <!--end::Col-->
-                        </div>
-                        <!--end::Input group-->
 
-                        <!--begin::Input group-->
-                        <div class="row mb-6">
-                            <!--begin::Label-->
-                            <label class="col-lg-3 col-form-label required fw-bold fs-6">Confirm Password</label>
-                            <!--end::Label-->
-                            <!--begin::Col-->
-                            <div class="col-lg-9 fv-row">
-                                <input class="form-control form-control-lg form-control-solid" id="confirm_password" type="password" name="confirm_password" placeholder="Please enter confirm passsword" />
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>New Password
+                                <span class="text-danger">*</span></label>
+                                <input id="new_password" type="password" name="new_password" placeholder="Please enter new passsword"   class="form-control" >
                             </div>
-                            <!--end::Col-->
                         </div>
-                        <!--end::Input group-->
+
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Email
+                                <span class="text-danger">*</span></label>
+                                <input type="password" name="confirm_password" id="confirm_password" class="form-control" placeholder="Please enter confirm passsword">
+                            </div>
+                        </div>
+
 
 
                     </div>
-                    <!--end::Card body-->
-                    <!--begin::Actions-->
-                    <div class="card-footer d-flex justify-content-end py-6 px-9">
-                        <button type="reset" class="btn btn-light btn-active-light-primary me-2">Discard</button>
-                        <button type="submit" class="btn btn-primary" id="kt_account_profile_details_submit">Save Changes</button>
+
+                    <div class="card-footer">
+                        <button type="submit" class="btn btn-primary mr-2 submitbtn">Save Changes</button>
+                        <button type="reset" class="btn btn-secondary">Cancel</button>
                     </div>
-                    <!--end::Actions-->
                 </form>
                 <!--end::Form-->
             </div>
-            <!--end::Content-->
+            <!--end::Card-->
+
         </div>
 
     </div>
-    <!--end::Container-->
-</div>
-<!--end::Post-->
 
 @endsection

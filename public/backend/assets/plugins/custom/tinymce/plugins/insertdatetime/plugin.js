@@ -4,12 +4,12 @@
  * For LGPL see License.txt in the project root for license information.
  * For commercial licenses see https://www.tiny.cloud/
  *
- * Version: 5.9.2 (2021-09-08)
+ * Version: 5.6.2 (2020-12-08)
  */
 (function () {
     'use strict';
 
-    var global$1 = tinymce.util.Tools.resolve('tinymce.PluginManager');
+    var global = tinymce.util.Tools.resolve('tinymce.PluginManager');
 
     var getDateFormat = function (editor) {
       return editor.getParam('insertdatetime_dateformat', editor.translate('%Y-%m-%d'));
@@ -47,9 +47,7 @@
       return value;
     };
     var getDateTime = function (editor, fmt, date) {
-      if (date === void 0) {
-        date = new Date();
-      }
+      date = date || new Date();
       fmt = fmt.replace('%D', '%m/%d/%Y');
       fmt = fmt.replace('%r', '%I:%M:%S %p');
       fmt = fmt.replace('%Y', '' + date.getFullYear());
@@ -95,7 +93,7 @@
       }
     };
 
-    var register$1 = function (editor) {
+    var register = function (editor) {
       editor.addCommand('mceInsertDate', function () {
         insertDateTime(editor, getDateFormat(editor));
       });
@@ -118,9 +116,9 @@
       };
     };
 
-    var global = tinymce.util.Tools.resolve('tinymce.util.Tools');
+    var global$1 = tinymce.util.Tools.resolve('tinymce.util.Tools');
 
-    var register = function (editor) {
+    var register$1 = function (editor) {
       var formats = getFormats(editor);
       var defaultFormat = Cell(getDefaultDateTime(editor));
       editor.ui.registry.addSplitButton('insertdatetime', {
@@ -130,7 +128,7 @@
           return value === defaultFormat.get();
         },
         fetch: function (done) {
-          done(global.map(formats, function (format) {
+          done(global$1.map(formats, function (format) {
             return {
               type: 'choiceitem',
               text: getDateTime(editor, format),
@@ -156,7 +154,7 @@
         icon: 'insert-time',
         text: 'Date/time',
         getSubmenuItems: function () {
-          return global.map(formats, function (format) {
+          return global$1.map(formats, function (format) {
             return {
               type: 'menuitem',
               text: getDateTime(editor, format),
@@ -168,9 +166,9 @@
     };
 
     function Plugin () {
-      global$1.add('insertdatetime', function (editor) {
-        register$1(editor);
+      global.add('insertdatetime', function (editor) {
         register(editor);
+        register$1(editor);
       });
     }
 

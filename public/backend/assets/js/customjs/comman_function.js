@@ -310,7 +310,7 @@ function handleFormValidateWithMsg(form, rules, messages, submitCallback, showTo
         submitHandler: function(form) {
             // $("#overlay").fadeIn(300);
             $('#loader').show();
-            $('.btnsubmit').attr("disabled", "disabled");
+            $('.submitbtn').attr("disabled", "disabled");
             if (typeof submitCallback !== 'undefined' && typeof submitCallback == 'function') {
                 submitCallback(form);
             } else {
@@ -891,6 +891,90 @@ $(".onlyNumber").keypress(function(e) {
         //    $("#errmsg").html("Digits Only").show().fadeOut("slow");
         return false;
     }
+});
+
+
+$("body").on("change","#empCountry",function(){
+    var id = $(this).val();
+    var data = { id: id, _token: $('#_token').val() };
+
+    $.ajax({
+        type: "POST",
+        headers: {
+            'X-CSRF-TOKEN': $('input[name="_token"]').val(),
+        },
+        url: baseurl + "employee-ajaxaction",
+        data: { 'action': 'changeCountry', 'data': data },
+        success: function(data) {
+            var output = JSON.parse(data);
+            var temp_html = '';
+            var html ='<option value="">Please select employee state</option>';
+
+
+            for (var i = 0; i < output.length; i++) {
+                temp_html = '<option value="' + output[i].id + '">' + output[i].name + '</option>';
+                html = html + temp_html;
+            }
+
+            $('#empState').html(html);
+            $('#empCity').html('<option value="">Please select employee city</option>');
+        }
+    });
+});
+
+$("body").on("change","#empState",function(){
+    var id = $(this).val();
+    var data = { id: id, _token: $('#_token').val() };
+
+    $.ajax({
+        type: "POST",
+        headers: {
+            'X-CSRF-TOKEN': $('input[name="_token"]').val(),
+        },
+        url: baseurl + "employee-ajaxaction",
+        data: { 'action': 'changeState', 'data': data },
+        success: function(data) {
+            var output = JSON.parse(data);
+            // console.log(output);
+            // exit;
+            var temp_html = '';
+            var html ='<option value="">Please select employee city</option>';
+
+
+            for (var i = 0; i < output.length; i++) {
+                temp_html = '<option value="' + output[i].id + '">' + output[i].name + '</option>';
+                html = html + temp_html;
+            }
+
+            $('#empCity').html(html);
+        }
+    });
+});
+$("body").on("change","#empDepartment",function(){
+    var id = $(this).val();
+    var data = { id: id, _token: $('#_token').val() };
+
+    $.ajax({
+        type: "POST",
+        headers: {
+            'X-CSRF-TOKEN': $('input[name="_token"]').val(),
+        },
+        url: baseurl + "employee-ajaxaction",
+        data: { 'action': 'changeDepartment', 'data': data },
+        success: function(data) {
+            var output = JSON.parse(data);
+             var temp_html = '';
+            var html ='<option  value="">Select employee designation</option>';
+
+
+            for (var i = 0; i < output.length; i++) {
+                temp_html = '<option value="' + output[i].id + '">' + output[i].designation + '</option>';
+                html = html + temp_html;
+            }
+
+            $('#empDesignation').html(html);
+        }
+    });
 });
 
 
