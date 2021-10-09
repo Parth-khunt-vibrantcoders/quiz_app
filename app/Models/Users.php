@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Hash;
-
+use DB;
 class Users extends Model
 {
     use HasFactory;
@@ -66,5 +66,9 @@ class Users extends Model
         }else{
             return "password_not_match";
         }
+    }
+
+    public function check_id($table, $id){
+        return DB::table($table)->where('id', $id)->count();
     }
 }

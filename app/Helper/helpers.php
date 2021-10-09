@@ -1,5 +1,5 @@
 <?php
-
+use App\Models\Users;
 function date_formate($date){
     return date("d-m-Y", strtotime($date));
 }
@@ -33,5 +33,8 @@ function find_average($amount, $count){
     return (number_format((($amount)/$count), Config::get('constants.DECIMAL_POINT'), '.', ''));
 }
 
-
+function check_id($table, $id){
+    $objUsers = new Users();
+    return $objUsers->check_id($table, $id);
+}
 ?>

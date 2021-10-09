@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Config;
 use App\Models\Landingpagequestion;
+use App\Models\Users;
 class QuestionController extends Controller
 {
     function __construct()
@@ -53,12 +54,12 @@ class QuestionController extends Controller
     public function add(Request $request){
         if($request->isMethod('post')){
             $objLandingpagequestion = new Landingpagequestion();
-            $result= $objLandingpagequestion->update_image($request);
+            $result= $objLandingpagequestion->add_quetion($request);
             if ($result) {
                 $return['status'] = 'success';
                  $return['jscode'] = '$(".submitbtn:visible").removeAttr("disabled");$("#loader").hide();';
                 $return['message'] = 'Landing page question successfully added.';
-                $return['redirect'] = route('landing-page-background-image');
+                $return['redirect'] = route('landing-page-question-list');
             } else {
 
                 $return['status'] = 'error';
@@ -74,14 +75,13 @@ class QuestionController extends Controller
         $data['title'] = 'Add landing page question || '.Config::get('constants.PROJECT_NAME') ;
         $data['keywords'] = 'Add landing page question || '.Config::get('constants.PROJECT_NAME') ;
         $data['description'] = 'Add landing page question || '.Config::get('constants.PROJECT_NAME') ;
-        $data['css'] = array(
-            'toastr/toastr.min.css'
-        );
         $data['plugincss'] = array(
+            'plugins/toastr/toastr.min.css'
         );
         $data['pluginjs'] = array(
-            'toastr/toastr.min.js',
-            'validate/jquery.validate.min.js',
+            'plugins/validate/jquery.validate.min.js',
+            'js/pages/crud/forms/widgets/select2.js',
+            'js/pages/crud/file-upload/image-input.js'
         );
         $data['js'] = array(
             'comman_function.js',
@@ -102,57 +102,63 @@ class QuestionController extends Controller
         );
         return view('backend.pages.admin.landingpage.add', $data);
     }
-    public function edit(Request $request){
-        if($request->isMethod('post')){
+
+    public function edit(Request $request, $id){
+        if(check_id('landing_page_question', $id) != 0){
+
             $objLandingpagequestion = new Landingpagequestion();
-            $result= $objLandingpagequestion->update_image($request);
-            if ($result) {
-                $return['status'] = 'success';
-                 $return['jscode'] = '$(".submitbtn:visible").removeAttr("disabled");$("#loader").hide();';
-                $return['message'] = 'Landing page question successfully updated.';
-                $return['redirect'] = route('landing-page-background-image');
-            } else {
+            $data['details'] = $objLandingpagequestion->get_question_details($id);
 
-                $return['status'] = 'error';
-                $return['jscode'] = '$(".submitbtn:visible").removeAttr("disabled");$("#loader").hide();';
-                $return['message'] = 'Something goes to wrong';
+            if($request->isMethod('post')){
+                $objLandingpagequestion = new Landingpagequestion();
+                $result= $objLandingpagequestion->edit_question($request);
+                if ($result) {
+                    $return['status'] = 'success';
+                    $return['jscode'] = '$(".submitbtn:visible").removeAttr("disabled");$("#loader").hide();';
+                    $return['message'] = 'Landing page question successfully updated.';
+                    $return['redirect'] = route('landing-page-question-list');
+                } else {
 
+                    $return['status'] = 'error';
+                    $return['jscode'] = '$(".submitbtn:visible").removeAttr("disabled");$("#loader").hide();';
+                    $return['message'] = 'Something goes to wrong';
+
+                }
+                echo json_encode($return);
+                exit;
             }
-            echo json_encode($return);
-            exit;
+            $data['title'] = 'Edit landing page question || '.Config::get('constants.PROJECT_NAME') ;
+            $data['keywords'] = 'Edit landing page question || '.Config::get('constants.PROJECT_NAME') ;
+            $data['description'] = 'Edit landing page question || '.Config::get('constants.PROJECT_NAME') ;
+            $data['plugincss'] = array(
+                'plugins/toastr/toastr.min.css'
+            );
+            $data['pluginjs'] = array(
+                'plugins/validate/jquery.validate.min.js',
+                'js/pages/crud/forms/widgets/select2.js',
+                'js/pages/crud/file-upload/image-input.js'
+            );
+            $data['js'] = array(
+                'comman_function.js',
+                'ajaxfileupload.js',
+                'jquery.form.min.js',
+                'question.js'
+            );
+            $data['funinit'] = array(
+                'Question.edit()'
+            );
+            $data['header'] = array(
+                'title' => 'Edit landing page question',
+                'breadcrumb' => array(
+                    'Dashboard' => route('my-dashboard'),
+                    'Landing page question' => route('landing-page-question-list'),
+                    'Edit landing page question' => 'Edit landing page question',
+                )
+            );
+            return view('backend.pages.admin.landingpage.edit', $data);
+        }else{
+            return redirect()->route('landing-page-question-list');
         }
-
-
-        $data['title'] = 'Edit landing page question || '.Config::get('constants.PROJECT_NAME') ;
-        $data['keywords'] = 'Edit landing page question || '.Config::get('constants.PROJECT_NAME') ;
-        $data['description'] = 'Edit landing page question || '.Config::get('constants.PROJECT_NAME') ;
-        $data['css'] = array(
-            'toastr/toastr.min.css'
-        );
-        $data['plugincss'] = array(
-        );
-        $data['pluginjs'] = array(
-            'toastr/toastr.min.js',
-            'validate/jquery.validate.min.js',
-        );
-        $data['js'] = array(
-            'comman_function.js',
-            'ajaxfileupload.js',
-            'jquery.form.min.js',
-            'question.js'
-        );
-        $data['funinit'] = array(
-            'Question.edit()'
-        );
-        $data['header'] = array(
-            'title' => 'Edit landing page question',
-            'breadcrumb' => array(
-                'Dashboard' => route('my-dashboard'),
-                'Landing page question' => route('landing-page-question-list'),
-                'Edit landing page question' => 'Edit landing page question',
-            )
-        );
-        return view('backend.pages.admin.landingpage.edit', $data);
     }
 
     public function ajaxcall(Request $request){
@@ -168,6 +174,61 @@ class QuestionController extends Controller
 
                 echo json_encode($list);
                 break;
-            }
+
+
+            case 'deletequestion':
+
+                $objLandingpagequestion = new Landingpagequestion();
+                $result = $objLandingpagequestion->common_activity_user($request->input('data'),0);
+
+                if ($result) {
+                    $return['status'] = 'success';
+                    $return['message'] = 'Question successfully deleted';
+                    $return['redirect'] = route('landing-page-question-list');
+                } else {
+                    $return['status'] = 'error';
+                    $return['jscode'] = '$("#loader").hide();';
+                    $return['message'] = 'Something goes to wrong.';
+                }
+                echo json_encode($return);
+                exit;
+
+
+            case 'activedeletequestion':
+
+                $objLandingpagequestion = new Landingpagequestion();
+                $result = $objLandingpagequestion->common_activity_user($request->input('data'),1);
+
+                if ($result) {
+                    $return['status'] = 'success';
+                    $return['message'] = 'Question successfully actived';
+                    $return['redirect'] = route('landing-page-question-list');
+                } else {
+                    $return['status'] = 'error';
+                    $return['jscode'] = '$("#loader").hide();';
+                    $return['message'] = 'Something goes to wrong.';
+                }
+                echo json_encode($return);
+                exit;
+
+
+            case 'deactivedeletequestion':
+
+                $objLandingpagequestion = new Landingpagequestion();
+                $result = $objLandingpagequestion->common_activity_user($request->input('data'),2);
+
+                if ($result) {
+                    $return['status'] = 'success';
+                    $return['message'] = 'Question successfully deactived';
+                    $return['redirect'] = route('landing-page-question-list');
+                } else {
+                    $return['status'] = 'error';
+                    $return['jscode'] = '$("#loader").hide();';
+                    $return['message'] = 'Something goes to wrong.';
+                }
+                echo json_encode($return);
+                exit;
+
+        }
     }
 }

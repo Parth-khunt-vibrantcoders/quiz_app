@@ -16,9 +16,11 @@ class Landingpagequestion extends Model
         $columns = array(
             0 => 'landing_page_question.id',
             1 => 'landing_page_question.question',
+            1 => 'landing_page_question.status',
         );
 
-        $query = Landingpagequestion ::from('landing_page_question');
+        $query = Landingpagequestion ::from('landing_page_question')
+                                ->where('landing_page_question.is_deleted', 'N');
 
 
         if (!empty($requestData['search']['value'])) {   // if there is a search parameter, $requestData['search']['value'] contains search parameter
@@ -46,21 +48,30 @@ class Landingpagequestion extends Model
 
         $resultArr = $query->skip($requestData['start'])
                         ->take($requestData['length'])
-                        ->select('landing_page_question.id', 'landing_page_question.question')
+                        ->select('landing_page_question.id', 'landing_page_question.question', 'landing_page_question.status')
                         ->get();
         $data = array();
         $i = 0;
 
         foreach ($resultArr as $row) {
 
-            $actionhtml = '<a href="' . route('landing-page-question-edit', $row['id']) . '" class="btn btn-icon"><i class="fa fa-edit text-warning"> </i></a>'
-                        .'<a href="#" data-toggle="modal" data-target="#deleteModel" class="btn btn-icon  deletequestion" data-id="' . $row["id"] . '" ><i class="fa fa-trash text-danger" ></i></a>';
+            $actionhtml = '<a href="' . route('landing-page-question-edit', $row['id']) . '" class="btn btn-icon" title="Edit Details"><i class="fa fa-edit text-warning"> </i></a>';
+
+            if($row['status'] == "Y"){
+                $status = '<span class="badge badge-lg badge-success badge-inline">Active</span>';
+                $actionhtml =  $actionhtml. '<a href="javascript:;" data-toggle="modal" data-target="#deactiveModel" class="btn btn-icon  deactivedeletequestion" data-id="' . $row["id"] . '" title="Deactive Question"><i class="fa fa-times text-info" ></i></a>';
+            }else{
+                $status = '<span class="badge badge-lg badge-danger  badge-inline">Deactive</span>';
+                $actionhtml =  $actionhtml. '<a href="javascript:;" data-toggle="modal" data-target="#activeModel" class="btn btn-icon  activedeletequestion" data-id="' . $row["id"] . '" title="Active Question"><i class="fa fa-check text-info" ></i></a>';
+            }
+
+            $actionhtml =  $actionhtml.'<a href="javascript:;" data-toggle="modal" data-target="#deleteModel" class="btn btn-icon deletequestion" data-id="' . $row["id"] . '" title="Delete Question"><i class="fa fa-trash text-danger" ></i></a>';
 
             $i++;
-
             $nestedData = array();
             $nestedData[] = $i;
             $nestedData[] = $row['question'];
+            $nestedData[] = $status;
             $nestedData[] = $actionhtml;
             $data[] = $nestedData;
         }
@@ -72,5 +83,61 @@ class Landingpagequestion extends Model
             "data" => $data   // total data array
         );
         return $json_data;
+    }
+
+    public function add_quetion($request){
+
+        $objLandingpagequestion = new Landingpagequestion();
+        $objLandingpagequestion->question = $request->input('question');
+        $objLandingpagequestion->answer1 = $request->input('answer1');
+        $objLandingpagequestion->answer2 = $request->input('answer2');
+        $objLandingpagequestion->answer3 = $request->input('answer3');
+        $objLandingpagequestion->answer4 = $request->input('answer4');
+        $objLandingpagequestion->right_answer = $request->input('answer');
+        $objLandingpagequestion->status = $request->input('status');
+        $objLandingpagequestion->created_at = date('Y-m-d h:i:s');
+        $objLandingpagequestion->updated_at = date('Y-m-d h:i:s');
+        return $objLandingpagequestion->save();
+    }
+    public function edit_question($request){
+        // ccd($request->input());
+        $objLandingpagequestion = Landingpagequestion::find($request->input('editId'));
+        $objLandingpagequestion->question = $request->input('question');
+        $objLandingpagequestion->answer1 = $request->input('answer1');
+        $objLandingpagequestion->answer2 = $request->input('answer2');
+        $objLandingpagequestion->answer3 = $request->input('answer3');
+        $objLandingpagequestion->answer4 = $request->input('answer4');
+        $objLandingpagequestion->right_answer = $request->input('answer');
+        $objLandingpagequestion->status = $request->input('status');
+        $objLandingpagequestion->created_at = date('Y-m-d h:i:s');
+        return $objLandingpagequestion->save();
+    }
+
+    public function get_question_details($id){
+        return Landingpagequestion::where('landing_page_question.id', $id)
+                ->select('landing_page_question.question', 'landing_page_question.answer1', 'landing_page_question.answer2', 'landing_page_question.answer3', 'landing_page_question.answer4', 'landing_page_question.right_answer', 'landing_page_question.id', 'landing_page_question.status' )
+                ->get()
+                ->toArray();
+    }
+
+    public function common_activity_user($data,$type){
+        $objLandingpagequestion = Landingpagequestion::find($data['id']);
+
+        if($type == 0){
+            $objLandingpagequestion->is_deleted = "Y";
+        }
+        if($type == 1){
+            $objLandingpagequestion->status = "Y";
+        }
+        if($type == 2){
+            $objLandingpagequestion->status = "N";
+        }
+
+        $objLandingpagequestion->updated_at = date("Y-m-d H:i:s");
+        if($objLandingpagequestion->save()){
+            return true;
+        }else{
+            return false ;
+        }
     }
 }

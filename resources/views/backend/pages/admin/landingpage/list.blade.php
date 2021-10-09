@@ -28,8 +28,9 @@
                     <thead>
                         <tr>
                             <th>Sr. No</th>
-                                <th>Question</th>
-                                <th>Action</th>
+                            <th>Question</th>
+                            <th>Status</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
