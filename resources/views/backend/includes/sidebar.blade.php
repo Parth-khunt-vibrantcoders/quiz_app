@@ -38,7 +38,7 @@ $currentRoute = Route::current()->getName();
                             </a>
                         </li>
 
-                        <li class="menu-item" aria-haspopup="true">
+                        <li class="menu-item {{  $currentRoute == 'landing-page-question-list' || $currentRoute == 'landing-page-question-add' || $currentRoute == 'landing-page-question-edit' ? 'menu-item-active' : ''}}" aria-haspopup="true">
                             <a href="{{ route('landing-page-question-list')}} " class="menu-link">
                                 <i class="menu-bullet menu-bullet-dot">
                                     <span></span>

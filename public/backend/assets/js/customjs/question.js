@@ -11,8 +11,8 @@ var Question = function(){
             'ajaxAction': 'getdatatable',
             'postData': dataArr,
             'hideColumnList': [],
-            'noSortingApply': [0,2],
-            'noSearchApply': [0,2],
+            'noSortingApply': [0,3],
+            'noSearchApply': [0,3],
             'defaultSortColumn': [0],
             'defaultSortOrder': 'DESC',
             'setColumnWidth': columnWidth
