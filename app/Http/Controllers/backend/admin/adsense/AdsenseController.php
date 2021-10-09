@@ -104,7 +104,6 @@ class AdsenseController extends Controller
 
     public function edit(Request $request, $id){
         if($request->isMethod('post')){
-            // ccd("Hello");
             $objadsense = new Adsense();
             $result= $objadsense->edit_adsense($request);
             if ($result) {
@@ -129,18 +128,15 @@ class AdsenseController extends Controller
         $data['title'] = 'Edit Adsense Users || '.Config::get('constants.PROJECT_NAME') ;
         $data['keywords'] = 'Edit Adsense Users || '.Config::get('constants.PROJECT_NAME') ;
         $data['description'] = 'Edit Adsense Users || '.Config::get('constants.PROJECT_NAME') ;
-        $data['css'] = array(
-            // 'jquery-ui.min.css'
-        );
         $data['plugincss'] = array(
             'plugins/toastr/toastr.min.css'
         );
         $data['pluginjs'] = array(
-            'plugins/toastr/toastr.min.js',
             'plugins/validate/jquery.validate.min.js',
+            'js/pages/crud/forms/widgets/select2.js',
+            'js/pages/crud/file-upload/image-input.js'
         );
         $data['js'] = array(
-            // 'jquery-ui.js',
             'comman_function.js',
             'ajaxfileupload.js',
             'jquery.form.min.js',

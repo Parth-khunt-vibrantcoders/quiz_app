@@ -66,26 +66,43 @@
                         </div>
                     </div>
 
-                    <div class="col-md-12">
-                        <div class="form-group">
-                            <label>Profile Image</label>
-                            <div class="">
-                                <div class="image-input image-input-outline" id="kt_image_1">
-                                    <div class="image-input-wrapper my-avtar" style="background-image: url({{  url("public/uploads/userprofile/default.jpg") }})"></div>
-
-                                    <label class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="change" data-toggle="tooltip" title="" data-original-title="Change profile image">
-                                        <i class="fas fa-pen icon-xs text-muted"></i>
-                                        <input type="file" name="profile_image" accept=".png, .jpg, .jpeg" />
-                                        <input type="hidden" name="profile_avatar_remove" />
-                                    </label>
-                                    <span class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="cancel" data-toggle="tooltip" title="Cancel profile image">
-                                        <i class="ki ki-bold-close icon-xs text-muted"></i>
-                                    </span>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Status<span class="text-danger">*</span></label>
+                                <div class="radio-inline" style="margin-top:10px">
+                                    <label class="radio radio-lg radio-success" >
+                                    <input type="radio" name="status" class="radio-btn" value="Y" checked="checked"/>
+                                    <span></span>Active</label>
+                                    <label class="radio radio-lg radio-danger" >
+                                    <input type="radio" name="status" class="radio-btn" value="N"/>
+                                    <span></span>Inactive</label>
                                 </div>
-                                <span class="form-text text-muted">Allowed file types: png, jpg, jpeg.</span>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Profile Image</label>
+                                <div class="">
+                                    <div class="image-input image-input-outline" id="kt_image_1">
+                                        <div class="image-input-wrapper my-avtar" style="background-image: url({{  url("public/uploads/userprofile/default.jpg") }})"></div>
+
+                                        <label class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="change" data-toggle="tooltip" title="" data-original-title="Change profile image">
+                                            <i class="fas fa-pen icon-xs text-muted"></i>
+                                            <input type="file" name="profile_image" accept=".png, .jpg, .jpeg" />
+                                            <input type="hidden" name="profile_avatar_remove" />
+                                        </label>
+                                        <span class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="cancel" data-toggle="tooltip" title="Cancel profile image">
+                                            <i class="ki ki-bold-close icon-xs text-muted"></i>
+                                        </span>
+                                    </div>
+                                    <span class="form-text text-muted">Allowed file types: png, jpg, jpeg.</span>
+                                </div>
                             </div>
                         </div>
                     </div>
+
 
                 </div>
 

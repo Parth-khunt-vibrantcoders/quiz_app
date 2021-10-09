@@ -54,7 +54,7 @@ class Adsense extends Model
         $resultArr = $query->skip($requestData['start'])
                         ->take($requestData['length'])
                         ->select('adsense.id', 'adsense.image', 'adsense.uniqe_id','adsense.first_name', 'adsense.last_name',
-                        'adsense.email', 'adsense.phone_number', 'adsense.doj', 'adsense.is_active')
+                        'adsense.email', 'adsense.phone_number', 'adsense.doj', 'adsense.is_active', 'adsense.uniqe_id')
                         ->get();
         $data = array();
         $i = 0;
@@ -67,17 +67,18 @@ class Adsense extends Model
                 $image = url("public/uploads/adsense/default.jpg");
             }
             $userimage = '<img src="'.$image.'" class="rounded-circle" alt="'.$row['full_name'].'" style="width:70px;height:70px">';
-            $actionhtml = '<a href="' . route('users-management-edit', $row['id']) . '" class="btn btn-icon"><i class="fa fa-edit text-warning"> </i></a>';
+            $actionhtml = '<a href="' . route('home', 'id='.$row['uniqe_id']) . '" class="btn btn-icon" target="_blank" title="Test Link"><i class="fa fa-link text-primary"> </i></a>'
+                         .'<a href="' . route('users-management-edit', $row['id']) . '" class="btn btn-icon" title="Edit Details"><i class="fa fa-edit text-warning"> </i></a>';
 
             if($row['is_active'] == "Y"){
                 $status = '<span class="badge badge-lg badge-success badge-inline">Yes</span>';
-                $actionhtml =  $actionhtml. '<a href="javascript:;" data-toggle="modal" data-target="#deactiveModel" class="btn btn-icon  deactiveadsenseusers" data-id="' . $row["id"] . '" ><i class="fa fa-times text-primary" ></i></a>';
+                $actionhtml =  $actionhtml. '<a href="javascript:;" data-toggle="modal" data-target="#deactiveModel" class="btn btn-icon  deactiveadsenseusers" data-id="' . $row["id"] . '" title="Deactive Adsense users"><i class="fa fa-times text-info" ></i></a>';
             }else{
                 $status = '<span class="badge badge-lg badge-danger  badge-inline">No</span>';
-                $actionhtml =  $actionhtml. '<a href="javascript:;" data-toggle="modal" data-target="#activeModel" class="btn btn-icon  activeadsenseusers" data-id="' . $row["id"] . '" ><i class="fa fa-check text-primary" ></i></a>';
+                $actionhtml =  $actionhtml. '<a href="javascript:;" data-toggle="modal" data-target="#activeModel" class="btn btn-icon  activeadsenseusers" data-id="' . $row["id"] . '" title="Active Adsense users"><i class="fa fa-check text-info" ></i></a>';
             }
 
-            $actionhtml =  $actionhtml.'<a href="javascript:;" data-toggle="modal" data-target="#deleteModel" class="btn btn-icon deleteadsenseusers" data-id="' . $row["id"] . '" ><i class="fa fa-trash text-danger" ></i></a>';
+            $actionhtml =  $actionhtml.'<a href="javascript:;" data-toggle="modal" data-target="#deleteModel" class="btn btn-icon deleteadsenseusers" data-id="' . $row["id"] . '" title="Delete Adsense users"><i class="fa fa-trash text-danger" ></i></a>';
 
             $i++;
 
@@ -106,7 +107,7 @@ class Adsense extends Model
     public function check_id($uniqe_id){
         $count = Adsense::where('uniqe_id', $uniqe_id)->count();
         if($count == 0){
-            return $uniqe_id;
+            return mt_rand(1000,9999);
         }else{
             return $this->create_token();
         }
@@ -117,7 +118,7 @@ class Adsense extends Model
     }
 
     public function add_adsense($request){
-    
+
         $objAdsense = new Adsense();
         if($request->file('profile_image')){
             $image = $request->file('profile_image');
@@ -134,7 +135,7 @@ class Adsense extends Model
         $objAdsense->doj = date("Y-m-d");
         $objAdsense->script = $request->input('adseanse_script');
         $objAdsense->note = $request->input('note');
-        $objAdsense->is_active = "Y";
+        $objAdsense->is_active = $request->input('status');
         $objAdsense->is_deleted = "N";
         $objAdsense->created_at =date('Y-m-d h:i:s');
         $objAdsense->updated_at =date('Y-m-d h:i:s');
@@ -143,14 +144,16 @@ class Adsense extends Model
 
     public function get_adsense_details($id){
         return Adsense::where('id', $id)
-                    ->select('adsense.id', 'adsense.image', 'adsense.uniqe_id','adsense.name', 'adsense.phone_number',
-                            'adsense.pan_number', 'adsense.doj',  'adsense.script', 'adsense.note', )
+                    ->select('adsense.id', 'adsense.image', 'adsense.uniqe_id','adsense.first_name','adsense.last_name', 'adsense.phone_number',
+                            'adsense.email', 'adsense.uniqe_id', 'adsense.doj',  'adsense.script', 'adsense.note','adsense.is_active' )
                     ->get()
                     ->toArray();
     }
 
     public function edit_adsense($request){
-        $objAdsense = Adsense::find($request->input('editid'));
+
+        $objAdsense = Adsense::find($request->input('editId'));
+
         if($request->file('profile_image')){
             $image = $request->file('profile_image');
             $imagename = time().'.'.$image->getClientOriginalExtension();
@@ -158,12 +161,13 @@ class Adsense extends Model
             $image->move($destinationPath, $imagename);
             $objAdsense->image  = $imagename ;
         }
-        $objAdsense->name = $request->input('name');
+        $objAdsense->first_name = $request->input('first_name');
+        $objAdsense->last_name = $request->input('last_name');
         $objAdsense->phone_number = $request->input('mo_no');
-        $objAdsense->pan_number = $request->input('pan_no');
-        $objAdsense->doj = date("Y-m-d",strtotime($request->input('doj')));
+        $objAdsense->email = $request->input('email');
         $objAdsense->script = $request->input('adseanse_script');
         $objAdsense->note = $request->input('note');
+        $objAdsense->is_active = $request->input('status');
         $objAdsense->updated_at =date('Y-m-d h:i:s');
         return $objAdsense->save();
     }
