@@ -16,7 +16,7 @@
 
                     <div class="col-md-12">
                         <div class="form-group">
-                            <label>Profile Image</label>
+                            <label>Landing Page Image </label>
                             <div class="">
                                 <div class="image-input image-input-outline" id="kt_image_1">
                                     <div class="image-input-wrapper my-avtar" style="background-image: url({{ asset('public/uploads/landingpages/'.$details['image'] )}})"></div>
@@ -30,7 +30,7 @@
                                         <i class="ki ki-bold-close icon-xs text-muted"></i>
                                     </span>
                                 </div>
-                                <span class="form-text text-muted">Allowed file types: png, jpg, jpeg.</span>
+                                <span class="form-text text-muted">Allowed file types: png, jpg, jpeg.(Prefer Size: 340 * 340)</span>
                             </div>
                         </div>
                     </div>

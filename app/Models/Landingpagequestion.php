@@ -140,4 +140,14 @@ class Landingpagequestion extends Model
             return false ;
         }
     }
+
+    public function get_landing_page_question(){
+        return Landingpagequestion::select('question', 'answer1', 'answer2', 'answer3', 'answer4', 'right_answer')
+                ->where('landing_page_question.status', 'Y')
+                ->where('landing_page_question.is_deleted', 'N')
+                ->inRandomOrder()
+                ->limit(2)
+                ->get()
+                ->toArray();
+    }
 }

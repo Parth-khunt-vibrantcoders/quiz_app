@@ -6,5 +6,26 @@
     <meta name="author" content="{{ Config::get('constants.PROJECT_NAME') }}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="{{ asset('public/frontend/css/style.css') }}" />
-    <link rel="stylesheet" type="text/css" href="{{ asset('public/frontend/css/customcss.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('public/frontend/css/customcss.css') }}" /> @if (!empty($css))
+    @foreach ($css as $value)
+            @if(!empty($value))
+                <link rel="stylesheet" href="{{ asset('public/frontend/css/customcss/'.$value) }}">
+            @endif
+        @endforeach
+    @endif
+
+
+    @if (!empty($plugincss))
+        @foreach ($plugincss as $value)
+            @if(!empty($value))
+                <link rel="stylesheet" href="{{ asset('public/frontend/'.$value) }}">
+            @endif
+        @endforeach
+    @endif
+
+    <script>
+        var baseurl = "{{ asset('/') }}";
+    </script>
+
+
 </head>

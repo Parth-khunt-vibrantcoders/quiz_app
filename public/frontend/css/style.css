@@ -298,6 +298,7 @@ header {
 	align-items: center;
 	border-radius: 6px;
 	border: 1px solid #e89d1d;
+    padding: 25px 5px;
 }
 .question-head ul li.right-ans label input:checked + span {
 	background: #0db25b;
@@ -597,4 +598,8 @@ header {
   	.desktop {
   		display: none;
   	}
+}
+
+.hidden{
+    display: none;
 }
