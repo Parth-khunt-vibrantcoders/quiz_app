@@ -28,9 +28,11 @@
                     <thead>
                         <tr>
                             <th>Sr. No</th>
-                            <th>Quiz name</th>
-                            <th>Entry fee</th>
-                            <th>Wining prize</th>
+                            <th>Quiz Type</th>
+                            <th>Quiz Category</th>
+                            <th>Quiz Name</th>
+                            <th>Entry Fee</th>
+                            <th>Wining Prize</th>
                             <th>Announcement Time</th>
                             <th>Status</th>
                             <th>Action</th>

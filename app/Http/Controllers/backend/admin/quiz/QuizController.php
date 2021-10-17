@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Config;
 use App\Models\Quiz;
+use App\Models\Quiztype;
+use App\Models\Quizcategory;
 
 class QuizController extends Controller
 {
@@ -45,5 +47,20 @@ class QuizController extends Controller
             )
         );
         return view('backend.pages.admin.quiz.list', $data);
+    }
+
+    public function ajaxcall(Request $request){
+
+        $action = $request->input('action');
+
+        switch ($action) {
+            case 'getdatatable':
+
+                $objQuiz = new Quiz();
+                $list = $objQuiz->getdatatable();
+
+                echo json_encode($list);
+                break;
+            }
     }
 }
