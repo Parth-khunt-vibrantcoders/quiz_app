@@ -24,7 +24,7 @@
 
                                         <label class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="change" data-toggle="tooltip" title="" data-original-title="Change profile image">
                                             <i class="fas fa-pen icon-xs text-muted"></i>
-                                            <input type="file" name="image" accept="image/*"  required />
+                                            <input type="file" name="image" class="file-input" accept="image/*"  required />
                                             <input type="hidden" name="profile_avatar_remove" />
                                         </label>
                                         <span class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="cancel" data-toggle="tooltip" title="Cancel profile image">
@@ -62,7 +62,7 @@
                                 <label>Quiz Category
                                 <span class="text-danger">*</span></label>
                                 <select class="form-control select2" id="quiz_category"  name="quiz_category">
-                                    <option value="">Select your quiz category</option>
+                                    <option value="">Select quiz category</option>
                                 </select>
                             </div>
                         </div>
@@ -79,7 +79,7 @@
 
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label>Quiz Fee
+                                <label>Quiz Entry Fee
                                 <span class="text-danger">*</span></label>
                                 <input type="text" name="fee" class="form-control onlyNumber" placeholder="Enter quiz Fee" >
                             </div>
@@ -99,14 +99,12 @@
                             <div class="form-group">
                                 <label>Quiz Winner Announcement
                                 <span class="text-danger">*</span></label>
-                                <input type="text" name="time" class="form-control onlyNumber" placeholder="Enter quiz Fee" >
+                                <input class="form-control" id="time" readonly="readonly" placeholder="Select winner announcement time" type="text" />
                             </div>
                         </div>
                     </div>
 
                     <div class="row/">
-
-
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Status<span class="text-danger">*</span></label>

@@ -20,6 +20,49 @@ var Quiz = function(){
 
     var add_quiz = function(){
         $('.select2').select2();
+        $('#time').timepicker()
+
+        var form = $('#add-quiz');
+        var rules = {
+            image: {required: true},
+            quiz_type: {required: true},
+            quiz_category: {required: true},
+            name: {required: true},
+            fee: {required: true},
+            prize: {required: true},
+            time: {required: true},
+            status: {required: true},
+        };
+
+        var message = {
+            image :{
+                required : "Please select quiz image"
+            },
+            quiz_type :{
+                required : "Please select quiz type"
+            },
+            quiz_category :{
+                required : "Please select quiz category"
+            },
+            name :{
+                required : "Please select quiz name"
+            },
+            fee :{
+                required : "Please select quiz entry fee"
+            },
+            prize :{
+                required : "Please select quiz winning prize"
+            },
+            time :{
+                required : "Please select quiz winner announcement time"
+            },
+            status : {
+                required : "Please select status"
+            }
+        }
+        handleFormValidateWithMsg(form, rules,message, function(form) {
+            handleAjaxFormSubmit(form,true);
+        });
     }
     var edit_quiz = function(){
         $('.select2').select2();

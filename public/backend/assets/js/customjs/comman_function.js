@@ -329,7 +329,14 @@ function handleFormValidateWithMsg(form, rules, messages, submitCallback, showTo
                     element = elem.parent().parent();
                     error.insertAfter(element);
                 }else{
-                    error.insertAfter(element);
+                    if(elem.hasClass("file-input")){
+                        element = elem.parent().parent();
+                        error.insertAfter(element);
+                    }else{
+
+                            error.insertAfter(element);
+
+                    }
                 }
             }
         },
@@ -899,22 +906,22 @@ $(".onlyNumber").keypress(function(e) {
     }
 });
 
+$('body').on('change', '#quiz_type', function(){
 
-$("body").on("change","#empCountry",function(){
-    var id = $(this).val();
-    var data = { id: id, _token: $('#_token').val() };
+    var quiz_type = $(this).val();
+    var data = { quiz_type: quiz_type, _token: $('#_token').val() };
 
     $.ajax({
         type: "POST",
         headers: {
             'X-CSRF-TOKEN': $('input[name="_token"]').val(),
         },
-        url: baseurl + "employee-ajaxaction",
-        data: { 'action': 'changeCountry', 'data': data },
+        url: baseurl + "common-ajaxcall",
+        data: { 'action': 'change-quiz-type', 'data': data },
         success: function(data) {
             var output = JSON.parse(data);
             var temp_html = '';
-            var html ='<option value="">Please select employee state</option>';
+            var html ='<option value="">Select quiz category</option>';
 
 
             for (var i = 0; i < output.length; i++) {
@@ -922,63 +929,7 @@ $("body").on("change","#empCountry",function(){
                 html = html + temp_html;
             }
 
-            $('#empState').html(html);
-            $('#empCity').html('<option value="">Please select employee city</option>');
-        }
-    });
-});
-
-$("body").on("change","#empState",function(){
-    var id = $(this).val();
-    var data = { id: id, _token: $('#_token').val() };
-
-    $.ajax({
-        type: "POST",
-        headers: {
-            'X-CSRF-TOKEN': $('input[name="_token"]').val(),
-        },
-        url: baseurl + "employee-ajaxaction",
-        data: { 'action': 'changeState', 'data': data },
-        success: function(data) {
-            var output = JSON.parse(data);
-            // console.log(output);
-            // exit;
-            var temp_html = '';
-            var html ='<option value="">Please select employee city</option>';
-
-
-            for (var i = 0; i < output.length; i++) {
-                temp_html = '<option value="' + output[i].id + '">' + output[i].name + '</option>';
-                html = html + temp_html;
-            }
-
-            $('#empCity').html(html);
-        }
-    });
-});
-$("body").on("change","#empDepartment",function(){
-    var id = $(this).val();
-    var data = { id: id, _token: $('#_token').val() };
-
-    $.ajax({
-        type: "POST",
-        headers: {
-            'X-CSRF-TOKEN': $('input[name="_token"]').val(),
-        },
-        url: baseurl + "employee-ajaxaction",
-        data: { 'action': 'changeDepartment', 'data': data },
-        success: function(data) {
-            var output = JSON.parse(data);
-             var temp_html = '';
-            var html ='<option  value="">Select employee designation</option>';
-
-
-            for (var i = 0; i < output.length; i++) {
-                temp_html = '<option value="' + output[i].id + '">' + output[i].designation + '</option>';
-                html = html + temp_html;
-            }
-
-            $('#empDesignation').html(html);
+            $('#quiz_category').html(html);
         }
     });
 });

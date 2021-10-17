@@ -166,4 +166,12 @@ class Quizcategory extends Model
             return false ;
         }
     }
+
+    public function change_quiz_type($data){
+        return Quizcategory::select('quiz_category.id', 'quiz_category.name')
+                ->where('quiz_category.quiz_type', $data['quiz_type'])
+                ->where('quiz_category.status', 'Y')
+                ->where('quiz_category.is_deleted', 'N')
+                ->get()->toArray();
+    }
 }
