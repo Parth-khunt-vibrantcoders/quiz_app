@@ -311,6 +311,7 @@ function handleFormValidateWithMsg(form, rules, messages, submitCallback, showTo
             // $("#overlay").fadeIn(300);
             $('#loader').show();
             $('.submitbtn').attr("disabled", "disabled");
+            $('.btnsubmit').attr("disabled", "disabled");
             if (typeof submitCallback !== 'undefined' && typeof submitCallback == 'function') {
                 submitCallback(form);
             } else {

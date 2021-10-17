@@ -21,14 +21,15 @@
                                         <h6>Question {{$i}} <small>/ 2</small></h6>
                                         <h2>{{ $value['question']}}</h2>
                                         <input type="hidden" id="question{{$i}}" value="{{ $value['right_answer'] }}">
+
                                         <ul>
-                                            <li class="answerui" id="question{{$i}}{{ $value['right_answer'] }}">
+                                            <li class="answerui right-ans" id="question{{$i}}{{ $value['right_answer'] }}">
                                                 <label>
                                                     <input type="radio" class="answer-btn" data-question="{{$i}}" value="1" id="1" name="age-rang">
                                                     <span>{{ $value['answer1']}} </span>
                                                 </label>
                                             </li>
-                                            <li class="answerui" id="question{{$i}}{{ $value['right_answer'] }}">
+                                            <li class="answerui wrong-ans" id="question{{$i}}{{ $value['right_answer'] }}">
                                                 <label>
                                                     <input type="radio" class="answer-btn" data-question="{{$i}}" value="2" id="2" name="age-rang">
                                                     <span>{{ $value['answer2']}} </span>

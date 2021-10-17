@@ -65,3 +65,23 @@ Route::group(['prefix' => $prefix, 'middleware' => ['admin']], function() {
     Route::match(['get', 'post'], 'users-management-edit/{id}', ['as' => 'users-management-edit', 'uses' => 'backend\admin\adsense\AdsenseController@edit']);
     Route::match(['get', 'post'], 'users-management-ajaxcall', ['as' => 'users-management-ajaxcall', 'uses' => 'backend\admin\adsense\AdsenseController@ajaxcall']);
 });
+$prefix = 'quiz';
+Route::group(['prefix' => $prefix, 'middleware' => ['admin']], function() {
+    // quiz-type
+    Route::match(['get', 'post'], 'quiz-type-list', ['as' => 'quiz-type-list', 'uses' => 'backend\admin\quiz\QuiztypeController@list']);
+    Route::match(['get', 'post'], 'quiz-type-add', ['as' => 'quiz-type-add', 'uses' => 'backend\admin\quiz\QuiztypeController@add']);
+    Route::match(['get', 'post'], 'quiz-type-edit/{id}', ['as' => 'quiz-type-edit', 'uses' => 'backend\admin\quiz\QuiztypeController@edit']);
+    Route::match(['get', 'post'], 'quiz-type-ajaxcall', ['as' => 'quiz-type-ajaxcall', 'uses' => 'backend\admin\quiz\QuiztypeController@ajaxcall']);
+
+    // quiz-category
+    Route::match(['get', 'post'], 'quiz-category-list', ['as' => 'quiz-category-list', 'uses' => 'backend\admin\quiz\QuizcategoryController@list']);
+    Route::match(['get', 'post'], 'quiz-category-add', ['as' => 'quiz-category-add', 'uses' => 'backend\admin\quiz\QuizcategoryController@add']);
+    Route::match(['get', 'post'], 'quiz-category-edit/{id}', ['as' => 'quiz-category-edit', 'uses' => 'backend\admin\quiz\QuizcategoryController@edit']);
+    Route::match(['get', 'post'], 'quiz-category-ajaxcall', ['as' => 'quiz-category-ajaxcall', 'uses' => 'backend\admin\quiz\QuizcategoryController@ajaxcall']);
+
+    // quiz-category
+    Route::match(['get', 'post'], 'admin-quiz-list', ['as' => 'admin-quiz-list', 'uses' => 'backend\admin\quiz\QuizController@list']);
+    Route::match(['get', 'post'], 'admin-quiz-add', ['as' => 'admin-quiz-add', 'uses' => 'backend\admin\quiz\QuizController@add']);
+    Route::match(['get', 'post'], 'admin-quiz-edit/{id}', ['as' => 'admin-quiz-edit', 'uses' => 'backend\admin\quiz\QuizController@edit']);
+    Route::match(['get', 'post'], 'admin-quiz-ajaxcall', ['as' => 'admin-quiz-category-ajaxcall', 'uses' => 'backend\admin\quiz\QuizController@ajaxcall']);
+});

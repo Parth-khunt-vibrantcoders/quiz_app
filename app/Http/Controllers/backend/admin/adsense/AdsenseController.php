@@ -51,7 +51,6 @@ class AdsenseController extends Controller
 
     public function add(Request $request){
         if($request->isMethod('post')){
-            // ccd("Hello");
             $objadsense = new Adsense();
             $result= $objadsense->add_adsense($request);
             if ($result) {

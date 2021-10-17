@@ -4,7 +4,9 @@
 .has-my-error{
     color: red !important;
 }
-
+.is-invalid {
+    border: 1px solid #E4E6EF !important;
+}
 #loader {
     display: none;
     position: fixed;

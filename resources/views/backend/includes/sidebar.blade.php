@@ -84,6 +84,51 @@ $currentRoute = Route::current()->getName();
                 </a>
             </li>
 
+            <li class="menu-item menu-item-submenu {{  $currentRoute == 'quiz-category-list'  || $currentRoute == 'quiz-category-add' || $currentRoute == 'quiz-category-edit' ||
+                    $currentRoute == 'admin-quiz-list'  || $currentRoute == 'admin-quiz-add' || $currentRoute == 'admin-quiz-edit' ||
+                    $currentRoute == 'quiz-type-list'  || $currentRoute == 'quiz-type-add' || $currentRoute == 'quiz-type-edit'
+                      ? 'menu-item-open menu-item-active' :'' }}" aria-haspopup="true" data-menu-toggle="hover">
+                <a href="javascript:;" class="menu-link menu-toggle">
+                    <span class="svg-icon menu-icon">
+                        <i class="far fa-question-circle text-white"></i>
+                    </span>
+                    <span class="menu-text">Quiz</span>
+                    <i class="menu-arrow"></i>
+                </a>
+                <div class="menu-submenu">
+                    <i class="menu-arrow"></i>
+                    <ul class="menu-subnav">
+
+                        <li class="menu-item {{  $currentRoute == 'quiz-type-list'  || $currentRoute == 'quiz-type-add' || $currentRoute == 'quiz-type-edit' ? 'menu-item-active' : ''}}" aria-haspopup="true">
+                            <a href="{{ route('quiz-type-list') }}" class="menu-link">
+                                <i class="menu-bullet menu-bullet-dot text-white">
+                                    <span></span>
+                                </i>
+                                <span class="menu-text">Quiz Type</span>
+                            </a>
+                        </li>
+
+                        <li class="menu-item {{  $currentRoute == 'quiz-category-list'  || $currentRoute == 'quiz-category-add' || $currentRoute == 'quiz-category-edit' ? 'menu-item-active' : ''}}" aria-haspopup="true">
+                            <a href="{{ route('quiz-category-list') }}" class="menu-link">
+                                <i class="menu-bullet menu-bullet-dot text-white">
+                                    <span></span>
+                                </i>
+                                <span class="menu-text">Quiz Category</span>
+                            </a>
+                        </li>
+
+                        <li class="menu-item {{  $currentRoute == 'admin-quiz-list'  || $currentRoute == 'admin-quiz-add' || $currentRoute == 'admin-quiz-edit' ? 'menu-item-active' : ''}}" aria-haspopup="true">
+                            <a href="{{ route('admin-quiz-list') }}" class="menu-link">
+                                <i class="menu-bullet menu-bullet-dot text-white">
+                                    <span></span>
+                                </i>
+                                <span class="menu-text">Quiz</span>
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+            </li>
 
         </ul>
         <!--end::Menu Nav-->
