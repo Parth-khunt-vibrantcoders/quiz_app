@@ -49,6 +49,41 @@ class QuizController extends Controller
         return view('backend.pages.admin.quiz.list', $data);
     }
 
+    public function add(Request $request){
+        $objQuiztype = new Quiztype();
+        $data['quiz_type'] = $objQuiztype->get_quiz_type_list();
+
+        $data['title'] = 'Add Quiz - '. Config::get('constants.PROJECT_NAME') ;
+        $data['description'] = 'Add Quiz - '. Config::get('constants.PROJECT_NAME') ;
+        $data['keywords'] = 'Add Quiz - '. Config::get('constants.PROJECT_NAME') ;
+        $data['plugincss'] = array(
+            'plugins/toastr/toastr.min.css'
+        );
+        $data['pluginjs'] = array(
+            'plugins/validate/jquery.validate.min.js',
+            'js/pages/crud/forms/widgets/select2.js',
+            'js/pages/crud/file-upload/image-input.js'
+        );
+        $data['js'] = array(
+            'comman_function.js',
+            'ajaxfileupload.js',
+            'jquery.form.min.js',
+            'quiz.js',
+        );
+        $data['funinit'] = array(
+            'Quiz.add()',
+        );
+        $data['header'] = array(
+            'title' => 'Add Quiz',
+            'breadcrumb' => array(
+                'Dashboard' => route('my-dashboard'),
+                'Dashboard' => route('admin-quiz-list'),
+                'Add Quiz' => 'Add Quiz',
+            )
+        );
+        return view('backend.pages.admin.quiz.add', $data);
+    }
+
     public function ajaxcall(Request $request){
 
         $action = $request->input('action');

@@ -17,9 +17,22 @@ var Quiz = function(){
         };
         getDataTable(arrList);
     }
+
+    var add_quiz = function(){
+        $('.select2').select2();
+    }
+    var edit_quiz = function(){
+        $('.select2').select2();
+    }
     return{
         init:function(){
             list();
+        },
+        add:function(){
+            add_quiz();
+        },
+        edit:function(){
+            edit_quiz();
         }
     }
 }();
