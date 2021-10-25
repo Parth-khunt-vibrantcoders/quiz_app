@@ -1,0 +1,114 @@
+@extends('backend.layouts.layout')
+@section('section')
+@php
+    if(file_exists( public_path().'/uploads/quiz/'.$quiz_details[0]['image']) && $quiz_details[0]['image'] != ''){
+        $image = url("public/uploads/quiz/".$quiz_details[0]['image']);
+    }else{
+        $image = url("public/uploads/quiz/no-image.png");
+    }
+@endphp
+<!--begin::Section-->
+<div class="row">
+    <div class="col-md-7 col-lg-12 col-xxl-7">
+        <!--begin::Engage Widget 14-->
+        <div class="card card-custom card-stretch gutter-b">
+            <div class="card-body">
+
+                <div class="row">
+
+                    <div class="col-6 col-md-3">
+                        <div class="mb-8 d-flex flex-column">
+                            <span class="text-dark font-weight-bold mb-4">Quiz Image</span>
+                            <img src="{{ $image }}" class="h-75 " alt="" style="height:100px !important;; width:100px !important">
+                        </div>
+                    </div>
+
+                    <div class="col-6 col-md-3">
+                        <div class="mb-8 d-flex flex-column">
+                            <span class="text-dark font-weight-bold mb-4">Quiz Type</span>
+                            <span class="text-muted font-weight-bolder font-size-lg"> {{ $quiz_details[0]['quiz_type']}}</span>
+                        </div>
+
+                        <div class="mb-8 d-flex flex-column">
+                            <span class="text-dark font-weight-bold mb-4">Quiz Entry Fee</span>
+                            <span class="text-muted font-weight-bolder font-size-lg"> {{ $quiz_details[0]['fee']}}</span>
+                        </div>
+                    </div>
+
+                    <div class="col-6 col-md-3">
+                        <div class="mb-8 d-flex flex-column">
+                            <span class="text-dark font-weight-bold mb-4">Quiz Category</span>
+                            <span class="text-muted font-weight-bolder font-size-lg"> {{ $quiz_details[0]['quiz_category']}}</span>
+                        </div>
+
+                        <div class="mb-8 d-flex flex-column">
+                            <span class="text-dark font-weight-bold mb-4">Quiz Prize</span>
+                            <span class="text-muted font-weight-bolder font-size-lg"> {{ $quiz_details[0]['prize']}}</span>
+                        </div>
+                    </div>
+
+                    <div class="col-6 col-md-3">
+                        <div class="mb-8 d-flex flex-column">
+                            <span class="text-dark font-weight-bold mb-4">Quiz Name</span>
+                            <span class="text-muted font-weight-bolder font-size-lg"> {{ $quiz_details[0]['name']}}</span>
+                        </div>
+
+                        <div class="mb-8 d-flex flex-column">
+                            <span class="text-dark font-weight-bold mb-4">Quiz Winner Announcement</span>
+                            <span class="text-muted font-weight-bolder font-size-lg"> {{ date('h:i A', strtotime($quiz_details[0]['time'])) }}</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!--end::Engage Widget 14-->
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        @csrf
+        <!--begin::Card-->
+        <div class="card card-custom gutter-b">
+            <div class="card-header flex-wrap py-3">
+
+                <div class="card-title">
+                    <h3 class="card-label">Number of Question </h3>
+                </div>
+
+
+                <div class="card-toolbar">
+                    <!--begin::Button-->
+                    <a href="{{ route('admin-quiz-add') }}" class="btn btn-primary font-weight-bolder">
+                        Add Question
+                    </a>
+                    <!--end::Button-->
+                </div>
+
+
+            </div>
+            <div class="card-body">
+                <!--begin: Datatable-->
+                <table class="table table-bordered table-checkable"  id="quiz-master">
+                    <thead>
+                        <tr>
+                            <th>Sr. No</th>
+                            <th>Question</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table>
+                <!--end: Datatable-->
+            </div>
+        </div>
+        <!--end::Card-->
+    </div>
+</div>
+<!--end::Section-->
+
+@endsection

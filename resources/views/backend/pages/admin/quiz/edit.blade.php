@@ -1,6 +1,12 @@
 @extends('backend.layouts.layout')
 @section('section')
-
+@php
+    if(file_exists( public_path().'/uploads/quiz/'.$quiz_details[0]['image']) && $quiz_details[0]['image'] != ''){
+        $image = url("public/uploads/quiz/".$quiz_details[0]['image']);
+    }else{
+        $image = url("public/uploads/quiz/no-image.png");
+    }
+@endphp
 <div class="row">
     <div class="col-md-12">
         <!--begin::Card-->
@@ -9,22 +15,22 @@
                 <h3 class="card-title">{{ $header['title'] }}</h3>
             </div>
             <!--begin::Form-->
-            <form id="add-quiz" enctype="multipart/form-data" method="POST">
+            <form id="edit-quiz" enctype="multipart/form-data" method="POST">
                 @csrf
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-3"></div>
-
+                        <input type="hidden" name="editId" class="form-control" placeholder="Enter quiz name" value="{{ $quiz_details[0]['id'] }}">
                         <div class="col-md-6 text-center">
                             <div class="form-group">
                                 <label class="">Profile Image</label>
                                 <div class="text-center">
                                     <div class="image-input image-input-outline" id="kt_image_1">
-                                        <div class="image-input-wrapper my-avtar" style="background-image: url({{ asset('public/uploads/quiz/no-image.png') }})"></div>
+                                        <div class="image-input-wrapper my-avtar" style="background-image: url({{ $image }})"></div>
 
                                         <label class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="change" data-toggle="tooltip" title="" data-original-title="Change profile image">
                                             <i class="fas fa-pen icon-xs text-muted"></i>
-                                            <input type="file" name="image" class="file-input" accept="image/*"  required />
+                                            <input type="file" name="image" class="file-input" accept="image/*"/>
                                             <input type="hidden" name="profile_avatar_remove" />
                                         </label>
                                         <span class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow" data-action="cancel" data-toggle="tooltip" title="Cancel profile image">
@@ -48,11 +54,9 @@
 
                                 <select class="form-control select2" id="quiz_type"  name="quiz_type">
                                     <option value="">Select your quiz type</option>
-
                                      @foreach ($quiz_type as $key => $value)
-                                         <option value="{{ $value['id'] }}" >{{ $value['name'] }}</option>
+                                         <option value="{{ $value['id'] }}" {{ $quiz_details[0]['quiz_type'] == $value['id'] ? 'selected="selected"' : '' }} >{{ $value['name'] }}</option>
                                      @endforeach
-
                                 </select>
                             </div>
                         </div>
@@ -63,6 +67,9 @@
                                 <span class="text-danger">*</span></label>
                                 <select class="form-control select2" id="quiz_category"  name="quiz_category">
                                     <option value="">Select quiz category</option>
+                                    @foreach ($quiz_category as $key => $value)
+                                         <option value="{{ $value['id'] }}" {{ $quiz_details[0]['category'] == $value['id'] ? 'selected="selected"' : '' }} >{{ $value['name'] }}</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
@@ -73,7 +80,7 @@
                             <div class="form-group">
                                 <label>Quiz name
                                 <span class="text-danger">*</span></label>
-                                <input type="text" name="name" class="form-control" placeholder="Enter quiz name" >
+                                <input type="text" name="name" class="form-control" placeholder="Enter quiz name" value="{{ $quiz_details[0]['name'] }}">
                             </div>
                         </div>
 
@@ -81,7 +88,7 @@
                             <div class="form-group">
                                 <label>Quiz Entry Fee
                                 <span class="text-danger">*</span></label>
-                                <input type="text" name="fee" class="form-control onlyNumber" placeholder="Enter quiz Fee" >
+                                <input type="text" name="fee" class="form-control onlyNumber" placeholder="Enter quiz Fee" value="{{ $quiz_details[0]['fee'] }}">
                             </div>
                         </div>
                     </div>
@@ -91,7 +98,7 @@
                             <div class="form-group">
                                 <label>Quiz Prize
                                 <span class="text-danger">*</span></label>
-                                <input type="text" name="prize" class="form-control onlyNumber" placeholder="Enter quiz prize" >
+                                <input type="text" name="prize" class="form-control onlyNumber" placeholder="Enter quiz prize" value="{{ $quiz_details[0]['prize'] }}">
                             </div>
                         </div>
 
@@ -99,7 +106,7 @@
                             <div class="form-group">
                                 <label>Quiz Winner Announcement
                                 <span class="text-danger">*</span></label>
-                                <input class="form-control" id="time" readonly="readonly" placeholder="Select winner announcement time" type="text" />
+                                <input class="form-control" id="time" name="time" readonly="readonly" placeholder="Select winner announcement time" type="text" value="{{ $quiz_details[0]['time'] }}" />
                             </div>
                         </div>
                     </div>
@@ -110,10 +117,10 @@
                                 <label>Status<span class="text-danger">*</span></label>
                                 <div class="radio-inline" style="margin-top:10px">
                                     <label class="radio radio-lg radio-success" >
-                                    <input type="radio" name="status" class="radio-btn" value="Y" checked="checked"/>
+                                    <input type="radio" name="status" class="radio-btn" value="Y" {{ $quiz_details[0]['status'] == 'Y' ? 'checked="checked"' : '' }} />
                                     <span></span>Active</label>
                                     <label class="radio radio-lg radio-danger" >
-                                    <input type="radio" name="status" class="radio-btn" value="N"/>
+                                    <input type="radio" name="status" class="radio-btn" value="N" {{ $quiz_details[0]['status'] == 'N' ? 'checked="checked"' : ''  }}/>
                                     <span></span>Inactive</label>
                                 </div>
                             </div>

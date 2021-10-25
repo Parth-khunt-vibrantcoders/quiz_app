@@ -99,7 +99,7 @@
                             <div class="form-group">
                                 <label>Quiz Winner Announcement
                                 <span class="text-danger">*</span></label>
-                                <input class="form-control" id="time" readonly="readonly" placeholder="Select winner announcement time" type="text" />
+                                <input class="form-control" name="time" id="time" readonly="readonly" placeholder="Select winner announcement time" type="text" />
                             </div>
                         </div>
                     </div>

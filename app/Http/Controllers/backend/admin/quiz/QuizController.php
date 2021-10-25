@@ -50,6 +50,30 @@ class QuizController extends Controller
     }
 
     public function add(Request $request){
+        if ($request->isMethod('post')) {
+
+            $objQuiz = new Quiz();
+            $result = $objQuiz->add_quiz($request);
+            if ($result == 'true') {
+                $return['status'] = 'success';
+                 $return['jscode'] = '$(".submitbtn:visible").removeAttr("disabled");$("#loader").hide();';
+                $return['message'] = 'Quiz added successfully.';
+                $return['redirect'] = route('admin-quiz-list');
+            } else {
+                if($result == 'quiz_exits') {
+                    $return['status'] = 'warning';
+                    $return['jscode'] = '$(".submitbtn:visible").removeAttr("disabled");$("#loader").hide();';
+                    $return['message'] = 'Quiz already exit.';
+                }else{
+                    $return['status'] = 'error';
+                    $return['jscode'] = '$(".submitbtn:visible").removeAttr("disabled");$("#loader").hide();';
+                    $return['message'] = 'Something goes to wrong';
+                }
+            }
+            echo json_encode($return);
+            exit;
+        }
+
         $objQuiztype = new Quiztype();
         $data['quiz_type'] = $objQuiztype->get_quiz_type_list();
 
@@ -78,13 +102,114 @@ class QuizController extends Controller
             'title' => 'Add Quiz',
             'breadcrumb' => array(
                 'Dashboard' => route('my-dashboard'),
-                'Dashboard' => route('admin-quiz-list'),
+                'Quiz List' => route('admin-quiz-list'),
                 'Add Quiz' => 'Add Quiz',
             )
         );
         return view('backend.pages.admin.quiz.add', $data);
     }
 
+    public function edit(Request $request, $editId){
+        if ($request->isMethod('post')) {
+            $objQuiz = new Quiz();
+            $result = $objQuiz->edit_quiz($request);
+            if ($result == 'true') {
+                $return['status'] = 'success';
+                 $return['jscode'] = '$(".submitbtn:visible").removeAttr("disabled");$("#loader").hide();';
+                $return['message'] = 'Quiz updated successfully.';
+                $return['redirect'] = route('admin-quiz-list');
+            } else {
+                if($result == 'quiz_exits') {
+                    $return['status'] = 'warning';
+                    $return['jscode'] = '$(".submitbtn:visible").removeAttr("disabled");$("#loader").hide();';
+                    $return['message'] = 'Quiz already exit.';
+                }else{
+                    $return['status'] = 'error';
+                    $return['jscode'] = '$(".submitbtn:visible").removeAttr("disabled");$("#loader").hide();';
+                    $return['message'] = 'Something goes to wrong';
+                }
+            }
+            echo json_encode($return);
+            exit;
+        }
+
+        $objQuiz = new Quiz();
+        $data['quiz_details'] = $objQuiz->get_quiz_edit($editId);
+
+        $objQuizcategory = new Quizcategory();
+        $data['quiz_category'] = $objQuizcategory->change_quiz_type($data['quiz_details'][0]);
+
+        $objQuiztype = new Quiztype();
+        $data['quiz_type'] = $objQuiztype->get_quiz_type_list();
+
+        $data['title'] = 'Add Quiz - '. Config::get('constants.PROJECT_NAME') ;
+        $data['description'] = 'Add Quiz - '. Config::get('constants.PROJECT_NAME') ;
+        $data['keywords'] = 'Add Quiz - '. Config::get('constants.PROJECT_NAME') ;
+        $data['plugincss'] = array(
+            'plugins/toastr/toastr.min.css'
+        );
+        $data['pluginjs'] = array(
+            'plugins/validate/jquery.validate.min.js',
+            'js/pages/crud/forms/widgets/select2.js',
+            'js/pages/crud/file-upload/image-input.js',
+            'js/pages/crud/forms/widgets/bootstrap-timepicker.js'
+        );
+        $data['js'] = array(
+            'comman_function.js',
+            'ajaxfileupload.js',
+            'jquery.form.min.js',
+            'quiz.js',
+        );
+        $data['funinit'] = array(
+            'Quiz.edit()',
+        );
+        $data['header'] = array(
+            'title' => 'Add Quiz',
+            'breadcrumb' => array(
+                'Dashboard' => route('my-dashboard'),
+                'Quiz List' => route('admin-quiz-list'),
+                'Add Quiz' => 'Add Quiz',
+            )
+        );
+        return view('backend.pages.admin.quiz.edit', $data);
+    }
+
+    public function view(Request $request, $editId){
+
+        $objQuiz = new Quiz();
+        $data['quiz_details'] = $objQuiz->get_quiz_view_details($editId);
+
+        $data['title'] = 'View Quiz - '. Config::get('constants.PROJECT_NAME') ;
+        $data['description'] = 'View Quiz - '. Config::get('constants.PROJECT_NAME') ;
+        $data['keywords'] = 'View Quiz - '. Config::get('constants.PROJECT_NAME') ;
+        $data['plugincss'] = array(
+            'plugins/toastr/toastr.min.css'
+        );
+        $data['pluginjs'] = array(
+            'plugins/validate/jquery.validate.min.js',
+            'js/pages/crud/forms/widgets/select2.js',
+            'js/pages/crud/file-upload/image-input.js',
+            'js/pages/crud/forms/widgets/bootstrap-timepicker.js'
+        );
+        $data['js'] = array(
+            'comman_function.js',
+            'ajaxfileupload.js',
+            'jquery.form.min.js',
+            'quiz.js',
+        );
+        $data['funinit'] = array(
+            'Quiz.view()',
+        );
+        $data['header'] = array(
+            'title' => 'View Quiz',
+            'breadcrumb' => array(
+                'Dashboard' => route('my-dashboard'),
+                'Quiz List' => route('admin-quiz-list'),
+                'View Quiz' => 'View Quiz',
+            )
+        );
+        return view('backend.pages.admin.quiz.view', $data);
+    }
     public function ajaxcall(Request $request){
 
         $action = $request->input('action');
@@ -97,6 +222,59 @@ class QuizController extends Controller
 
                 echo json_encode($list);
                 break;
+
+            case 'delete-quiz':
+
+                $objQuiz = new Quiz();
+                $result = $objQuiz->common_activity_user($request->input('data'),0);
+
+                if ($result) {
+                    $return['status'] = 'success';
+                    $return['message'] = 'Quiz successfully deleted';
+                    $return['redirect'] = route('admin-quiz-list');
+                } else {
+                    $return['status'] = 'error';
+                    $return['jscode'] = '$("#loader").hide();';
+                    $return['message'] = 'Something goes to wrong.';
+                }
+                echo json_encode($return);
+                exit;
+
+
+            case 'active-quiz':
+
+                $objQuiz = new Quiz();
+                $result = $objQuiz->common_activity_user($request->input('data'),1);
+
+                if ($result) {
+                    $return['status'] = 'success';
+                    $return['message'] = 'Quiz successfully actived';
+                    $return['redirect'] = route('admin-quiz-list');
+                } else {
+                    $return['status'] = 'error';
+                    $return['jscode'] = '$("#loader").hide();';
+                    $return['message'] = 'Something goes to wrong.';
+                }
+                echo json_encode($return);
+                exit;
+
+
+            case 'deactive-quiz':
+
+                $objQuiz = new Quiz();
+                $result = $objQuiz->common_activity_user($request->input('data'),2);
+
+                if ($result) {
+                    $return['status'] = 'success';
+                    $return['message'] = 'Quiz successfully deactived';
+                    $return['redirect'] = route('admin-quiz-list');
+                } else {
+                    $return['status'] = 'error';
+                    $return['jscode'] = '$("#loader").hide();';
+                    $return['message'] = 'Something goes to wrong.';
+                }
+                echo json_encode($return);
+                exit;
             }
     }
 }
