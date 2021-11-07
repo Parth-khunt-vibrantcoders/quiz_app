@@ -224,7 +224,7 @@ class QuizController extends Controller
             case 'getdatatable_question':
 
                 $objQuestion = new Question();
-                $list = $objQuestion->getdatatable();
+                $list = $objQuestion->getdatatable($request->input('data')['quiz_id']);
 
                 echo json_encode($list);
                 break;
@@ -238,6 +238,74 @@ class QuizController extends Controller
                     $return['status'] = 'success';
                     $return['message'] = 'Quiz successfully deleted';
                     $return['redirect'] = route('admin-quiz-list');
+                } else {
+                    $return['status'] = 'error';
+                    $return['jscode'] = '$("#loader").hide();';
+                    $return['message'] = 'Something goes to wrong.';
+                }
+                echo json_encode($return);
+                exit;
+
+            case 'delete-question':
+
+                $objQuestion = new Question();
+                $result = $objQuestion->common_activity_user($request->input('data'),0);
+
+                if ($result) {
+                    $return['status'] = 'success';
+                    $return['message'] = 'Question successfully deleted';
+                    $return['redirect'] = route('admin-quiz-view', $request->input('data')['data_quiz_id']);
+                } else {
+                    $return['status'] = 'error';
+                    $return['jscode'] = '$("#loader").hide();';
+                    $return['message'] = 'Something goes to wrong.';
+                }
+                echo json_encode($return);
+                exit;
+
+            case 'deactive-question':
+
+                $objQuestion = new Question();
+                $result = $objQuestion->common_activity_user($request->input('data'),2);
+
+                if ($result) {
+                    $return['status'] = 'success';
+                    $return['message'] = 'Question successfully deactived';
+                    $return['redirect'] = route('admin-quiz-view', $request->input('data')['data_quiz_id']);
+                } else {
+                    $return['status'] = 'error';
+                    $return['jscode'] = '$("#loader").hide();';
+                    $return['message'] = 'Something goes to wrong.';
+                }
+                echo json_encode($return);
+                exit;
+
+            case 'deactive-question':
+
+                $objQuestion = new Question();
+                $result = $objQuestion->common_activity_user($request->input('data'),2);
+
+                if ($result) {
+                    $return['status'] = 'success';
+                    $return['message'] = 'Question successfully deactived';
+                    $return['redirect'] = route('admin-quiz-view', $request->input('data')['data_quiz_id']);
+                } else {
+                    $return['status'] = 'error';
+                    $return['jscode'] = '$("#loader").hide();';
+                    $return['message'] = 'Something goes to wrong.';
+                }
+                echo json_encode($return);
+                exit;
+
+            case 'active-question':
+
+                $objQuestion = new Question();
+                $result = $objQuestion->common_activity_user($request->input('data'),1);
+
+                if ($result) {
+                    $return['status'] = 'success';
+                    $return['message'] = 'Question successfully actived';
+                    $return['redirect'] = route('admin-quiz-view', $request->input('data')['data_quiz_id']);
                 } else {
                     $return['status'] = 'error';
                     $return['jscode'] = '$("#loader").hide();';

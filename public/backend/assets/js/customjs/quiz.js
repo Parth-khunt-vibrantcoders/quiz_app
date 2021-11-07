@@ -185,7 +185,7 @@ var Quiz = function(){
 
     var view_quiz = function(){
         var quiz_id = $('#quiz_id').val();
-        var dataArr = {};
+        var dataArr = {quiz_id : quiz_id};
         var columnWidth = { "width": "5%", "targets": 0 };
         var arrList = {
             'pageLength': 5,
@@ -201,6 +201,89 @@ var Quiz = function(){
             'setColumnWidth': columnWidth
         };
         getDataTable(arrList);
+
+        $("body").on("click", ".delete-question", function() {
+            var id = $(this).data('id');
+            var data_quiz_id = $(this).attr('data-quiz-id');
+            setTimeout(function() {
+                $('.yes-sure:visible').attr('data-id', id);
+                $('.yes-sure:visible').attr('data-quiz-id', data_quiz_id);
+            }, 500);
+        })
+
+        $('body').on('click', '.yes-sure', function() {
+            var id = $(this).attr('data-id');
+            var data_quiz_id = $(this).attr('data-quiz-id');
+            var data = { id: id, data_quiz_id: data_quiz_id, _token: $('#_token').val() };
+                $.ajax({
+                type: "POST",
+                headers: {
+                    'X-CSRF-TOKEN': $('input[name="_token"]').val(),
+                },
+                url: baseurl + "quiz/admin-quiz-ajaxcall",
+                data: { 'action': 'delete-question', 'data': data },
+                success: function(data) {
+                    $("#loader").show();
+                    handleAjaxResponse(data);
+                }
+            });
+        });
+
+
+        $("body").on("click", ".deactive-question", function() {
+            var id = $(this).data('id');
+            var data_quiz_id = $(this).attr('data-quiz-id');
+            setTimeout(function() {
+                $('.yes-sure-deactive:visible').attr('data-id', id);
+                $('.yes-sure-deactive:visible').attr('data-quiz-id', data_quiz_id);
+            }, 500);
+        })
+
+        $('body').on('click', '.yes-sure-deactive', function() {
+            var id = $(this).attr('data-id');
+            var data_quiz_id = $(this).attr('data-quiz-id');
+            var data = { id: id, data_quiz_id: data_quiz_id, _token: $('#_token').val() };
+                $.ajax({
+                type: "POST",
+                headers: {
+                    'X-CSRF-TOKEN': $('input[name="_token"]').val(),
+                },
+                url: baseurl + "quiz/admin-quiz-ajaxcall",
+                data: { 'action': 'deactive-question', 'data': data },
+                success: function(data) {
+                    $("#loader").show();
+                    handleAjaxResponse(data);
+                }
+            });
+        });
+
+        $("body").on("click", ".active-question", function() {
+            var id = $(this).data('id');
+            var data_quiz_id = $(this).attr('data-quiz-id');
+            setTimeout(function() {
+                $('.yes-sure-active:visible').attr('data-id', id);
+                $('.yes-sure-active:visible').attr('data-quiz-id', data_quiz_id);
+            }, 500);
+        })
+
+        $('body').on('click', '.yes-sure-active', function() {
+            var id = $(this).attr('data-id');
+            var data_quiz_id = $(this).attr('data-quiz-id');
+            var data = { id: id, data_quiz_id: data_quiz_id, _token: $('#_token').val() };
+                $.ajax({
+                type: "POST",
+                headers: {
+                    'X-CSRF-TOKEN': $('input[name="_token"]').val(),
+                },
+                url: baseurl + "quiz/admin-quiz-ajaxcall",
+                data: { 'action': 'active-question', 'data': data },
+                success: function(data) {
+                    $("#loader").show();
+                    handleAjaxResponse(data);
+                }
+            });
+        });
+
     }
 
     return{

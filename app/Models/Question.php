@@ -11,7 +11,7 @@ class Question extends Model
     use HasFactory;
     protected $table = 'question';
 
-    public function getdatatable(){
+    public function getdatatable($quizId){
         $requestData = $_REQUEST;
 
         $columns = array(
@@ -21,6 +21,7 @@ class Question extends Model
         );
 
         $query = Landingpagequestion ::from('question')
+                                ->where('question.quiz_id', $quizId)
                                 ->where('question.is_deleted', 'N');
 
 
@@ -49,7 +50,7 @@ class Question extends Model
 
         $resultArr = $query->skip($requestData['start'])
                         ->take($requestData['length'])
-                        ->select('question.id', 'question.question', 'question.is_active')
+                        ->select('question.id', 'question.question', 'question.is_active', 'question.quiz_id')
                         ->get();
         $data = array();
         $i = 0;
@@ -60,13 +61,13 @@ class Question extends Model
 
             if($row['is_active'] == "Y"){
                 $status = '<span class="badge badge-lg badge-success badge-inline">Active</span>';
-                $actionhtml =  $actionhtml. '<a href="javascript:;" data-toggle="modal" data-target="#deactiveModel" class="btn btn-icon  deactive-question" data-id="' . $row["id"] . '" title="Deactive Question"><i class="fa fa-times text-info" ></i></a>';
+                $actionhtml =  $actionhtml. '<a href="javascript:;" data-toggle="modal" data-target="#deactiveModel" class="btn btn-icon  deactive-question" data-quiz-id="'.$row['quiz_id'].'" data-id="' . $row["id"] . '" title="Deactive Question"><i class="fa fa-times text-info" ></i></a>';
             }else{
                 $status = '<span class="badge badge-lg badge-danger  badge-inline">Deactive</span>';
-                $actionhtml =  $actionhtml. '<a href="javascript:;" data-toggle="modal" data-target="#activeModel" class="btn btn-icon  active-question" data-id="' . $row["id"] . '" title="Active Question"><i class="fa fa-check text-info" ></i></a>';
+                $actionhtml =  $actionhtml. '<a href="javascript:;" data-toggle="modal" data-target="#activeModel" class="btn btn-icon  active-question" data-quiz-id="'.$row['quiz_id'].'" data-id="' . $row["id"] . '" title="Active Question"><i class="fa fa-check text-info" ></i></a>';
             }
 
-            $actionhtml =  $actionhtml.'<a href="javascript:;" data-toggle="modal" data-target="#deleteModel" class="btn btn-icon delete-question" data-id="' . $row["id"] . '" title="Delete Question"><i class="fa fa-trash text-danger" ></i></a>';
+            $actionhtml =  $actionhtml.'<a href="javascript:;" data-toggle="modal" data-target="#deleteModel" class="btn btn-icon delete-question" data-quiz-id="'.$row['quiz_id'].'" data-id="' . $row["id"] . '" title="Delete Question"><i class="fa fa-trash text-danger" ></i></a>';
 
             $i++;
             $nestedData = array();
@@ -101,4 +102,49 @@ class Question extends Model
         $objQuestion->updated_at = date("Y-m-d H:i:s");
         return $objQuestion->save();
     }
+
+    public function get_question_details($questionId){
+        return Question::select('question.id', 'question.question', 'question.quiz_id', 'question.answer1', 'question.answer2', 'question.answer3', 'question.answer4', 'question.right_answer', 'question.is_active')
+                    ->where('question.id', $questionId)
+                    ->get()
+                    ->toArray();
+    }
+
+    public function edit_question($requestData){
+        $objQuestion = Question::find($requestData->input('questionId'));
+        $objQuestion->quiz_id = $requestData->input('quizId');
+        $objQuestion->question = $requestData->input('question');
+        $objQuestion->answer1 = $requestData->input('answer1');
+        $objQuestion->answer2 = $requestData->input('answer2');
+        $objQuestion->answer3 = $requestData->input('answer3');
+        $objQuestion->answer4 = $requestData->input('answer4');
+        $objQuestion->right_answer = $requestData->input('answer');
+        $objQuestion->is_active = $requestData->input('status');
+        $objQuestion->is_deleted = 'N';
+        $objQuestion->created_at = date("Y-m-d H:i:s");
+        $objQuestion->updated_at = date("Y-m-d H:i:s");
+        return $objQuestion->save();
+    }
+    // common_activity_user
+
+    public function common_activity_user($data,$type){
+        $obQuestion = Question::find($data['id']);
+        if($type == 0){
+            $obQuestion->is_deleted = "Y";
+        }
+        if($type == 1){
+            $obQuestion->is_active = "Y";
+        }
+        if($type == 2){
+            $obQuestion->is_active = "N";
+        }
+
+        $obQuestion->updated_at = date("Y-m-d H:i:s");
+        if($obQuestion->save()){
+            return true;
+        }else{
+            return false ;
+        }
+    }
+
 }

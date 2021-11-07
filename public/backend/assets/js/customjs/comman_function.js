@@ -308,7 +308,6 @@ function handleFormValidateWithMsg(form, rules, messages, submitCallback, showTo
         },
         messages: messages,
         submitHandler: function(form) {
-            // $("#overlay").fadeIn(300);
             $('#loader').show();
             $('.submitbtn').attr("disabled", "disabled");
             $('.btnsubmit').attr("disabled", "disabled");
