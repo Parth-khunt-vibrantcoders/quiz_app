@@ -119,6 +119,7 @@ class Quiz extends Model
                 $image->move($destinationPath, $imagename);
                 $objQuiz->image = $imagename;
             }
+            $objQuiz->slug = $this->check_slug(generateRandomString(10));
             $objQuiz->name = $requestData->input('name');
             $objQuiz->fee = $requestData->input('fee');
             $objQuiz->prize = $requestData->input('prize');
@@ -201,6 +202,15 @@ class Quiz extends Model
             return true;
         }else{
             return false ;
+        }
+    }
+
+    public function check_slug($slug){
+        $count = Quiz::where('slug', $slug)->count();
+        if($count == 0){
+            return $slug;
+        }else{
+            $this->check_slug(generateRandomString(10));
         }
     }
 }

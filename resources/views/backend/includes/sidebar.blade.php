@@ -86,6 +86,7 @@ $currentRoute = Route::current()->getName();
 
             <li class="menu-item menu-item-submenu {{  $currentRoute == 'quiz-category-list'  || $currentRoute == 'quiz-category-add' || $currentRoute == 'quiz-category-edit' ||
                      $currentRoute == 'admin-quiz-view'  ||  $currentRoute == 'admin-quiz-list'  || $currentRoute == 'admin-quiz-add' || $currentRoute == 'admin-quiz-edit' ||
+                     $currentRoute == 'admin-quiz-add-question' ||  $currentRoute == 'admin-quiz-edit-question' ||
                     $currentRoute == 'quiz-type-list'  || $currentRoute == 'quiz-type-add' || $currentRoute == 'quiz-type-edit'
                       ? 'menu-item-open menu-item-active' :'' }}" aria-haspopup="true" data-menu-toggle="hover">
                 <a href="javascript:;" class="menu-link menu-toggle">
@@ -117,7 +118,7 @@ $currentRoute = Route::current()->getName();
                             </a>
                         </li>
 
-                        <li class="menu-item {{  $currentRoute == 'admin-quiz-view'  ||  $currentRoute == 'admin-quiz-list'  || $currentRoute == 'admin-quiz-add' || $currentRoute == 'admin-quiz-edit' ? 'menu-item-active' : ''}}" aria-haspopup="true">
+                        <li class="menu-item {{  $currentRoute == 'admin-quiz-add-question' ||  $currentRoute == 'admin-quiz-edit-question' ||   $currentRoute == 'admin-quiz-view'  ||  $currentRoute == 'admin-quiz-list'  || $currentRoute == 'admin-quiz-add' || $currentRoute == 'admin-quiz-edit' ? 'menu-item-active' : ''}}" aria-haspopup="true">
                             <a href="{{ route('admin-quiz-list') }}" class="menu-link">
                                 <i class="menu-bullet menu-bullet-dot text-white">
                                     <span></span>

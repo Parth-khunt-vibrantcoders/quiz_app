@@ -183,6 +183,26 @@ var Quiz = function(){
         });
     }
 
+    var view_quiz = function(){
+        var quiz_id = $('#quiz_id').val();
+        var dataArr = {};
+        var columnWidth = { "width": "5%", "targets": 0 };
+        var arrList = {
+            'pageLength': 5,
+            'tableID': '#quiz-question-master',
+            'ajaxURL': baseurl + "quiz/admin-quiz-ajaxcall",
+            'ajaxAction': 'getdatatable_question',
+            'postData': dataArr,
+            'hideColumnList': [],
+            'noSortingApply': [0],
+            'noSearchApply': [0],
+            'defaultSortColumn': [0],
+            'defaultSortOrder': 'DESC',
+            'setColumnWidth': columnWidth
+        };
+        getDataTable(arrList);
+    }
+
     return{
         init:function(){
             list();
@@ -192,6 +212,9 @@ var Quiz = function(){
         },
         edit:function(){
             edit_quiz();
+        },
+        view:function(){
+            view_quiz();
         }
     }
 }();

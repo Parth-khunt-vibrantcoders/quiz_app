@@ -69,10 +69,11 @@
 <div class="row">
     <div class="col-md-12">
         @csrf
+
         <!--begin::Card-->
         <div class="card card-custom gutter-b">
             <div class="card-header flex-wrap py-3">
-
+                <input type="hidden" value="{{ $quiz_details[0]['id']}}" id="quiz_id">
                 <div class="card-title">
                     <h3 class="card-label">Number of Question </h3>
                 </div>
@@ -80,7 +81,7 @@
 
                 <div class="card-toolbar">
                     <!--begin::Button-->
-                    <a href="{{ route('admin-quiz-add') }}" class="btn btn-primary font-weight-bolder">
+                    <a href="{{ route('admin-quiz-add-question', $quiz_details[0]['id']) }}" class="btn btn-primary font-weight-bolder">
                         Add Question
                     </a>
                     <!--end::Button-->
@@ -90,7 +91,7 @@
             </div>
             <div class="card-body">
                 <!--begin: Datatable-->
-                <table class="table table-bordered table-checkable"  id="quiz-master">
+                <table class="table table-bordered table-checkable"  id="quiz-question-master">
                     <thead>
                         <tr>
                             <th>Sr. No</th>

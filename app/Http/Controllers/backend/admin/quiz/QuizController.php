@@ -8,7 +8,7 @@ use Config;
 use App\Models\Quiz;
 use App\Models\Quiztype;
 use App\Models\Quizcategory;
-
+use App\Models\Question;
 class QuizController extends Controller
 {
     function __construct()
@@ -183,13 +183,11 @@ class QuizController extends Controller
         $data['description'] = 'View Quiz - '. Config::get('constants.PROJECT_NAME') ;
         $data['keywords'] = 'View Quiz - '. Config::get('constants.PROJECT_NAME') ;
         $data['plugincss'] = array(
-            'plugins/toastr/toastr.min.css'
+            'plugins/custom/datatables/datatables.bundle.css'
         );
         $data['pluginjs'] = array(
-            'plugins/validate/jquery.validate.min.js',
-            'js/pages/crud/forms/widgets/select2.js',
-            'js/pages/crud/file-upload/image-input.js',
-            'js/pages/crud/forms/widgets/bootstrap-timepicker.js'
+            'plugins/custom/datatables/datatables.bundle.js',
+            'js/pages/crud/datatables/data-sources/html.js'
         );
         $data['js'] = array(
             'comman_function.js',
@@ -219,6 +217,14 @@ class QuizController extends Controller
 
                 $objQuiz = new Quiz();
                 $list = $objQuiz->getdatatable();
+
+                echo json_encode($list);
+                break;
+
+            case 'getdatatable_question':
+
+                $objQuestion = new Question();
+                $list = $objQuestion->getdatatable();
 
                 echo json_encode($list);
                 break;
