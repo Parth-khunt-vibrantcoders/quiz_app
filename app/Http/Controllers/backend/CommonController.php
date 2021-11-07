@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Quiztype;
 use App\Models\Quizcategory;
+use App\Models\Quiz;
 class CommonController extends Controller
 {
     function __construct()
@@ -21,6 +22,13 @@ class CommonController extends Controller
 
                 $objQuizcategory = new Quizcategory();
                 $list = $objQuizcategory->change_quiz_type($request->input('data'));
+
+                echo json_encode($list);
+                break;
+            case 'change-quiz-category':
+
+                $objQuiz = new Quiz();
+                $list = $objQuiz->get_quiz_list($request->input('data'));
 
                 echo json_encode($list);
                 break;

@@ -89,4 +89,13 @@ Route::group(['prefix' => $prefix, 'middleware' => ['admin']], function() {
     Route::match(['get', 'post'], 'admin-quiz-add-question/{quiz_id}', ['as' => 'admin-quiz-add-question', 'uses' => 'backend\admin\question\QuestionController@add']);
     Route::match(['get', 'post'], 'admin-quiz-edit-question/{id}', ['as' => 'admin-quiz-edit-question', 'uses' => 'backend\admin\question\QuestionController@edit']);
     Route::match(['get', 'post'], 'admin-quiz-question-ajaxcall/{quiz_id}', ['as' => 'admin-quiz-question-ajaxcall', 'uses' => 'backend\admin\question\QuestionController@ajaxcall']);
+
+
+});
+
+$prefix = 'question';
+Route::group(['prefix' => $prefix, 'middleware' => ['admin']], function() {
+    Route::match(['get', 'post'], 'admin-question', ['as' => 'admin-question', 'uses' => 'backend\admin\question\QuestionController@list']);
+    Route::match(['get', 'post'], 'admin-question-add', ['as' => 'admin-question-add', 'uses' => 'backend\admin\question\QuestionController@addexcel']);
+    Route::match(['get', 'post'], 'admin-question-ajaxcall', ['as' => 'admin-question-ajaxcall', 'uses' => 'backend\admin\question\QuestionController@ajaxcall']);
 });

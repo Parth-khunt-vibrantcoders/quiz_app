@@ -929,6 +929,35 @@ $('body').on('change', '#quiz_type', function(){
             }
 
             $('#quiz_category').html(html);
+            $('#quiz_select').html(' <option value="">Select quiz</option>');
+        }
+    });
+});
+
+$('body').on('change', '#quiz_category', function(){
+
+    var quiz_category = $(this).val();
+    var data = { quiz_category: quiz_category, _token: $('#_token').val() };
+
+    $.ajax({
+        type: "POST",
+        headers: {
+            'X-CSRF-TOKEN': $('input[name="_token"]').val(),
+        },
+        url: baseurl + "common-ajaxcall",
+        data: { 'action': 'change-quiz-category', 'data': data },
+        success: function(data) {
+            var output = JSON.parse(data);
+            var temp_html = '';
+            var html ='<option value="">Select quiz</option>';
+
+
+            for (var i = 0; i < output.length; i++) {
+                temp_html = '<option value="' + output[i].id + '">' + output[i].name + '</option>';
+                html = html + temp_html;
+            }
+
+            $('#quiz_select').html(html);
         }
     });
 });

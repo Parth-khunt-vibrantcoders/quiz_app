@@ -213,4 +213,8 @@ class Quiz extends Model
             $this->check_slug(generateRandomString(10));
         }
     }
+
+    public function get_quiz_list($data){
+        return Quiz::select('quiz.id', 'quiz.name')->where('quiz.category', $data['quiz_category'])->get()->toArray();
+    }
 }

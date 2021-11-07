@@ -84,7 +84,7 @@
                             <div class="form-group">
                                 <label>Question
                                 <span class="text-danger">*</span></label>
-                                <textarea name="question" placeholder="Please enter question"  class="form-control" >India has approved a MoU with which county in the field of Astrophysics</textarea>
+                                <textarea name="question" placeholder="Please enter question"  class="form-control" ></textarea>
                             </div>
                         </div>
                     </div>
@@ -94,7 +94,7 @@
                             <div class="form-group">
                                 <label>Answer 1
                                 <span class="text-danger">*</span></label>
-                                <input type="text" name="answer1" class="form-control" value="Germany" placeholder="Enter your answer 1" >
+                                <input type="text" name="answer1" class="form-control" value="" placeholder="Enter your answer 1" >
                             </div>
                         </div>
 
@@ -102,7 +102,7 @@
                             <div class="form-group">
                                 <label>Answer 2
                                 <span class="text-danger">*</span></label>
-                                <input type="text" name="answer2" class="form-control" value="Holland" placeholder="Enter your answer 2" >
+                                <input type="text" name="answer2" class="form-control" value="" placeholder="Enter your answer 2" >
                             </div>
                         </div>
                     </div>
@@ -112,7 +112,7 @@
                             <div class="form-group">
                                 <label>Answer 3
                                 <span class="text-danger">*</span></label>
-                                <input type="text" name="answer3" class="form-control" value="Portugal" placeholder="Enter your answer 3" >
+                                <input type="text" name="answer3" class="form-control" value="" placeholder="Enter your answer 3" >
                             </div>
                         </div>
 
@@ -120,7 +120,7 @@
                             <div class="form-group">
                                 <label>Answer 4
                                 <span class="text-danger">*</span></label>
-                                <input type="text" name="answer4" class="form-control" value="Spain" placeholder="Enter your answer 4" >
+                                <input type="text" name="answer4" class="form-control" value="" placeholder="Enter your answer 4" >
                             </div>
                         </div>
                     </div>
@@ -140,7 +140,7 @@
                                     <input type="radio" name="answer" class="radio-btn" value="3"/>
                                     <span></span>Answer 3</label>
                                     <label class="radio radio-lg radio-success" >
-                                    <input type="radio" name="answer" class="radio-btn" value="4" checked="checked"/>
+                                    <input type="radio" name="answer" class="radio-btn" value="4" />
                                     <span></span>Answer 4</label>
                                 </div>
                             </div>

@@ -131,6 +131,15 @@ $currentRoute = Route::current()->getName();
                 </div>
             </li>
 
+            <li class="menu-item {{ $currentRoute == 'admin-question' || $currentRoute == 'admin-question-add'  ? 'menu-item-active' : '' }} " aria-haspopup="true">
+                <a href="{{ route('admin-question') }}" class="menu-link">
+                    <span class="menu-icon">
+                        <i class="fab fa-quora text-white" aria-hidden="true"></i>
+                    </span>
+                    <span class="menu-text">Question List</span>
+                </a>
+            </li>
+
         </ul>
         <!--end::Menu Nav-->
     </div>
