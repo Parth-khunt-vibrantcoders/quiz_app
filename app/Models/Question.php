@@ -20,7 +20,7 @@ class Question extends Model
             1 => 'question.is_active',
         );
 
-        $query = Landingpagequestion ::from('question')
+        $query = Question ::from('question')
                                 ->where('question.quiz_id', $quizId)
                                 ->where('question.is_deleted', 'N');
 
@@ -100,7 +100,7 @@ class Question extends Model
             5 => 'question.is_active',
         );
 
-        $query = Landingpagequestion ::from('question')
+        $query = Question ::from('question')
                                 ->join('quiz','quiz.id', '=', 'question.quiz_id')
                                 ->join('quiz_category','quiz_category.id', '=', 'quiz.category')
                                 ->join('quiz_type','quiz_type.id', '=', 'quiz_category.quiz_type')

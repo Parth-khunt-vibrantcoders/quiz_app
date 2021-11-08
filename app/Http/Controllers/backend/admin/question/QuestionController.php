@@ -9,6 +9,8 @@ use App\Models\Question;
 use App\Models\Quiztype;
 use App\Models\Quizcategory;
 use App\Models\Quiz;
+use App\Imports\UsersImport;
+use Excel;
 
 class QuestionController extends Controller
 {
@@ -54,18 +56,13 @@ class QuestionController extends Controller
 
         if ($request->isMethod('post')) {
 
-            $ojbQuestion = new Question();
-            $result = $ojbQuestion->add_excel_question($request);
-            if ($result) {
-                $return['status'] = 'success';
-                 $return['jscode'] = '$(".submitbtn:visible").removeAttr("disabled");';
-                $return['message'] = 'Question added successfully.';
-                $return['redirect'] = route('admin-quiz-view');
-            } else {
-                $return['status'] = 'error';
-                $return['jscode'] = '$(".submitbtn:visible").removeAttr("disabled");$("#loader").hide();';
-                $return['message'] = 'Something goes to wrong';
-            }
+            $path = $request->file('file')->getRealPath();
+            $data = Excel::import(new UsersImport($request->input('quiz')),$path);
+            $return['status'] = 'success';
+            $return['jscode'] = '$(".submitbtn:visible").removeAttr("disabled");';
+            $return['message'] = 'Question added successfully.';
+            $return['redirect'] = route('admin-question');
+
             echo json_encode($return);
             exit;
         }
