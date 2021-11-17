@@ -1,3 +1,4 @@
+<div id="loader"></div>
 <!-- Plugins JS Ends-->
 <script src="{{ asset('public/frontend/js/customjs/jquery.min.js') }}"></script>
 <script type="text/javascript">

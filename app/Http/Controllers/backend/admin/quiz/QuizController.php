@@ -229,22 +229,7 @@ class QuizController extends Controller
                 echo json_encode($list);
                 break;
 
-            case 'delete-quiz':
 
-                $objQuiz = new Quiz();
-                $result = $objQuiz->common_activity_user($request->input('data'),0);
-
-                if ($result) {
-                    $return['status'] = 'success';
-                    $return['message'] = 'Quiz successfully deleted';
-                    $return['redirect'] = route('admin-quiz-list');
-                } else {
-                    $return['status'] = 'error';
-                    $return['jscode'] = '$("#loader").hide();';
-                    $return['message'] = 'Something goes to wrong.';
-                }
-                echo json_encode($return);
-                exit;
 
             case 'delete-question':
 
@@ -315,6 +300,8 @@ class QuizController extends Controller
                 exit;
 
 
+
+
             case 'active-quiz':
 
                 $objQuiz = new Quiz();
@@ -333,6 +320,7 @@ class QuizController extends Controller
                 exit;
 
 
+
             case 'deactive-quiz':
 
                 $objQuiz = new Quiz();
@@ -341,6 +329,24 @@ class QuizController extends Controller
                 if ($result) {
                     $return['status'] = 'success';
                     $return['message'] = 'Quiz successfully deactived';
+                    $return['redirect'] = route('admin-quiz-list');
+                } else {
+                    $return['status'] = 'error';
+                    $return['jscode'] = '$("#loader").hide();';
+                    $return['message'] = 'Something goes to wrong.';
+                }
+                echo json_encode($return);
+                exit;
+
+
+            case 'delete-quiz':
+
+                $objQuiz = new Quiz();
+                $result = $objQuiz->common_activity_user($request->input('data'),0);
+
+                if ($result) {
+                    $return['status'] = 'success';
+                    $return['message'] = 'Quiz successfully deleted';
                     $return['redirect'] = route('admin-quiz-list');
                 } else {
                     $return['status'] = 'error';

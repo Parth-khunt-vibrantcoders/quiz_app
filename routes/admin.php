@@ -99,3 +99,5 @@ Route::group(['prefix' => $prefix, 'middleware' => ['admin']], function() {
     Route::match(['get', 'post'], 'admin-question-add', ['as' => 'admin-question-add', 'uses' => 'backend\admin\question\QuestionController@addexcel']);
     Route::match(['get', 'post'], 'admin-question-ajaxcall', ['as' => 'admin-question-ajaxcall', 'uses' => 'backend\admin\question\QuestionController@ajaxcall']);
 });
+
+

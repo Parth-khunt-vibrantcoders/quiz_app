@@ -16,7 +16,12 @@ class HomeController extends Controller
     }
 
     public function home(Request $request){
-        return redirect()->route('get-started');
+        if($request->get('id')){
+            $adId = $request->get('id');
+        }else{
+            $adId = Config::get('constants.DEFULT_ID');
+        }
+        return redirect()->route('get-started', ['id' => $adId]);
     }
 
     public function get_started(Request $request){

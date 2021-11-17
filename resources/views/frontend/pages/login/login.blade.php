@@ -50,7 +50,7 @@
 						</form>
 
                         <div class="sign-login">
-                            <a href="{{ route('sign-up') }}">Create New Account</a>
+                            <a href="{{ route('sign-up',['id' => $adId]) }}">Create New Account</a>
                         </div>
 
 						<div class="login-content">

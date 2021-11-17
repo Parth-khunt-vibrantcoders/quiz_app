@@ -29,4 +29,5 @@ Route::match(['get','post'],'get-started',['as'=>'get-started','uses'=>'frontend
 Route::match(['get','post'],'sign-in',['as'=>'sign-in','uses'=>'frontend\login\LoginController@login']);
 Route::match(['get','post'],'sign-up',['as'=>'sign-up','uses'=>'frontend\login\LoginController@register']);
 Route::match(['get','post'],'page-not-found',['as'=>'page-not-found','uses'=>'frontend\home\HomeController@pagenotfound']);
+Route::match(['get', 'post'], 'logout', ['as' => 'logout', 'uses' => 'frontend\login\LoginController@logout']);
 

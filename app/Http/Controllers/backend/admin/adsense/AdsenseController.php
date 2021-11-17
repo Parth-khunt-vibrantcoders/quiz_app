@@ -15,7 +15,6 @@ class AdsenseController extends Controller
     }
 
     public function list(Request $request){
-
         $data['title'] = 'Adsense users list || '.Config::get('constants.PROJECT_NAME') ;
         $data['keywords'] = 'Adsense users list || '.Config::get('constants.PROJECT_NAME') ;
         $data['description'] = 'Adsense users list || '.Config::get('constants.PROJECT_NAME') ;

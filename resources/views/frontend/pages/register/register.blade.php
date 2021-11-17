@@ -1,17 +1,6 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<title>Qzop - Login</title>
-
-		<meta charset="UTF-8">
-		<meta name="description" content="">
-		<meta name="keywords" content="">
-		<meta name="author" content="">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-		<link rel="stylesheet" type="text/css" href="{{ asset('public/frontend/css/style.css') }}" />
-		<link rel="stylesheet" type="text/css" href="{{ asset('public/frontend/css/customcss.css') }}" />
-	</head>
+	@include('frontend.include.header')
 	<body>
 
 		<div class="side-bar">
@@ -71,7 +60,7 @@
 						</form>
 
                         <div class="sign-login">
-                            <a href="{{ route('sign-in') }}">Already have an account</a>
+                            <a href="{{ route('sign-in', ['id'=> $adId]) }}">Already have an account</a>
                         </div>
 
 						<div class="login-content">

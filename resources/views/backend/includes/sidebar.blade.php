@@ -17,6 +17,15 @@ $currentRoute = Route::current()->getName();
                 </a>
             </li>
 
+            <li class="menu-item {{ $currentRoute == 'user-list'  ? 'menu-item-active' : '' }} " aria-haspopup="true">
+                <a href="{{ route('user-list') }}" class="menu-link">
+                    <span class="menu-icon">
+                        <i class="fa fa-users text-white" aria-hidden="true"></i>
+                    </span>
+                    <span class="menu-text">Users List</span>
+                </a>
+            </li>
+
             <li class="menu-item menu-item-submenu {{  $currentRoute == 'landing-page-background-image' || $currentRoute == 'landing-page-question-list' || $currentRoute == 'landing-page-question-add' || $currentRoute == 'landing-page-question-edit'  ? 'menu-item-open menu-item-active' :'' }}" aria-haspopup="true" data-menu-toggle="hover">
                 <a href="javascript:;" class="menu-link menu-toggle">
                     <span class="svg-icon menu-icon">
@@ -139,6 +148,8 @@ $currentRoute = Route::current()->getName();
                     <span class="menu-text">Question List</span>
                 </a>
             </li>
+
+
 
         </ul>
         <!--end::Menu Nav-->

@@ -36,6 +36,7 @@
                                 </select>
                             </div>
                         </div>
+
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label>Quiz
@@ -48,7 +49,6 @@
 
                         <div class="col-md-12">
                             <div class="form-group">
-
                                 <div class="form-group">
                                     <label>Upload Excel File<span class="text-danger">*</span></label>
                                     <div></div>
@@ -57,14 +57,10 @@
                                         <label class="custom-file-label" for="customFile">Choose file</label>
                                     </div>
                                 </div>
-
                             </div>
                         </div>
 
                     </div>
-
-
-
                 </div>
 
                 <div class="card-footer">
