@@ -56,8 +56,10 @@ class QuestionController extends Controller
 
         if ($request->isMethod('post')) {
 
-            $path = $request->file('file')->getRealPath();
-            $data = Excel::import(new UsersImport($request->input('quiz')),$path);
+
+            // $path = $request->file('file')->getRealPath();
+            $path = $request->file('file')->store('temp');
+            $data = \Excel::import(new UsersImport($request->input('quiz')),$path);
             $return['status'] = 'success';
             $return['jscode'] = '$(".submitbtn:visible").removeAttr("disabled");';
             $return['message'] = 'Question added successfully.';
