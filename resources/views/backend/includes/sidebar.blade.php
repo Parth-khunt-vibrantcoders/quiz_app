@@ -26,6 +26,15 @@ $currentRoute = Route::current()->getName();
                 </a>
             </li>
 
+            <li class="menu-item {{ $currentRoute == 'start-quiz-image'  ? 'menu-item-active' : '' }} " aria-haspopup="true">
+                <a href="{{ route('start-quiz-image') }}" class="menu-link">
+                    <span class="menu-icon">
+                        <i class="fa fa-hourglass-start" aria-hidden="true"></i>
+                    </span>
+                    <span class="menu-text">Start quiz page image</span>
+                </a>
+            </li>
+
             <li class="menu-item menu-item-submenu {{  $currentRoute == 'landing-page-background-image' || $currentRoute == 'landing-page-question-list' || $currentRoute == 'landing-page-question-add' || $currentRoute == 'landing-page-question-edit'  ? 'menu-item-open menu-item-active' :'' }}" aria-haspopup="true" data-menu-toggle="hover">
                 <a href="javascript:;" class="menu-link menu-toggle">
                     <span class="svg-icon menu-icon">

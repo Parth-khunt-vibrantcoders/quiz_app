@@ -28,3 +28,7 @@
     z-index: 10000;
 }
 
+.my-btn{
+    box-shadow: 0 3px #3e51b5, 0 5px #3e51b5, 0 0 #3e51b5;
+}
+

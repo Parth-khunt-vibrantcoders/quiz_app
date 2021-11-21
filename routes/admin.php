@@ -52,6 +52,13 @@ Route::group(['prefix' => $prefix, 'middleware' => ['admin']], function() {
 
 });
 
+$prefix = 'start-quiz';
+Route::group(['prefix' => $prefix, 'middleware' => ['admin']], function() {
+    // Dashboard
+    Route::match(['get', 'post'], 'start-quiz-image', ['as' => 'start-quiz-image', 'uses' => 'backend\admin\startquiz\ImageController@image']);
+
+});
+
 $prefix = 'users';
 Route::group(['prefix' => $prefix, 'middleware' => ['admin']], function() {
     Route::match(['get', 'post'], 'user-list', ['as' => 'user-list', 'uses' => 'backend\admin\users\UsersController@list']);

@@ -25,7 +25,7 @@ class LoginController extends Controller
                     Session::push('logindata', $loginData);
                     $return['status'] = 'success';
                     $return['message'] = 'Well Done login Successfully!';
-                    $return['redirect'] = route('home');
+                    $return['redirect'] = route('quiz-list', ['id' => $request->get('id')]);
 
                 } else {
                     $return['status'] = 'error';
@@ -61,7 +61,7 @@ class LoginController extends Controller
             );
             return view('frontend.pages.login.login', $data);
         }else{
-            return redirect()->route('sign-up', 'id='.Config::get('constants.DEFULT_ID'));
+            return redirect()->route('sign-in', 'id='.Config::get('constants.DEFULT_ID'));
         }
     }
 
