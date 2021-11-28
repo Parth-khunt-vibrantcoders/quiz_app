@@ -1,6 +1,9 @@
 <div id="loader"></div>
 <!-- Plugins JS Ends-->
 <script src="{{ asset('public/frontend/js/customjs/jquery.min.js') }}"></script>
+<script src="{{ asset('public/frontend/js/popper.min.js') }}"></script>
+<script src="{{ asset('public/frontend/js/bootstrap.min.js') }}"></script>
+
 <script type="text/javascript">
     jQuery(document).ready(function () {
         $('#loader').show();

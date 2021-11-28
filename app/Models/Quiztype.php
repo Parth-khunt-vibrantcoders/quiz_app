@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use DB;
+use App\Models\Quizcategory;
+use App\Models\Quiz;
 class Quiztype extends Model
 {
     use HasFactory;
@@ -86,7 +88,38 @@ class Quiztype extends Model
     }
 
     public function get_quiz_type_list(){
-        return Quiztype::select('quiz_type.name', 'quiz_type.id',)->where('status', 'Y')->where('is_deleted', 'N')->get()->toArray();
+        return Quiztype::select('quiz_type.name', 'quiz_type.id',)
+                        ->where('quiz_type.status', 'Y')
+                        ->where('quiz_type.is_deleted', 'N')
+                        ->get()
+                        ->toArray();
+    }
+    public function get_quiz_type_frontend_list(){
+        $result = Quiztype::select('quiz_type.name', 'quiz_type.id',)
+                        ->where('quiz_type.status', 'Y')
+                        ->where('quiz_type.is_deleted', 'N')
+                        ->get()
+                        ->toArray();
+        foreach($result as $key => $value){
+            $res = Quiz::from('quiz')
+                        ->join('question', 'question.quiz_id', '=', 'quiz.id')
+                        ->join('quiz_category', 'quiz_category.id', '=', 'quiz.category')
+                        ->join('quiz_type', 'quiz_type.id', '=', 'quiz_category.quiz_type')
+                        ->where('quiz_type.status', 'Y')
+                        ->where('quiz_type.is_deleted', 'N')
+                        ->where('quiz_category.status', 'Y')
+                        ->where('quiz_category.is_deleted', 'N')
+                        ->where('quiz.status', 'Y')
+                        ->where('quiz.is_deleted', 'N')
+                        ->where('quiz_type.id', $value['id'])
+                        ->groupBy('question.quiz_id')
+                        ->select('quiz.slug', 'quiz.image', 'quiz.name as quiz_app', 'quiz.fee', 'quiz.prize', 'quiz.time', 'quiz_category.name')
+                        ->get()
+                        ->toArray();
+            $result[$key]['quiz'] = $res;
+        }
+
+        return $result;
     }
 
     public function add_quiz_type($request){

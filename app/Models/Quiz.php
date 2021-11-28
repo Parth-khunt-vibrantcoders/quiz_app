@@ -106,10 +106,7 @@ class Quiz extends Model
     }
 
     public function add_quiz($requestData){
-       $count = Quiz::where('quiz.category',$requestData->input('quiz_category'))
-                ->where('quiz.name',$requestData->input('name'))
-                ->count();
-        if($count == 0){
+
             $objQuiz = new Quiz();
             $objQuiz->category = $requestData->input('quiz_category');
             if($requestData->file('image')){
@@ -132,8 +129,7 @@ class Quiz extends Model
                 return 'true';
             }
             return 'false';
-        }
-        return 'quiz_exits';
+
     }
 
     public function get_quiz_edit($editId){
@@ -157,32 +153,27 @@ class Quiz extends Model
     }
 
     public function edit_quiz($requestData){
-        $count = Quiz::where('quiz.category', $requestData->input('quiz_category'))
-                ->where('quiz.name', $requestData->input('name'))
-                ->where('quiz.id', '!=', $requestData->input('editId'))
-                ->count();
-        if($count == 0){
-            $objQuiz = Quiz::find($requestData->input('editId'));
-            $objQuiz->category = $requestData->input('quiz_category');
-            if($requestData->file('image')){
-                $image = $requestData->file('image');
-                $imagename = time().'.'.$image->getClientOriginalExtension();
-                $destinationPath = public_path('/uploads/quiz/');
-                $image->move($destinationPath, $imagename);
-                $objQuiz->image = $imagename;
-            }
-            $objQuiz->name = $requestData->input('name');
-            $objQuiz->fee = $requestData->input('fee');
-            $objQuiz->prize = $requestData->input('prize');
-            $objQuiz->time = date("H:i:s", strtotime($requestData->input('time')));
-            $objQuiz->status = $requestData->input('status');
-            $objQuiz->updated_at = date('Y-m-d h:i:s');
-            if($objQuiz->save()){
-                return 'true';
-            }
-            return 'false';
+
+        $objQuiz = Quiz::find($requestData->input('editId'));
+        $objQuiz->category = $requestData->input('quiz_category');
+        if($requestData->file('image')){
+            $image = $requestData->file('image');
+            $imagename = time().'.'.$image->getClientOriginalExtension();
+            $destinationPath = public_path('/uploads/quiz/');
+            $image->move($destinationPath, $imagename);
+            $objQuiz->image = $imagename;
         }
-        return 'quiz_exits';
+        $objQuiz->name = $requestData->input('name');
+        $objQuiz->fee = $requestData->input('fee');
+        $objQuiz->prize = $requestData->input('prize');
+        $objQuiz->time = date("H:i:s", strtotime($requestData->input('time')));
+        $objQuiz->status = $requestData->input('status');
+        $objQuiz->updated_at = date('Y-m-d h:i:s');
+        if($objQuiz->save()){
+            return 'true';
+        }
+        return 'false';
+
     }
 
     public function common_activity_user($data,$type){

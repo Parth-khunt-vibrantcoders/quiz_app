@@ -32,3 +32,13 @@ Route::match(['get','post'],'sign-up',['as'=>'sign-up','uses'=>'frontend\login\L
 Route::match(['get','post'],'page-not-found',['as'=>'page-not-found','uses'=>'frontend\home\HomeController@pagenotfound']);
 Route::match(['get', 'post'], 'logout', ['as' => 'logout', 'uses' => 'frontend\login\LoginController@logout']);
 
+$prefix = 'users';
+Route::group(['prefix' => $prefix], function() {
+    // quiz-list
+    Route::match(['get','post'],'quiz-list',['as'=>'quiz-list','uses'=>'frontend\quiz\QuizController@quiz_list']);
+});
+
+$prefix = 'contest';
+Route::group(['prefix' => $prefix], function() {
+    Route::match(['get','post'],'join-contest/{slug}',['as'=>'join-contest','uses'=>'frontend\joincontest\JoincontestController@joincontest']);
+});
