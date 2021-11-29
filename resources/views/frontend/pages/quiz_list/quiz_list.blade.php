@@ -53,7 +53,7 @@
                                                 <div class="quiz-list-box-footer">
                                                     <span>ENTRY FEE <i class="fas fa-coins"></i> {{ $quiz_val['fee'] }}</span>
                                                     <div class="play-btn">
-                                                        <a href="{{ route('join-contest', $quiz_val['slug'], ['id' => $adid ] )}}">
+                                                        <a href="{{ route('join-contest', [ $quiz_val['slug'], 'id' => $adid ] )}}">
                                                             <button type="button">Play</button>
                                                         </a>
                                                     </div>

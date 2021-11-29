@@ -39,7 +39,7 @@ class JoincontestController extends Controller
             return view('frontend.pages.joincontest.joincontest', $data);
 
         }else{
-            return redirect()->route('join-contest', $slug, 'id='.Config::get('constants.DEFULT_ID'));
+            return redirect()->route('join-contest', [$slug , 'id='.Config::get('constants.DEFULT_ID')]);
         }
 
     }

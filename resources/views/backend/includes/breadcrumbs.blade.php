@@ -47,22 +47,7 @@ $currentRoute = Route::current()->getName();
 
             </ul>
 
-        </div>
-        @if ($currentRoute == "analytics-dashboard" || $currentRoute == "analytics-popular-hours" || $currentRoute == "analytics-monthly-pattern" || $currentRoute == "analytics-weekdays" ||
-             $currentRoute == "sales-by-group" || $currentRoute == "sales-by-brand" || $currentRoute == "sales-by-category" || $currentRoute == "revenue-by-staff" || $currentRoute == "top-10-services" ||
-             $currentRoute == "top-10-products" || $currentRoute == "sales-by-employee")
-            <div style="float: right">
-                <select class="form-control select2" id="branch_analytics_dashboard"  name="branch">
-                    {{-- @if($project_name != 'trendsetter') --}}
-                    {{-- @endif --}}
-                    <option value="all">All Branches</option>
-                        @foreach ($branch_list as $key => $value)
-                            <option value="{{ $value['id'] }}" {{ $branch == $value['id'] ? 'selected="selected"' : '' }}>{{ $value['full_name'] }}</option>
-                        @endforeach
-
-                </select>
-            </div>
-        @endif
+        </div>        
 
        <!--end::Info-->
 
