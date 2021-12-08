@@ -8,7 +8,7 @@
                                     $i = 0 ;
                                 @endphp
                                 @foreach ($quiz_type as $qt_key => $qt_val)
-                                    <li style="width: {{ 100 / count($quiz_type) }}">
+                                    <li style="width: {{ 100 / count($quiz_type) }}% !important">
                                         <a class="{{ $i == 0 ? 'active' : '' }}" data-toggle="tab" href="#quiz_type{{ $qt_val['id'] }}">{{ $qt_val['name'] }}</a>
                                     </li>
                                     @php
