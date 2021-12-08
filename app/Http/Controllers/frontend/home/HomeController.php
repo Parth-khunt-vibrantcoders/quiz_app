@@ -88,9 +88,9 @@ class HomeController extends Controller
                 'Landingpage.init()'
             );
 
-            return view('frontend.pages.home.start_quiz', $data);
+            return view('frontend.pages.start_quiz.start_quiz', $data);
         }else{
-            return redirect()->route('get-started', 'id='.Config::get('constants.DEFULT_ID'));
+            return redirect()->route('quiz-start', 'id='.Config::get('constants.DEFULT_ID'));
         }
     }
 }

@@ -1,20 +1,29 @@
-@extends('frontend.layouts.layout')
-@section('section')
-<section>
+<!DOCTYPE html>
+<html>
+	@include('frontend.include.header')
+	<body>
+
+
+		<div class="side-bar">
+			<div class="side-bar-inner">
+                @include('frontend.include.body_header')
+
+
+				<section>
 					<div class="container">
 						<div class="quiz-list-tab">
 							<ul class="nav">
                                 @php
                                     $i = 0 ;
                                 @endphp
-                                @foreach ($quiz_type as $qt_key => $qt_val)
-                                    <li>
-                                        <a class="{{ $i == 0 ? 'active' : '' }}" data-toggle="tab" href="#quiz_type{{ $qt_val['id'] }}">{{ $qt_val['name'] }}</a>
-                                    </li>
-                                    @php
-                                        $i++ ;
-                                    @endphp
-                                @endforeach
+                                    @foreach ($quiz_type as $qt_key => $qt_val)
+                                        <li>
+                                            <a class="{{ $i == 0 ? 'active' : '' }}" data-toggle="tab" href="#quiz_type{{ $qt_val['id'] }}">{{ $qt_val['name'] }}</a>
+                                        </li>
+                                        @php
+                                            $i++ ;
+                                        @endphp
+                                    @endforeach
 							</ul>
 						</div>
 
@@ -54,9 +63,27 @@
 
                                     </div>
                                 </div>
-                        @endforeach
+                            @endforeach
+
 
 						</div>
 					</div>
 				</section>
-@endsection
+			</div>
+		</div>
+
+		<div class="desktop">
+			<div class="desktop-inner">
+				<div class="">
+					<img src="{{ asset('public/uploads/landingpages/'.$image->image ) }}">
+				</div>
+				<div class="desktop-logo">
+					<img src="{{ asset('public/frontend/images/desktop-logo.png') }}">
+					<p>Play Quiz, <b>Win Coins !</b></p>
+				</div>
+			</div>
+		</div>
+
+    @include('frontend.include.footer')
+	</body>
+</html>

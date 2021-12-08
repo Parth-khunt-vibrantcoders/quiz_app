@@ -32,11 +32,3 @@
     box-shadow: 0 3px #3e51b5, 0 5px #3e51b5, 0 0 #3e51b5;
 }
 
-.hidden{
-    display: none !important;
-}
-
-.quiz-list-box-footer{
-    border-top: 1px solid #e89d1d !important;
-    width: 100% !important;
-}
