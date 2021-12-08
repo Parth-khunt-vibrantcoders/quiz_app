@@ -9,7 +9,7 @@
 @endphp
 <!--begin::Section-->
 <div class="row">
-    <div class="col-md-7 col-lg-12 col-xxl-7">
+    <div class="col-md-12">
         <!--begin::Engage Widget 14-->
         <div class="card card-custom card-stretch gutter-b">
             <div class="card-body">
