@@ -36,6 +36,7 @@ class HomeController extends Controller
             $data['image'] = $objLandingpageimage->get_landing_page_image_details();
 
             $data['adid'] = $request->get('id');
+
             $data['title'] =  'Home || '. Config::get('constants.PROJECT_NAME');
             $data['description'] =  'Home || '. Config::get('constants.PROJECT_NAME');
             $data['keywords'] =  'Home || '. Config::get('constants.PROJECT_NAME');

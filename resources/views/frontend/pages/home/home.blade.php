@@ -8,6 +8,7 @@
                     <h2>Let’s Get Started</h2>
                     <p>Share your Prefrence to get <i class="fas fa-coins"></i> 100 coins free!</p>
                 </div>
+                <input type="hidden" id="adid" value="{{ $adid }}">
                 <form>
                     <div class="question-head">
                         @php
