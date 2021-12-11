@@ -9,7 +9,7 @@
             </div>
             <div class="play-now-head">
                 <span>{{ $quiz_details[0]['quiz_category']}}</span>
-                <h4>{{ $quiz_details[0]['name']}} <i class="fas fa-coins" style="color: #e89d1d;"></i> {{ $quiz_details[0]['prize']}}</h4>
+                <h4 class="quiz-category">{{ $quiz_details[0]['name']}} <i class="fas fa-coins" style="color: #e89d1d;"></i> {{ $quiz_details[0]['prize']}}</h4>
             </div>
         </div>
         <div class="progress-top">
@@ -19,8 +19,6 @@
                     <div class="progress">
                         <div class="bar-main">
                             <div class="timer">
-                              <!-- <span class="hour">00</span> -->
-                              <!-- <span class="minute">00</span> -->
                               <span class="second">00</span>
                             </div>
                         </div>
@@ -69,14 +67,17 @@
                                 </label>
                             </li>
                         </ul>
+
+                        <div class="your-score">
+                            <input type="hidden" id="score-text" value="0">
+                            <p>Your Score: <span class="score-text">0</span></p>
+                        </div>
                     </div>
                     @php
                         $i++;
                     @endphp
                 @endforeach
-                <div class="sign-login">
-                    <a href="{{ route('sign-in') }}">Sign Up · Login</a>
-                </div>
+
             </div>
         </form>
     </div>

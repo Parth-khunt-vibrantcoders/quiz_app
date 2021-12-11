@@ -52,3 +52,29 @@
     color: var(--text-color);
     margin: 0px !important;
 }
+
+.quiz-category{
+    color: var(--text-color) !important;
+}
+
+.weight-bold{
+    font-weight: bold !important;
+}
+
+.cursor-pointer{
+    cursor: pointer;
+}
+
+
+table, th, td {
+    border: 2px solid var(--text-color) !important;
+    padding: 7px;
+}
+
+table {
+    margin-top: 15px !important;
+    color: var(--text-color) !important;
+    caption-side:bottom;
+    width: 100% !important;
+    border: 2px solid var(--text-color) !important;
+}

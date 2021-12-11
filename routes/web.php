@@ -42,4 +42,5 @@ $prefix = 'contest';
 Route::group(['prefix' => $prefix], function() {
     Route::match(['get','post'],'join-contest/{slug}',['as'=>'join-contest','uses'=>'frontend\joincontest\JoincontestController@joincontest']);
     Route::match(['get','post'],'play-contest/{slug}',['as'=>'play-contest','uses'=>'frontend\joincontest\JoincontestController@playcontest']);
+    Route::match(['get','post'],'quiz-rules',['as'=>'quiz-rules','uses'=>'frontend\quiz\QuizController@quiz_rules']);
 });
