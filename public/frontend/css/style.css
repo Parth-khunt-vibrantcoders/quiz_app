@@ -410,6 +410,16 @@ header {
     border: 1px solid #e63737;
 }
 
+.question-head ul li.right-ans label span {
+    background: #0db25b;
+    /* border: 1px solid #0db25b; */
+}
+
+.question-head ul li.wrong-ans label span {
+    background: #e63737;
+    /* border: 1px solid #e63737; */
+}
+
 .sign-login {
     margin-top: 30px;
 }
@@ -561,7 +571,7 @@ header {
 }
 
 .play-btn button {
-    background: #f50946;
+    background: #ffb446;
     color:#fff;
     font-size: 14px;
     text-transform: uppercase;

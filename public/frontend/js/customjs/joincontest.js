@@ -1,11 +1,13 @@
-var Landingpage = function(){
-    var question = function(){
+var Joincontest = function(){
+    var list = function(){
         $("body").on('change', '.answer-btn', function(){
             var value = $(this).val();
             var adid = $("#adid").val();
 
             var question_no = $(this).attr('data-question');
+
             var correct_ans = $("#question"+question_no).val();
+            // alert(correct_ans);
 
             if(correct_ans == value){
                 $(this).closest('.answerui').addClass('right-ans');
@@ -16,7 +18,7 @@ var Landingpage = function(){
 
             $("#"+correct_ans_id).closest('.answerui').addClass('right-ans');
 
-            if(question_no != 2){
+            if(question_no != 25){
                 setTimeout(function() {
                     $("#question_answer"+question_no).delay(1000).addClass('hidden');
                     $("#question_answer"+ parseInt(parseInt(question_no)+1)).delay(1000).removeClass('hidden');
@@ -26,11 +28,14 @@ var Landingpage = function(){
                     window.location.href = baseurl + "quiz-start?id=" + adid;
                 }, 1000);
             }
+
+
+
         });
     }
     return {
         init:function(){
-            question();
+            list();
         }
     }
 }();

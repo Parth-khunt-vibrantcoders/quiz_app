@@ -90,5 +90,5 @@
         </section>
     </div>
 </div>
-@include('frontend.include.body_footer')
+@include('frontend.includes.body_footer')
 @endsection

@@ -208,4 +208,13 @@ class Quiz extends Model
     public function get_quiz_list($data){
         return Quiz::select('quiz.id', 'quiz.name')->where('quiz.category', $data['quiz_category'])->get()->toArray();
     }
+
+    public function get_quiz_details($slug){
+        return Quiz::from('quiz')
+                ->join('quiz_category', 'quiz_category.id', '=', 'quiz.category')
+                ->where('quiz.slug', $slug)
+                ->select('quiz.id', 'quiz.name','quiz.slug', 'quiz.image', 'quiz.prize', 'quiz_category.name as quiz_category')
+                ->get()
+                ->toArray();
+    }
 }

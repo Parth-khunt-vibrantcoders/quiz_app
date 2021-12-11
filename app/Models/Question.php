@@ -232,4 +232,15 @@ class Question extends Model
         }
     }
 
+
+    public function get_quiz_details($slug){
+        return Question::from('question')
+            ->join('quiz', 'quiz.id', '=', 'question.quiz_id')
+            ->where('quiz.slug', $slug)
+            ->where('question.is_active', 'Y')
+            ->where('question.is_deleted', 'N')
+            ->select('question.question', 'question.answer1', 'question.answer2', 'question.answer3', 'question.right_answer', 'question.answer4')
+            ->get()
+            ->toArray();
+    }
 }

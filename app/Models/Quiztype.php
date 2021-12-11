@@ -100,6 +100,7 @@ class Quiztype extends Model
                         ->where('quiz_type.is_deleted', 'N')
                         ->get()
                         ->toArray();
+
         foreach($result as $key => $value){
             $res = Quiz::from('quiz')
                         ->join('question', 'question.quiz_id', '=', 'quiz.id')

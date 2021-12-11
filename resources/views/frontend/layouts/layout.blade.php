@@ -1,11 +1,16 @@
 <!DOCTYPE html>
 <html>
+    @php
+        $currentRoute = Route::current()->getName();
+    @endphp
 	@include('frontend.includes.header')
 	<body>
         <div class="side-bar">
 			<div class="side-bar-inner">
 
-                @include('frontend.includes.body_header')
+                @if ($currentRoute != 'play-contest')
+                    @include('frontend.includes.body_header')
+                @endif
 
 				@include('frontend.includes.sidebar')
 

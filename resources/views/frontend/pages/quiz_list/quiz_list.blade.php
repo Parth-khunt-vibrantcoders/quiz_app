@@ -20,10 +20,12 @@
 
 						<div class="tab-content">
                             @foreach ($quiz_type as $qt_key => $qt_val)
-                                <div id="quiz_type{{ $qt_val['id'] }}" class="tab-pane in active">
+
+
+                                <div id="quiz_type{{ $qt_val['id'] }}" class="tab-pane in {{ $qt_key == 0 ? 'active' : '' }}">
                                     <div class="quiz-list-main">
 
-                                        @foreach ($qt_val['quiz'] as $quiz_key => $quiz_val)
+                                        @forelse ($qt_val['quiz'] as $quiz_key => $quiz_val)
                                             <div class="quiz-list-box">
                                                 <div class="quiz-list-box-head">
                                                     <span class="live">Live</span>
@@ -32,7 +34,7 @@
                                                 <div class="quiz-list-box-content">
                                                     <div class="box-img">
                                                         <div class="list-img">
-                                                            <img src="{{ asset('public/frontend/images/sport.png') }}">
+                                                            <img src="{{ asset('public/uploads/quiz/'.$quiz_val['image']) }}">
                                                         </div>
                                                     </div>
                                                     <div class="box-content">
@@ -50,11 +52,23 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                        @endforeach
+                                        @empty
+                                            <div class="container">
+                                                <div class="score-main">
 
+                                                    <div class="git-icon">
+                                                        <img src="{{ asset('public/frontend/images/oops.png') }}">
+                                                    </div>
+                                                    <div class="congratulations-title">
+                                                        <h4>We are so sorry. There is no quiz right now.</h4>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        @endforelse
                                     </div>
                                 </div>
-                        @endforeach
+                            @endforeach
 
 						</div>
 					</div>
