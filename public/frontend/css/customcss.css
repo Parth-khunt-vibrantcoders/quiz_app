@@ -85,3 +85,8 @@ table {
 .modal-footer{
     background-color: var(--bg-color);
 }
+
+.fa, .fab, .fad, .fal, .far, .fas {
+    margin-top: 4px !important;
+    margin-right: 10px !important;
+}
