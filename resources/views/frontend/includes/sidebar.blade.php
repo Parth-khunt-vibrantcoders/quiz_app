@@ -24,16 +24,21 @@ $ad_id = $_GET['id'] ;
         <li><a href="">Menu 2</a></li>
         <li><a href="">Menu 3</a></li>
         <li><a href="">Menu 4</a></li>
-        @if (!empty($data))
-            <li><a href="{{ route('logout', ['id' => $ad_id]) }}">Logout</a></li>
-        @endif
+
 
 
     </ul>
     <div class="submit-btn">
         <p>Join qzop to play quiz and earn coins</p>
-        <a href="{{ route('sign-in', ['id' => $ad_id]) }}">
-            <button type="submit" class="btn">Join Now</button>
-        </a>
+        @if (!empty($data))
+            <a href="{{ route('logout', ['id' => $ad_id]) }}">
+                <button type="submit" class="btn">Logout</button>
+            </a>
+        @else
+            <a href="{{ route('sign-in', ['id' => $ad_id]) }}">
+                <button type="submit" class="btn">Join Now</button>
+            </a>
+        @endif
+
     </div>
 </div>
