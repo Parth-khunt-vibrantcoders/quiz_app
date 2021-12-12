@@ -2,7 +2,7 @@ var m=1; //define your minute
 var s=0;
 var h;
 var xx=0;
-var width=100/(m*90);
+var width=100/(m*time_second);
 //var count=0;
 var clearInter;
 var tempW=0;
@@ -10,8 +10,8 @@ var tempW=0;
 $(function(){
   //s=$('.second').html();
  // m=$('.minute').html();
-	minute = m%90;
-	h= Math.floor(m/ 90);
+	minute = m%time_second;
+	h= Math.floor(m/ time_second);
 
 
 $('.hour').html(h);
@@ -48,7 +48,7 @@ $('.bar-main').css({'width':tempW+'%'});
  }
 
   if(s==0){
-    s=90;
+    s=time_second;
     var ss=s;
 
     if(xx==0){
@@ -84,7 +84,7 @@ $('.bar-main').css({'width':tempW+'%'});
 
 			  else{
 			  //alert('sdfs')
-			  $('.second').text('90');
+			  $('.second').text('time_second');
 				clearInterval(clearInter);
 
 			  }

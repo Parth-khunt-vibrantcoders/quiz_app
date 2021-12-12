@@ -1,3 +1,25 @@
+@php
+$currentRoute = Route::current()->getName();
+$data = [];
+Session::forget('user_coin');
+
+// session(['user_coin' => 100]);
+
+if (!empty(Auth()->guard('users')->user())) {
+   $data = Auth()->guard('users')->user();
+}
+
+if(!empty($data)){
+    session(['user_coin' => $data['coins']]);
+}else{
+    if(session('user_coin')){
+        session([ 'user_coin' => session('user_coin') ]);
+    }else{
+        session(['user_coin' => 100 ]);
+    }
+}
+@endphp
+
 <header>
     <div class="container">
         <div class="header-top">
@@ -12,7 +34,7 @@
                     <i class="fas fa-coins"></i>
                     <div class="wallet-box-text">
                         <small>Coins</small>
-                        <p>10,111</p>
+                        <p>{{ session('user_coin') }}</p>
                     </div>
                 </div>
             </div>

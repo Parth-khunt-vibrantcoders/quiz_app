@@ -78,3 +78,10 @@ table {
     width: 100% !important;
     border: 2px solid var(--text-color) !important;
 }
+
+.modal-body{
+    background-color: var(--bg-color);
+}
+.modal-footer{
+    background-color: var(--bg-color);
+}

@@ -19,7 +19,7 @@
                     <div class="progress">
                         <div class="bar-main">
                             <div class="timer">
-                              <span class="second">00</span>
+                              <span class="second">{{ Config::get('constants.TIME_SECOND') }}</span>
                             </div>
                         </div>
                        </div>

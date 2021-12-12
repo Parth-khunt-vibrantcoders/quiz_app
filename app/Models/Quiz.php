@@ -213,7 +213,7 @@ class Quiz extends Model
         return Quiz::from('quiz')
                 ->join('quiz_category', 'quiz_category.id', '=', 'quiz.category')
                 ->where('quiz.slug', $slug)
-                ->select('quiz.id', 'quiz.name','quiz.slug', 'quiz.image', 'quiz.prize', 'quiz_category.name as quiz_category')
+                ->select('quiz.id', 'quiz.fee', 'quiz.name','quiz.slug', 'quiz.image', 'quiz.prize', 'quiz_category.name as quiz_category')
                 ->get()
                 ->toArray();
     }

@@ -27,5 +27,6 @@
 
         <script>
             var baseurl = "{{ asset('/') }}";
+            var time_second = {{ Config::get('constants.TIME_SECOND') }};
         </script>
 </head>

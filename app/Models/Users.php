@@ -79,6 +79,7 @@ class Users extends Model
             $objUsers->email = $request->input('email');
             $objUsers->password = Hash::make($request->input('password'));
             $objUsers->ad_id = $adId;
+            $objUsers->coins = 100;
             $objUsers->user_type = 'U';
             $objUsers->is_deleted = 'N';
             $objUsers->created_at = date('Y-m-d H:i:s');
@@ -192,5 +193,12 @@ class Users extends Model
         }else{
             return false ;
         }
+    }
+
+    public function update_coins($coins, $userId){
+        $objUsers = Users::find($userId);
+        $objUsers->coins = $coins;
+        $objUsers->updated_at = date('Y-m-d H:i:s');
+        $objUsers->save();
     }
 }

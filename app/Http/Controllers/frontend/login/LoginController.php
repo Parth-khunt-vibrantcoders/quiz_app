@@ -125,7 +125,8 @@ class LoginController extends Controller
 
         $this->resetGuard();
         $request->session()->forget('logindata');
-        return redirect()->route('home',['id'=> $adId]);
+        $request->session()->forget('user_coin');
+        return redirect()->route('quiz-list',['id'=> $adId]);
     }
 
     public function resetGuard() {

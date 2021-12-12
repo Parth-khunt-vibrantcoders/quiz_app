@@ -41,13 +41,20 @@ var Joincontest = function(){
                     $("#question_answer"+ parseInt(parseInt(question_no)+1)).delay(1000).removeClass('hidden');
                 }, 1000);
             }else{
-
                 setTimeout(function() {
-                    window.location.href = baseurl + "quiz-start?id=" + adid;
+                    var scoretext = parseInt($("#score-text").val());
+                    window.location.href = baseurl + "contest/quiz-result?id=" + adid + "&score=" + scoretext;
                 }, 1000);
             }
 
         });
+
+        setTimeout(function() {
+            var adid = $("#adid").val();
+            var scoretext = parseInt($("#score-text").val());
+            window.location.href = baseurl + "contest/quiz-result?id=" + adid + "&score=" + scoretext;
+        }, time_second*1000);
+
     }
     return {
         init:function(){

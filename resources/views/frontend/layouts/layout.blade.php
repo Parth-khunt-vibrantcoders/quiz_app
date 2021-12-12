@@ -4,6 +4,7 @@
         $currentRoute = Route::current()->getName();
     @endphp
 	@include('frontend.includes.header')
+
 	<body>
         <div class="side-bar">
 			<div class="side-bar-inner">

@@ -42,9 +42,17 @@
                   <div class="quiz-list-box-footer">
                      <span>ENTRY FEE <i class="fas fa-coins"></i> {{ $quiz_val['fee'] }}</span>
                      <div class="play-btn">
-                        <a href="{{ route('join-contest', [ $quiz_val['slug'], 'id' => $adid ] )}}">
-                        <button type="button">Play</button>
-                        </a>
+
+                        @if ($quiz_val['fee'] > session('user_coin'))
+                            <a href="javascript:;" data-toggle="modal" data-target="#myModal" >
+                                <button type="button" >Play</button>
+                            </a>
+                        @else
+                            <a href="{{ route('join-contest', [ $quiz_val['slug'], 'id' => $adid ] )}}">
+                                <button type="button">Play</button>
+                            </a>
+                        @endif
+
                      </div>
                   </div>
                </div>

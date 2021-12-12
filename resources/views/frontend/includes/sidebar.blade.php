@@ -1,3 +1,12 @@
+@php
+$currentRoute = Route::current()->getName();
+$data = [];
+
+if (!empty(Auth()->guard('users')->user())) {
+   $data = Auth()->guard('users')->user();
+}
+$ad_id = $_GET['id'] ;
+@endphp
 <div class="sidebar-menu">
     <div class="sidebar-menu-head">
         <div class="logo">
@@ -15,9 +24,16 @@
         <li><a href="">Menu 2</a></li>
         <li><a href="">Menu 3</a></li>
         <li><a href="">Menu 4</a></li>
+        @if (!empty($data))
+            <li><a href="{{ route('logout', ['id' => $ad_id]) }}">Logout</a></li>
+        @endif
+
+
     </ul>
     <div class="submit-btn">
         <p>Join qzop to play quiz and earn coins</p>
-        <button type="submit" class="btn">Join Now</button>
+        <a href="{{ route('sign-in', ['id' => $ad_id]) }}">
+            <button type="submit" class="btn">Join Now</button>
+        </a>
     </div>
 </div>
