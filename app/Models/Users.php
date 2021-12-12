@@ -201,4 +201,8 @@ class Users extends Model
         $objUsers->updated_at = date('Y-m-d H:i:s');
         $objUsers->save();
     }
+
+    public function get_users_coin($userid){
+        return Users::where('id', $userid)->select('coins')->get()->toArray();
+    }
 }

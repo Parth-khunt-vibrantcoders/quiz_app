@@ -83,6 +83,7 @@ class QuizController extends Controller
     public function quiz_result(Request $request){
 
         if($request->get('id')){
+
             $score = 0 ;
             $score = $request->get('score');
             if($score <= 0){
@@ -106,7 +107,7 @@ class QuizController extends Controller
                                     if($score >= 301 &&  $score <= 400){
                                         $coins = 80 ;
                                     }else{
-                                        if($score >= 401 &&  $score <= 500){
+                                        if($score >= 401 &&  $score < 500){
                                             $coins = 90 ;
                                         }else{
                                             if($score >= 500){
@@ -123,24 +124,18 @@ class QuizController extends Controller
                 }
             }
 
-
             $data_coin = [];
 
             if (!empty(Auth()->guard('users')->user())) {
                 $data_coin = Auth()->guard('users')->user();
-            }
-
-            if(!empty($data_coin)){
                 $total_coins = intval($data_coin['coins']) + intval($coins);
                 $objUser = new Users();
                 $res = $objUser->update_coins($total_coins, $data_coin['id']);
-
             }else{
                 $total_coins = intval(session('user_coin')) + intval($coins);
             }
 
 
-            session(['user_coin' => $coins]);
             $data['score'] = $score ;
             $data['coins'] = $coins ;
             $data['true_answer'] = $request->get('ta');

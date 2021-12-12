@@ -48,4 +48,14 @@ function generateRandomString($length) {
     return $randomString;
 }
 
+function get_users_coin($userid){
+    $objUsers =  new Users();
+    $res =  $objUsers->get_users_coin($userid);
+    if(!empty($res)){
+        return $res[0]['coins'];
+    }else{
+        return 1000;
+    }
+}
+
 ?>
