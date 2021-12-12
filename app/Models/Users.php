@@ -205,4 +205,6 @@ class Users extends Model
     public function get_users_coin($userid){
         return Users::where('id', $userid)->select('coins')->get()->toArray();
     }
+
+
 }

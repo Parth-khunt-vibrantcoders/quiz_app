@@ -838,8 +838,8 @@ input:checked+.slider:before {
 }
 .sidebar-menu ul li a{
 	display: flex;
-	padding: 10px 0px;
-	font-weight: 600;
+	padding: 20px 0px;
+	font-weight: 600 !important;
 	color: var(--white-color);
     text-decoration: none;
 }

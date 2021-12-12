@@ -44,7 +44,7 @@
                      <span>ENTRY FEE <i class="fas fa-coins"></i> {{ $quiz_val['fee'] }}</span>
                      <div class="play-btn">
 
-                        @if ($quiz_val['fee'] > Session::get('user_coin'))
+                        @if ($quiz_val['fee'] > session('user_coin'))
                             <a href="javascript:;" data-toggle="modal" data-target="#myModal" >
                                 <button type="button" >Play </button>
                             </a>

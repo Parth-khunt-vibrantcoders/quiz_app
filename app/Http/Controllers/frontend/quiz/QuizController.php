@@ -9,6 +9,7 @@ use App\Models\Quiztype;
 use App\Models\Landingpageimage;
 use App\Models\Resultpageimage;
 use App\Models\Users;
+use App\Models\Cmspages;
 class QuizController extends Controller
 {
     //
@@ -16,7 +17,6 @@ class QuizController extends Controller
 
     public function quiz_list(Request $request){
         if($request->get('id')){
-
             $objQuiztype = new Quiztype();
             $data['quiz_type'] = $objQuiztype->get_quiz_type_frontend_list();
 
@@ -50,16 +50,16 @@ class QuizController extends Controller
     public function quiz_rules(Request $request){
         if($request->get('id')){
 
-            $objQuiztype = new Quiztype();
-            $data['quiz_type'] = $objQuiztype->get_quiz_type_frontend_list();
+            $objCmspages  = new Cmspages();
+            $data['details'] = $objCmspages->get_cms_details('rules');
 
             $objLandingpageimage = new Landingpageimage();
             $data['image'] = $objLandingpageimage->get_landing_page_image_details();
 
             $data['adid'] = $request->get('id');
-            $data['title'] =  'Quiz list || '. Config::get('constants.PROJECT_NAME');
-            $data['description'] =  'Quiz list || '. Config::get('constants.PROJECT_NAME');
-            $data['keywords'] =  'Quiz list || '. Config::get('constants.PROJECT_NAME');
+            $data['title'] =  'Quiz Rules || '. Config::get('constants.PROJECT_NAME');
+            $data['description'] =  'Quiz Rules || '. Config::get('constants.PROJECT_NAME');
+            $data['keywords'] =  'Quiz Rules || '. Config::get('constants.PROJECT_NAME');
             $data['css'] = array(
             );
             $data['plugincss'] = array(
@@ -74,6 +74,39 @@ class QuizController extends Controller
             );
 
             return view('frontend.pages.quiz_list.quiz_rules', $data);
+
+        }else{
+            return redirect()->route('quiz-rules', 'id='.Config::get('constants.DEFULT_ID'));
+        }
+    }
+
+    public function privacy_policy(Request $request){
+        if($request->get('id')){
+
+            $objCmspages  = new Cmspages();
+            $data['details'] = $objCmspages->get_cms_details('privacy');
+
+            $objLandingpageimage = new Landingpageimage();
+            $data['image'] = $objLandingpageimage->get_landing_page_image_details();
+
+            $data['adid'] = $request->get('id');
+            $data['title'] =  'Privacy Policy || '. Config::get('constants.PROJECT_NAME');
+            $data['description'] =  'Privacy Policy || '. Config::get('constants.PROJECT_NAME');
+            $data['keywords'] =  'Privacy Policy || '. Config::get('constants.PROJECT_NAME');
+            $data['css'] = array(
+            );
+            $data['plugincss'] = array(
+            );
+            $data['pluginjs'] = array(
+            );
+            $data['js'] = array(
+                'quiz_list.js'
+            );
+            $data['funinit'] = array(
+                'Quizlist.init()'
+            );
+
+            return view('frontend.pages.quiz_list.privacy_policy', $data);
 
         }else{
             return redirect()->route('quiz-rules', 'id='.Config::get('constants.DEFULT_ID'));
@@ -133,6 +166,7 @@ class QuizController extends Controller
                 $res = $objUser->update_coins($total_coins, $data_coin['id']);
             }else{
                 $total_coins = intval(session('user_coin')) + intval($coins);
+                session()->put('user_coin', $total_coins);
             }
 
 

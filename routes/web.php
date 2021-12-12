@@ -31,7 +31,8 @@ Route::match(['get','post'],'sign-in',['as'=>'sign-in','uses'=>'frontend\login\L
 Route::match(['get','post'],'sign-up',['as'=>'sign-up','uses'=>'frontend\login\LoginController@register']);
 Route::match(['get','post'],'page-not-found',['as'=>'page-not-found','uses'=>'frontend\home\HomeController@pagenotfound']);
 Route::match(['get', 'post'], 'logout', ['as' => 'logout', 'uses' => 'frontend\login\LoginController@logout']);
-
+Route::match(['get','post'],'quiz-rules',['as'=>'quiz-rules','uses'=>'frontend\quiz\QuizController@quiz_rules']);
+Route::match(['get','post'],'privacy-policy',['as'=>'privacy-policy','uses'=>'frontend\quiz\QuizController@privacy_policy']);
 $prefix = 'users';
 Route::group(['prefix' => $prefix], function() {
     // quiz-list
@@ -42,6 +43,6 @@ $prefix = 'contest';
 Route::group(['prefix' => $prefix], function() {
     Route::match(['get','post'],'join-contest/{slug}',['as'=>'join-contest','uses'=>'frontend\joincontest\JoincontestController@joincontest']);
     Route::match(['get','post'],'play-contest/{slug}',['as'=>'play-contest','uses'=>'frontend\joincontest\JoincontestController@playcontest']);
-    Route::match(['get','post'],'quiz-rules',['as'=>'quiz-rules','uses'=>'frontend\quiz\QuizController@quiz_rules']);
+
     Route::match(['get','post'],'quiz-result',['as'=>'quiz-result','uses'=>'frontend\quiz\QuizController@quiz_result']);
 });

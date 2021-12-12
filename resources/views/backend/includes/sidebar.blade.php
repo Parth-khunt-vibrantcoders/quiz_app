@@ -158,6 +158,40 @@ $currentRoute = Route::current()->getName();
                 </a>
             </li>
 
+            <li class="menu-item menu-item-submenu {{  $currentRoute == 'admin-privacy-policy'  || $currentRoute == 'admin-quiz-rules'
+                        ? 'menu-item-open menu-item-active' :'' }}" aria-haspopup="true" data-menu-toggle="hover">
+                <a href="javascript:;" class="menu-link menu-toggle">
+                    <span class="svg-icon menu-icon">
+                        <i class="fa fa-flag text-white"></i>
+                    </span>
+                    <span class="menu-text">CMS Pages</span>
+                    <i class="menu-arrow"></i>
+                </a>
+                <div class="menu-submenu">
+                    <i class="menu-arrow"></i>
+                    <ul class="menu-subnav">
+
+                        <li class="menu-item {{  $currentRoute == 'admin-privacy-policy' ? 'menu-item-active' : ''}}" aria-haspopup="true">
+                            <a href="{{ route('admin-privacy-policy') }}" class="menu-link">
+                                <i class="menu-bullet menu-bullet-dot text-white">
+                                    <span></span>
+                                </i>
+                                <span class="menu-text">Privacy Policy</span>
+                            </a>
+                        </li>
+
+                        <li class="menu-item {{  $currentRoute == 'admin-quiz-rules' ? 'menu-item-active' : ''}}" aria-haspopup="true">
+                            <a href="{{ route('admin-quiz-rules') }}" class="menu-link">
+                                <i class="menu-bullet menu-bullet-dot text-white">
+                                    <span></span>
+                                </i>
+                                <span class="menu-text">Quiz Rules</span>
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+            </li>
 
 
         </ul>

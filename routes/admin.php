@@ -107,4 +107,10 @@ Route::group(['prefix' => $prefix, 'middleware' => ['admin']], function() {
     Route::match(['get', 'post'], 'admin-question-ajaxcall', ['as' => 'admin-question-ajaxcall', 'uses' => 'backend\admin\question\QuestionController@ajaxcall']);
 });
 
+$prefix = 'cms';
+Route::group(['prefix' => $prefix, 'middleware' => ['admin']], function() {
+    Route::match(['get', 'post'], 'admin-privacy-policy', ['as' => 'admin-privacy-policy', 'uses' => 'backend\admin\cms\CmsController@privacypolicy']);
+    Route::match(['get', 'post'], 'admin-quiz-rules', ['as' => 'admin-quiz-rules', 'uses' => 'backend\admin\cms\CmsController@quiz_rules']);
+});
+
 

@@ -1,25 +1,22 @@
 @php
 $currentRoute = Route::current()->getName();
 $data = [];
-Session::forget('user_coin');
 
-// session(['user_coin' => 100]);
 
 if (!empty(Auth()->guard('users')->user())) {
    $data = Auth()->guard('users')->user();
 }
-// ccd($data['id']);
+
+
 if(!empty($data)){
-    Session::forget('user_coin');
-    session(['user_coin' => get_users_coin($data['id'])]);
+    session()->put('user_coin',  get_users_coin($data['id']));
 }else{
-    if(session('user_coin')){
-        session([ 'user_coin' => session('user_coin') ]);
+    if(session()->has('user_coin')){
+        session()->put('user_coin', session('user_coin'));
     }else{
-        session(['user_coin' => 1000 ]);
+        session()->put('user_coin', 1000);
     }
 }
-
 @endphp
 
 <header>

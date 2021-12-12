@@ -41,6 +41,11 @@ $ad_id = $_GET['id'] ;
                 <i class="fa fa-flag" aria-hidden="true"></i>Qzop Rules
             </a>
         </li>
+        <li>
+            <a href="{{ route('privacy-policy') }}">
+                <i class="fa fa-lock" aria-hidden="true"></i>Privacy Policy
+            </a>
+        </li>
     </ul>
     <div class="submit-btn">
         <p>Join qzop to play quiz and earn coins</p>

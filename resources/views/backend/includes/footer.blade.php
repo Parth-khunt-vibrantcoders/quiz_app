@@ -13,6 +13,8 @@
 <!--begin::Page Scripts(used by this page)-->
 <script src="{{ asset('public/backend/assets/js/pages/widgets.js') }}"></script>
 <!--end::Page Scripts-->
+<script src="https://cdn.ckeditor.com/4.14.0/standard/ckeditor.js"></script>
+
 <div id="loader"></div>
 @if (!empty($pluginjs))
 @foreach ($pluginjs as $value)
