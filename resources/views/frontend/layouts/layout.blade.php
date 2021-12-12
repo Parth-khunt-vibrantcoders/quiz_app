@@ -3,6 +3,7 @@
     @php
         $currentRoute = Route::current()->getName();
     @endphp
+
 	@include('frontend.includes.header')
 
 	<body>
@@ -16,10 +17,12 @@
 				@include('frontend.includes.sidebar')
 
 				@yield('section')
+
 			</div>
 		</div>
 
         @include('frontend.includes.body_footer')
+
         @include('frontend.includes.footer')
 
 	</body>
