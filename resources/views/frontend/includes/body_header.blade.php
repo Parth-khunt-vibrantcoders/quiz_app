@@ -15,7 +15,7 @@ if(!empty($data)){
     if(session('user_coin')){
         session([ 'user_coin' => session('user_coin') ]);
     }else{
-        session(['user_coin' => 100 ]);
+        session(['user_coin' => 1000 ]);
     }
 }
 @endphp
