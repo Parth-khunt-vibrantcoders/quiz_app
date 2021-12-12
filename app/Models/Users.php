@@ -79,7 +79,7 @@ class Users extends Model
             $objUsers->email = $request->input('email');
             $objUsers->password = Hash::make($request->input('password'));
             $objUsers->ad_id = $adId;
-            $objUsers->coins = 100;
+            $objUsers->coins = 1000;
             $objUsers->user_type = 'U';
             $objUsers->is_deleted = 'N';
             $objUsers->created_at = date('Y-m-d H:i:s');

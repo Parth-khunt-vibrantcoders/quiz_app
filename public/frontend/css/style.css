@@ -388,13 +388,14 @@ header {
 }
 
 .question-head ul li label span {
+    padding: 7px 0px;
     background: var(--light-bg-color);
     width: 100%;
     display: flex;
     justify-content: center;
     color: var(--white-color);
     font-weight: 600;
-    height: 45px;
+    /* height: 45px; */
     align-items: center;
     border-radius: 6px;
     border: 1px solid #e89d1d;
