@@ -33,10 +33,10 @@ class JoincontestController extends Controller
             $data['pluginjs'] = array(
             );
             $data['js'] = array(
-                'joincontest.js'
+                // 'joincontest.js'
             );
             $data['funinit'] = array(
-                'Joincontest.init()'
+                // 'Joincontest.init()'
             );
 
             return view('frontend.pages.joincontest.joincontest', $data);
