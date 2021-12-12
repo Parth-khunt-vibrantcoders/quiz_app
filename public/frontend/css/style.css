@@ -44,7 +44,7 @@ body {
     background-color: var(--menu-bg-color);
     position: fixed;
     top: 0;
-    left: 500px;
+    left: 280px;
     bottom: 0;
     right: 0;
     z-index: 9;
@@ -410,16 +410,6 @@ header {
     border: 1px solid #e63737;
 }
 
-.question-head ul li.right-ans label span {
-    background: #0db25b;
-    /* border: 1px solid #0db25b; */
-}
-
-.question-head ul li.wrong-ans label span {
-    background: #e63737;
-    /* border: 1px solid #e63737; */
-}
-
 .sign-login {
     margin-top: 30px;
 }
@@ -571,7 +561,7 @@ header {
 }
 
 .play-btn button {
-    background: #ffb446;
+    background: #f50946;
     color:#fff;
     font-size: 14px;
     text-transform: uppercase;
@@ -743,9 +733,9 @@ header {
 .sidebar-menu {
     position: fixed;
     top: 0;
-    left: -500px;
+    left: -280px;
     bottom: 0;
-    width: 500px;
+    width: 280px;
     background-color: var(--bg-color);
     z-index: 9;
 }
@@ -931,6 +921,71 @@ input:checked+.slider:before {
     font-size: 14px;
     color: #e89e1c;
     font-weight: 600;
+}
+.modal-body {
+    padding: 0px;
+}
+.modal-body table{
+    width: 100%;
+}
+.modal-body table td:last-child{
+    text-align: right;
+}
+.modal-body table tr:nth-child(2n+1) td {
+    background: #ebebeb;
+}
+.modal-body table td {
+    padding: 8px 15px;
+    font-weight: 600;
+    color: #000;
+}
+.modal-body table td i{
+    font-size: 14px;
+    margin-right: 5px;
+    color: #e89e1c;
+}
+.modal-header .close {
+    position: absolute;
+    top: -32px;
+    right: 0;
+    padding: 0;
+    margin: 0;
+    color: red;
+    opacity: 1;
+    display: flex;
+    text-shadow: 0 0 BLACK;
+    font-size: 36px;
+}
+.modal-header {
+    justify-content: center;
+    flex-wrap: wrap;
+    text-align: center;
+}
+.modal-header p{
+    color: #333;
+    font-size: 16px;
+    font-weight: bold;
+}
+.modal-header p i{
+    font-size: 14px;
+    margin-right: 5px;
+    color: #e89e1c;
+}
+.modal-dialog {
+    padding: 15px;
+}
+
+.modal-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: #161625;
+    width: 100%;
+    margin-bottom: 5px;
+}
+.modal-body {
+    padding: 0px;
+    overflow: hidden;
+    border-radius: 0 0 0.3rem 0.3rem;
 }
 .wallet-box {
     display: flex;
