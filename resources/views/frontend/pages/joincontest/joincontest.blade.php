@@ -70,48 +70,48 @@ if (!empty(Auth()->guard('users')->user())) {
                 <table>
                     <thead>
                     <tr>
-                        <th>Score</th>
+                        <th class="text-left">Score</th>
                         <th class="text-right">Winning Coin</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td>00 - 20</td>
+                        <td class="text-left">00 - 20</td>
                         <td class="text-right">10 Coins</td>
                     </tr>
 
                     <tr>
-                        <td>21 - 50</td>
+                        <td class="text-left">21 - 50</td>
                         <td class="text-right">30 Coins</td>
                     </tr>
 
                     <tr>
-                        <td>51 - 100</td>
+                        <td class="text-left">51 - 100</td>
                         <td class="text-right">40 Coins</td>
                     </tr>
 
                     <tr>
-                        <td>100 - 200</td>
+                        <td class="text-left">100 - 200</td>
                         <td class="text-right">50 Coins</td>
                     </tr>
 
                     <tr>
-                        <td>201 - 300</td>
+                        <td class="text-left">201 - 300</td>
                         <td class="text-right">70 Coins</td>
                     </tr>
 
                     <tr>
-                        <td>300 - 400</td>
+                        <td class="text-left">300 - 400</td>
                         <td class="text-right">80 Coins</td>
                     </tr>
 
                     <tr>
-                        <td>300 - 400</td>
+                        <td class="text-left">300 - 400</td>
                         <td class="text-right">90 Coins</td>
                     </tr>
 
                     <tr>
-                        <td>500+</td>
+                        <td class="text-left">500+</td>
                         <td class="text-right">100 Coins</td>
                     </tr>
                 </tbody>
