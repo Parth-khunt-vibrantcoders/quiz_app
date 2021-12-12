@@ -28,7 +28,6 @@ $ad_id = $_GET['id'] ;
     </ul>
     <div class="submit-btn">
         <p>Join qzop to play quiz and earn coins</p>
-        <p>Join qzop to play quiz and earn coins</p>
         @if (!empty($data))
             <a href="{{ route('logout', ['id' => $ad_id]) }}">
                 <button type="submit" class="btn">Logout</button>
