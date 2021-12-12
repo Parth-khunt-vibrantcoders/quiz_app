@@ -2,7 +2,8 @@
 <script src="{{ asset('public/frontend/js/popper.min.js') }}"></script>
 <script src="{{ asset('public/frontend/js/bootstrap.min.js') }}"></script>
 <script src="{{ asset('public/frontend/js/dark-light-mode.js') }}"></script>
-
+<script src="{{ asset('public/frontend/js/customjs/comman_function.js') }}"></script>
+{{-- G:\xampp\htdocs\quizapp\public\frontend\js\customjs\comman_function.js --}}
 <script type="text/javascript">
     $(".menu-open").click(function(){
         $("body").toggleClass("main");

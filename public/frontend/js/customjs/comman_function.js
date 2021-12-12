@@ -977,4 +977,16 @@ $("body").on("change","#empDepartment",function(){
 });
 
 
+ $("body").on('click', '.show-prize-list', function(){
+    $('.prize-list').removeClass('show-prize-list');
+    $('.prize-list').addClass('hide-prize-list');
+    $('#prize-list-table').removeClass('hidden');
+    $('.prize-list').text('Hide Prize List');
+});
 
+$("body").on('click', '.hide-prize-list', function(){
+    $('.prize-list').removeClass('hide-prize-list');
+    $('.prize-list').addClass('show-prize-list');
+    $('#prize-list-table').addClass('hidden');
+    $('.prize-list').text('View Prize List');
+});

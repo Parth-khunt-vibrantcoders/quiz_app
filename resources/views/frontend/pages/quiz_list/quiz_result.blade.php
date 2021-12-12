@@ -18,7 +18,63 @@
                 <h3><span>{{ $score }}</span> / 500</h3>
                 <p>Earned Coins</p>
                 <span class="span-text"><i class="fas fa-coins"></i> {{ $coins }}</span>
-                <button type="button" data-toggle="modal" data-target="#exampleModal">View point system</button>
+                <div class="quiz-category text-center weight-bold" >
+                    <span class="mr-8 cursor-pointer prize-list show-prize-list">View Prize List</span> ·
+                    <a class="quiz-category link-anchor" href="{{ route('quiz-rules', ['id' => $adid ])}}" target="_blank"><span class="ml-8 cursor-pointer">Rules</span></a>
+                </div>
+
+
+                <div class=" hidden" id="prize-list-table">
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>Score</th>
+                            <th class="text-right">Winning Coin</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>00 - 20</td>
+                            <td class="text-right">10 Coins</td>
+                        </tr>
+
+                        <tr>
+                            <td>21 - 50</td>
+                            <td class="text-right">30 Coins</td>
+                        </tr>
+
+                        <tr>
+                            <td>51 - 100</td>
+                            <td class="text-right">40 Coins</td>
+                        </tr>
+
+                        <tr>
+                            <td>100 - 200</td>
+                            <td class="text-right">50 Coins</td>
+                        </tr>
+
+                        <tr>
+                            <td>201 - 300</td>
+                            <td class="text-right">70 Coins</td>
+                        </tr>
+
+                        <tr>
+                            <td>300 - 400</td>
+                            <td class="text-right">80 Coins</td>
+                        </tr>
+
+                        <tr>
+                            <td>300 - 400</td>
+                            <td class="text-right">90 Coins</td>
+                        </tr>
+
+                        <tr>
+                            <td>500+</td>
+                            <td class="text-right">100 Coins</td>
+                        </tr>
+                    </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>

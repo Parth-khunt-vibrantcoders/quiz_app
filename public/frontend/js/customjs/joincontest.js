@@ -65,6 +65,8 @@ var Joincontest = function(){
         // }, 5000);
 
     }
+
+
     return {
         init:function(){
             list();
