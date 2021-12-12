@@ -3,13 +3,13 @@ $currentRoute = Route::current()->getName();
 $data = [];
 Session::forget('user_coin');
 
-// session(['user_coin' => 100]);
 
 if (!empty(Auth()->guard('users')->user())) {
    $data = Auth()->guard('users')->user();
 }
 
 if(!empty($data)){
+    Session::forget('user_coin');
     session(['user_coin' => $data['coins']]);
 }else{
     if(session('user_coin')){

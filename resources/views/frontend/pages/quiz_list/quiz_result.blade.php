@@ -15,9 +15,9 @@
             </div>
             <div class="score-box-main">
                 <p>Your Score</p>
-                <h3><span>50</span> / 50</h3>
+                <h3><span>{{ $score }}</span> / 500</h3>
                 <p>Earned Coins</p>
-                <span class="span-text"><i class="fas fa-coins"></i> 100</span>
+                <span class="span-text"><i class="fas fa-coins"></i> {{ $coins }}</span>
                 <button type="button" data-toggle="modal" data-target="#exampleModal">View point system</button>
             </div>
         </div>

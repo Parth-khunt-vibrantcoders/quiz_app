@@ -16,6 +16,9 @@ var Joincontest = function(){
         });
 
         $("body").on('change', '.answer-btn', function(){
+
+            $('.answer-btn:visible').attr('disabled', true);
+
             var value = $(this).val();
             var adid = $("#adid").val();
             var scoretext = parseInt($("#score-text").val());
@@ -23,6 +26,7 @@ var Joincontest = function(){
             var correct_ans = $("#question"+question_no).val();
 
             if(correct_ans == value){
+
                 scoretext = parseInt(scoretext) + 20;
                 $(this).closest('.answerui').addClass('right-ans');
             }else{
@@ -49,11 +53,16 @@ var Joincontest = function(){
 
         });
 
+        // setTimeout(function() {
+        //     var adid = $("#adid").val();
+        //     var scoretext = parseInt($("#score-text").val());
+        //     window.location.href = baseurl + "contest/quiz-result?id=" + adid + "&score=" + scoretext;
+        // }, time_second*1000);
         setTimeout(function() {
             var adid = $("#adid").val();
             var scoretext = parseInt($("#score-text").val());
-            window.location.href = baseurl + "contest/quiz-result?id=" + adid + "&score=" + scoretext;
-        }, time_second*1000);
+            window.location.href = baseurl + "contest/quiz-result?id=" + adid + "&score=" + scoretext ;
+        }, 5000);
 
     }
     return {

@@ -131,15 +131,19 @@ class QuizController extends Controller
             }
 
             if(!empty($data_coin)){
-                $coins = intval($data_coin['coins']) + intval($coins);
+                $total_coins = intval($data_coin['coins']) + intval($coins);
                 $objUser = new Users();
-                $res = $objUser->update_coins($coins, $data_coin['id']);
+                $res = $objUser->update_coins($total_coins, $data_coin['id']);
+
             }else{
-                $coins = intval(session('user_coin')) + intval($coins);
+                $total_coins = intval(session('user_coin')) + intval($coins);
             }
 
-            session(['user_coin' => $coins]);
 
+            session(['user_coin' => $coins]);
+            $data['score'] = $score ;
+            $data['coins'] = $coins ;
+            $data['true_answer'] = $request->get('ta');
             $objResultpageimage = new Resultpageimage();
             $data['result_page_image'] = $objResultpageimage->get_result_page_image_details();
 

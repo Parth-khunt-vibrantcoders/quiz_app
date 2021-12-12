@@ -5,6 +5,7 @@
       <div class="quiz-list-tab">
          <ul class="nav">
             @php
+            // session_start();
             $i = 0 ;
             @endphp
             @foreach ($quiz_type as $qt_key => $qt_val)
@@ -43,13 +44,13 @@
                      <span>ENTRY FEE <i class="fas fa-coins"></i> {{ $quiz_val['fee'] }}</span>
                      <div class="play-btn">
 
-                        @if ($quiz_val['fee'] > session('user_coin'))
+                        @if ($quiz_val['fee'] > Session::get('user_coin'))
                             <a href="javascript:;" data-toggle="modal" data-target="#myModal" >
-                                <button type="button" >Play</button>
+                                <button type="button" >Play </button>
                             </a>
                         @else
                             <a href="{{ route('join-contest', [ $quiz_val['slug'], 'id' => $adid ] )}}">
-                                <button type="button">Play</button>
+                                <button type="button">Play </button>
                             </a>
                         @endif
 

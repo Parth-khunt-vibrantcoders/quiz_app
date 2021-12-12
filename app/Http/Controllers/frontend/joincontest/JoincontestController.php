@@ -73,8 +73,11 @@ class JoincontestController extends Controller
                     $res = $objUser->update_coins($coins, $data_coin['id']);
                 }else{
                     $coins = intval(session('user_coin')) - intval($data['quiz_details'][0]['fee']);
+                    $request->session()->forget('user_coin');
+                    $request->session()->put('user_coin', $coins);
                 }
-                session(['user_coin' => $coins]);
+
+
 
                 $objQuestion = new Question();
                 $data['question_list'] = $objQuestion->get_quiz_details($slug);
