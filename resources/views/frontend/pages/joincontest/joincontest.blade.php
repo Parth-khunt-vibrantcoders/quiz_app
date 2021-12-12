@@ -1,6 +1,13 @@
 @extends('frontend.layouts.layout')
 @section('section')
+@php
+$data = [];
 
+if (!empty(Auth()->guard('users')->user())) {
+   $data = Auth()->guard('users')->user();
+}
+
+@endphp
 <section>
     <div class="container">
         <div class="quiz-list-main">
@@ -26,17 +33,28 @@
 
                     <div class="play-btn full-btn">
                         <div class=" text-center " style="margin-bottom: 15px !important;color: var(--text-color);">Join now to save the coins you win! 👇</div>
-                        <a href="{{ route('sign-in', ['id' => $adid])}}">
-                            <button type="button">Play Now</button>
-                        </a>
-                        <div class=" text-center " style="color: var(--text-color); font-weight: bold !important ;margin-top: 15px !important; font-size: 12px !important">OR</div>
 
-                        <br>
-                        <a href="{{ route('play-contest', [$quiz_details[0]['slug'], 'id='.$adid])}}">
-                            <div class=" text-center ">
-                                <span class="guest-btn" >Play as Guest</span>
-                            </div>
-                        </a>
+                        @if(empty($data))
+                            <a href="{{ route('sign-in', ['id' => $adid])}}">
+                                <button type="button">Login Now</button>
+                            </a>
+                        @else
+                            <a href="{{ route('play-contest', [$quiz_details[0]['slug'], 'id='.$adid])}}">
+                                <button type="button">Play Now</button>
+                            </a>
+                        @endif
+                        @if(empty($data))
+                            <div class=" text-center " style="color: var(--text-color); font-weight: bold !important ;margin-top: 15px !important; font-size: 12px !important">OR</div>
+
+                            <br>
+                            <a href="{{ route('play-contest', [$quiz_details[0]['slug'], 'id='.$adid])}}">
+                                <div class=" text-center ">
+                                    <span class="guest-btn" >Play as Guest</span>
+                                </div>
+                            </a>
+
+                        @endif
+
 
                     </div>
                 </div>
