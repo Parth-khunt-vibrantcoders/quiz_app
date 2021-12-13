@@ -49,7 +49,7 @@ var Joincontest = function(){
                 }, 1000);
             }else{
                 setTimeout(function() {
-                    $(".que-no").delay(1000).text(parseInt(parseInt(question_no)+1));
+                    // $(".que-no").delay(1000).text(parseInt(parseInt(question_no)+1));
                     var scoretext = parseInt($("#score-text").val());
                     window.location.href = baseurl + "contest/quiz-result?id=" + adid + "&score=" + scoretext;
                 }, 1000);
