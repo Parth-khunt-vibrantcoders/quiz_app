@@ -84,9 +84,8 @@ $('.bar-main').css({'width':tempW+'%'});
 
 			  else{
 			  //alert('sdfs')
-			  $('.second').text('time_second');
+			  $('.second').text(00);
 				clearInterval(clearInter);
-
 			  }
 
           }
