@@ -4,20 +4,20 @@
 <section>
     <div class="container">
         <div class="score-main">
-            <div class="result-title">
+            <div class="result-title" style="padding:20px 0px 10px 0px !important">
                 <h4>Result</h4>
             </div>
             <div class="git-icon">
                 <img src="{{ asset('public/uploads/resultpages/'.$result_page_image['image']) }}">
             </div>
-            <div class="congratulations-title">
+            <div class="congratulations-title" style="padding:10px 0px 10px 0px !important">
                 <h4>Congratulations!</h4>
             </div>
             <div class="score-box-main">
                 <p>Your Score</p>
-                <h3><span>{{ $score }}</span> / 500</h3>
+                <h3 style="margin: 10px 0 10px"><span>{{ $score }}</span> / 500</h3>
                 <p>Earned Coins</p>
-                <span class="span-text"><i class="fas fa-coins"></i> {{ $coins }}</span>
+                <span class="span-text" style="    margin-top: 5px; margin-bottom: 5px;"><i class="fas fa-coins"></i> {{ $coins }}</span>
                 <div class="quiz-category text-center weight-bold" >
                     <span class="mr-8 cursor-pointer prize-list show-prize-list">View Prize List</span> ·
                     <a class="quiz-category link-anchor" href="{{ route('quiz-rules', ['id' => $adid ])}}" target="_blank"><span class="ml-8 cursor-pointer">Rules</span></a>
