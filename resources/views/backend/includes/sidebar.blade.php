@@ -158,7 +158,7 @@ $currentRoute = Route::current()->getName();
                 </a>
             </li>
 
-            <li class="menu-item menu-item-submenu {{  $currentRoute == 'admin-privacy-policy'  || $currentRoute == 'admin-quiz-rules'
+            <li class="menu-item menu-item-submenu {{ $currentRoute == 'admin-contact-us' ||  $currentRoute == 'admin-terms-conditions' || $currentRoute == 'admin-privacy-policy'  || $currentRoute == 'admin-quiz-rules'
                         ? 'menu-item-open menu-item-active' :'' }}" aria-haspopup="true" data-menu-toggle="hover">
                 <a href="javascript:;" class="menu-link menu-toggle">
                     <span class="svg-icon menu-icon">
@@ -180,12 +180,20 @@ $currentRoute = Route::current()->getName();
                             </a>
                         </li>
 
-                        <li class="menu-item {{  $currentRoute == 'admin-quiz-rules' ? 'menu-item-active' : ''}}" aria-haspopup="true">
-                            <a href="{{ route('admin-quiz-rules') }}" class="menu-link">
+                        <li class="menu-item {{  $currentRoute == 'admin-terms-conditions' ? 'menu-item-active' : ''}}" aria-haspopup="true">
+                            <a href="{{ route('admin-terms-conditions') }}" class="menu-link">
                                 <i class="menu-bullet menu-bullet-dot text-white">
                                     <span></span>
                                 </i>
-                                <span class="menu-text">Quiz Rules</span>
+                                <span class="menu-text">Terms Conditions</span>
+                            </a>
+                        </li>
+                        <li class="menu-item {{  $currentRoute == 'admin-contact-us' ? 'menu-item-active' : ''}}" aria-haspopup="true">
+                            <a href="{{ route('admin-contact-us') }}" class="menu-link">
+                                <i class="menu-bullet menu-bullet-dot text-white">
+                                    <span></span>
+                                </i>
+                                <span class="menu-text">Contact Us</span>
                             </a>
                         </li>
 

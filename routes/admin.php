@@ -111,6 +111,8 @@ $prefix = 'cms';
 Route::group(['prefix' => $prefix, 'middleware' => ['admin']], function() {
     Route::match(['get', 'post'], 'admin-privacy-policy', ['as' => 'admin-privacy-policy', 'uses' => 'backend\admin\cms\CmsController@privacypolicy']);
     Route::match(['get', 'post'], 'admin-quiz-rules', ['as' => 'admin-quiz-rules', 'uses' => 'backend\admin\cms\CmsController@quiz_rules']);
+    Route::match(['get', 'post'], 'admin-terms-conditions', ['as' => 'admin-terms-conditions', 'uses' => 'backend\admin\cms\CmsController@terms_conditions']);
+    Route::match(['get', 'post'], 'admin-contact-us', ['as' => 'admin-contact-us', 'uses' => 'backend\admin\cms\CmsController@contact_us']);
 });
 
 

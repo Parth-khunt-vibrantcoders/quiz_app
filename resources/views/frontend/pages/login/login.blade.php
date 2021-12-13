@@ -53,6 +53,13 @@
                         <i class="fa fa-lock" aria-hidden="true"></i>Privacy Policy
                     </a>
                 </li>
+
+
+                <li>
+                    <a href="{{ route('terms-conditions') }}">
+                        <i class="fa fa-bell" aria-hidden="true"></i>Terms & Conditions
+                    </a>
+                </li>
             </ul>
             <div class="submit-btn">
                 <p>Join qzop to play quiz and earn coins</p>

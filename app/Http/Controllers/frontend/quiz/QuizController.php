@@ -113,6 +113,99 @@ class QuizController extends Controller
         }
     }
 
+    public function terms_conditions(Request $request){
+        if($request->get('id')){
+
+            $objCmspages  = new Cmspages();
+            $data['details'] = $objCmspages->get_cms_details('terms');
+
+            $objLandingpageimage = new Landingpageimage();
+            $data['image'] = $objLandingpageimage->get_landing_page_image_details();
+
+            $data['adid'] = $request->get('id');
+            $data['title'] =  'Terms Conditions || '. Config::get('constants.PROJECT_NAME');
+            $data['description'] =  'Terms Conditions || '. Config::get('constants.PROJECT_NAME');
+            $data['keywords'] =  'Terms Conditions || '. Config::get('constants.PROJECT_NAME');
+            $data['css'] = array(
+            );
+            $data['plugincss'] = array(
+            );
+            $data['pluginjs'] = array(
+            );
+            $data['js'] = array(
+            );
+            $data['funinit'] = array(
+            );
+
+            return view('frontend.pages.quiz_list.terms_conditions', $data);
+
+        }else{
+            return redirect()->route('terms-conditions', 'id='.Config::get('constants.DEFULT_ID'));
+        }
+    }
+
+    public function contact_us(Request $request){
+        if($request->get('id')){
+
+            $objCmspages  = new Cmspages();
+            $data['details'] = $objCmspages->get_cms_details('contactus');
+
+            $objLandingpageimage = new Landingpageimage();
+            $data['image'] = $objLandingpageimage->get_landing_page_image_details();
+
+            $data['adid'] = $request->get('id');
+            $data['title'] =  'Contact Us || '. Config::get('constants.PROJECT_NAME');
+            $data['description'] =  'Contact Us || '. Config::get('constants.PROJECT_NAME');
+            $data['keywords'] =  'Contact Us || '. Config::get('constants.PROJECT_NAME');
+            $data['css'] = array(
+            );
+            $data['plugincss'] = array(
+            );
+            $data['pluginjs'] = array(
+            );
+            $data['js'] = array(
+            );
+            $data['funinit'] = array(
+            );
+
+            return view('frontend.pages.quiz_list.contact_us', $data);
+
+        }else{
+            return redirect()->route('contact-us', 'id='.Config::get('constants.DEFULT_ID'));
+        }
+    }
+
+    public function partner_us(Request $request){
+        if($request->get('id')){
+
+            $objCmspages  = new Cmspages();
+            $data['details'] = $objCmspages->get_cms_details('contactus');
+
+            $objLandingpageimage = new Landingpageimage();
+            $data['image'] = $objLandingpageimage->get_landing_page_image_details();
+
+            $data['adid'] = $request->get('id');
+            $data['title'] =  'Partner Us || '. Config::get('constants.PROJECT_NAME');
+            $data['description'] =  'Partner Us || '. Config::get('constants.PROJECT_NAME');
+            $data['keywords'] =  'Partner Us || '. Config::get('constants.PROJECT_NAME');
+            $data['css'] = array(
+            );
+            $data['plugincss'] = array(
+            );
+            $data['pluginjs'] = array(
+            );
+            $data['js'] = array(
+            );
+            $data['funinit'] = array(
+            );
+
+            return view('frontend.pages.quiz_list.partner_us', $data);
+
+        }else{
+            return redirect()->route('partner-us', 'id='.Config::get('constants.DEFULT_ID'));
+        }
+    }
+
     public function quiz_result(Request $request){
 
         if($request->get('id')){

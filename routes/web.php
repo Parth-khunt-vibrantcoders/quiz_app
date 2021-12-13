@@ -33,6 +33,9 @@ Route::match(['get','post'],'page-not-found',['as'=>'page-not-found','uses'=>'fr
 Route::match(['get', 'post'], 'logout', ['as' => 'logout', 'uses' => 'frontend\login\LoginController@logout']);
 Route::match(['get','post'],'quiz-rules',['as'=>'quiz-rules','uses'=>'frontend\quiz\QuizController@quiz_rules']);
 Route::match(['get','post'],'privacy-policy',['as'=>'privacy-policy','uses'=>'frontend\quiz\QuizController@privacy_policy']);
+Route::match(['get','post'],'terms-conditions',['as'=>'terms-conditions','uses'=>'frontend\quiz\QuizController@terms_conditions']);
+Route::match(['get','post'],'contact-us',['as'=>'contact-us','uses'=>'frontend\quiz\QuizController@contact_us']);
+Route::match(['get','post'],'partner-us',['as'=>'partner-us','uses'=>'frontend\quiz\QuizController@partner_us']);
 $prefix = 'users';
 Route::group(['prefix' => $prefix], function() {
     // quiz-list

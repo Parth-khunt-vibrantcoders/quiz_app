@@ -113,4 +113,100 @@ class CmsController extends Controller
         );
         return view('backend.pages.admin.cms.quiz_rules', $data);
     }
+
+    public function terms_conditions (Request $request){
+        if($request->isMethod('post')){
+            $objCmspages  = new Cmspages();
+            $result= $objCmspages->save_cms_page_details($request);
+            if ($result) {
+                $return['status'] = 'success';
+                 $return['jscode'] = '$(".submitbtn:visible").removeAttr("disabled");$("#loader").hide();';
+                $return['message'] = 'Terms conditions details successfully updated.';
+                $return['redirect'] = route('admin-terms-conditions');
+            } else {
+                $return['status'] = 'error';
+                $return['jscode'] = '$(".submitbtn:visible").removeAttr("disabled");$("#loader").hide();';
+                $return['message'] = 'Something goes to wrong';
+            }
+            echo json_encode($return);
+            exit;
+        }
+        $objCmspages  = new Cmspages();
+        $data['details'] = $objCmspages->get_cms_details('terms');
+        $data['title'] = 'CMS - Terms Conditions || '.Config::get('constants.PROJECT_NAME') ;
+        $data['keywords'] = 'CMS - Terms Conditions || '.Config::get('constants.PROJECT_NAME') ;
+        $data['description'] = 'CMS - Terms Conditions || '.Config::get('constants.PROJECT_NAME') ;
+        $data['plugincss'] = array(
+            'plugins/toastr/toastr.min.css'
+        );
+        $data['pluginjs'] = array(
+            'plugins/validate/jquery.validate.min.js',
+        );
+        $data['js'] = array(
+            'comman_function.js',
+            'ajaxfileupload.js',
+            'jquery.form.min.js',
+            'cms.js'
+        );
+
+        $data['funinit'] = array(
+            'Cms.termsconditions()'
+        );
+        $data['header'] = array(
+            'title' => 'CMS - Terms Conditions',
+            'breadcrumb' => array(
+                'Dashboard' => route('my-dashboard'),
+                'CMS - Terms Conditions' => 'CMS - Terms Conditions',
+            )
+        );
+        return view('backend.pages.admin.cms.terms_conditions', $data);
+    }
+    public function contact_us (Request $request){
+
+        if($request->isMethod('post')){
+            $objCmspages  = new Cmspages();
+            $result= $objCmspages->save_cms_page_details($request);
+            if ($result) {
+                $return['status'] = 'success';
+                 $return['jscode'] = '$(".submitbtn:visible").removeAttr("disabled");$("#loader").hide();';
+                $return['message'] = 'Contact us details successfully updated.';
+                $return['redirect'] = route('admin-contact-us');
+            } else {
+                $return['status'] = 'error';
+                $return['jscode'] = '$(".submitbtn:visible").removeAttr("disabled");$("#loader").hide();';
+                $return['message'] = 'Something goes to wrong';
+            }
+            echo json_encode($return);
+            exit;
+        }
+        $objCmspages  = new Cmspages();
+        $data['details'] = $objCmspages->get_cms_details('contactus');
+        $data['title'] = 'CMS - Contact Us || '.Config::get('constants.PROJECT_NAME') ;
+        $data['keywords'] = 'CMS - Contact Us || '.Config::get('constants.PROJECT_NAME') ;
+        $data['description'] = 'CMS - Contact Us || '.Config::get('constants.PROJECT_NAME') ;
+        $data['plugincss'] = array(
+            'plugins/toastr/toastr.min.css'
+        );
+        $data['pluginjs'] = array(
+            'plugins/validate/jquery.validate.min.js',
+        );
+        $data['js'] = array(
+            'comman_function.js',
+            'ajaxfileupload.js',
+            'jquery.form.min.js',
+            'cms.js'
+        );
+
+        $data['funinit'] = array(
+            'Cms.contactus()'
+        );
+        $data['header'] = array(
+            'title' => 'CMS - Contact Us',
+            'breadcrumb' => array(
+                'Dashboard' => route('my-dashboard'),
+                'CMS - Contact Us' => 'CMS - Contact Us',
+            )
+        );
+        return view('backend.pages.admin.cms.contact_us', $data);
+    }
 }
