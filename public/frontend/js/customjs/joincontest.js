@@ -53,11 +53,11 @@ var Joincontest = function(){
 
         });
 
-        // setTimeout(function() {
-        //     var adid = $("#adid").val();
-        //     var scoretext = parseInt($("#score-text").val());
-        //     window.location.href = baseurl + "contest/quiz-result?id=" + adid + "&score=" + scoretext;
-        // }, time_second*1000);
+        setTimeout(function() {
+            var adid = $("#adid").val();
+            var scoretext = parseInt($("#score-text").val());
+            window.location.href = baseurl + "contest/quiz-result?id=" + adid + "&score=" + scoretext;
+        }, time_second*1000);
 
         // setTimeout(function() {
         //     var adid = $("#adid").val();
