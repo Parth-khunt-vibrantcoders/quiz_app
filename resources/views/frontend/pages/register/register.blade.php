@@ -34,12 +34,12 @@
                     </a>
                 </li>
                 <li>
-                    <a href="">
+                    <a href="{{ route('partner-us')}}" target="_blank">
                         <i class="fa fa-handshake" aria-hidden="true"></i>Partner with us
                     </a>
                 </li>
                 <li>
-                    <a href="">
+                    <a href="{{ route('contact-us')}}">
                         <i class="fa fa-envelope" aria-hidden="true"></i>Contact us
                     </a>
                 </li>
@@ -53,7 +53,6 @@
                         <i class="fa fa-lock" aria-hidden="true"></i>Privacy Policy
                     </a>
                 </li>
-
 
                 <li>
                     <a href="{{ route('terms-conditions') }}">
