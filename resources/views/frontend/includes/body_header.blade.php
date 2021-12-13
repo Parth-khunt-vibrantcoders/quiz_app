@@ -2,11 +2,9 @@
 $currentRoute = Route::current()->getName();
 $data = [];
 
-
 if (!empty(Auth()->guard('users')->user())) {
    $data = Auth()->guard('users')->user();
 }
-
 
 if(!empty($data)){
     session()->put('user_coin',  get_users_coin($data['id']));
