@@ -40,6 +40,12 @@
     border-top: 1px solid #e89d1d !important;
     width: 100% !important;
 }
+.quiz-list-box-footer-new{
+    padding: 10px 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 
 .guest-btn{
     border: 1px solid #feb546 !important;

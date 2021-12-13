@@ -23,7 +23,40 @@
          <div id="quiz_type{{ $qt_val['id'] }}" class="tab-pane in {{ $qt_key == 0 ? 'active' : '' }}">
             <div class="quiz-list-main">
                @forelse ($qt_val['quiz'] as $quiz_key => $quiz_val)
-               <div class="quiz-list-box">
+
+                <div class="quiz-list-box">
+                    <div class="quiz-list-box-head">
+                        <span class="live">Live</span>
+                        <p>Entry Free : {{ $quiz_val['fee'] }}</p>
+                    </div>
+                    <div class="quiz-list-box-content">
+                        <div class="box-img">
+                            <div class="list-img">
+                                <img src="{{ asset('public/uploads/quiz/'.$quiz_val['image']) }}">
+                            </div>
+                        </div>
+                        <div class="box-content">
+                            <span>{{ $quiz_val['name'] }}</span>
+                            <h4>{{ $quiz_val['quiz_app'] }}<i class="fas fa-coins"></i> {{ $quiz_val['prize'] }}</h4>
+                            <p>{{ number_format(rand(0, 99999)) }} users playing</p>
+                        </div>
+                    </div>
+                    <div class="quiz-list-box-footer-new ">
+                        <div class="play-btn">
+                            @if ($quiz_val['fee'] > session('user_coin'))
+                                <a href="javascript:;" data-toggle="modal" data-target="#myModal" >
+                                    <button type="button" >Play </button>
+                                </a>
+                            @else
+                                <a href="{{ route('join-contest', [ $quiz_val['slug'], 'id' => $adid ] )}}">
+                                    <button type="button">Play </button>
+                                </a>
+                            @endif
+                        </div>
+                    </div>
+                </div>
+
+               {{-- <div class="quiz-list-box">
                   <div class="quiz-list-box-head">
                      <span class="live">Live</span>
                      <p>{{ number_format(rand(0, 99999)) }} users playing</p>
@@ -56,7 +89,7 @@
 
                      </div>
                   </div>
-               </div>
+               </div> --}}
                @empty
                <div class="container">
                   <div class="score-main">
