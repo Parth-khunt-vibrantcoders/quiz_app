@@ -10,9 +10,9 @@
         <div class="side-bar">
 			<div class="side-bar-inner">
 
-                {{-- @if ($currentRoute != 'play-contest') --}}
+                @if ($currentRoute != 'play-contest')
                     @include('frontend.includes.body_header')
-                {{-- @endif --}}
+                @endif
 
 				@include('frontend.includes.sidebar')
 

@@ -39,13 +39,17 @@ var Joincontest = function(){
             $("#score-text").val(parseInt(scoretext));
             $("#"+correct_ans_id).closest('.answerui').addClass('right-ans');
 
+            // $(".que-no").text(parseInt(parseInt(question_no)+1));
+
             if(question_no != 25){
                 setTimeout(function() {
+                    $(".que-no").delay(1000).text(parseInt(parseInt(question_no)+1));
                     $("#question_answer"+question_no).delay(1000).addClass('hidden');
                     $("#question_answer"+ parseInt(parseInt(question_no)+1)).delay(1000).removeClass('hidden');
                 }, 1000);
             }else{
                 setTimeout(function() {
+                    $(".que-no").delay(1000).text(parseInt(parseInt(question_no)+1));
                     var scoretext = parseInt($("#score-text").val());
                     window.location.href = baseurl + "contest/quiz-result?id=" + adid + "&score=" + scoretext;
                 }, 1000);
@@ -53,17 +57,13 @@ var Joincontest = function(){
 
         });
 
-        setTimeout(function() {
-            var adid = $("#adid").val();
-            var scoretext = parseInt($("#score-text").val());
-            window.location.href = baseurl + "contest/quiz-result?id=" + adid + "&score=" + scoretext;
-        }, time_second*1000);
-
         // setTimeout(function() {
         //     var adid = $("#adid").val();
         //     var scoretext = parseInt($("#score-text").val());
-        //     window.location.href = baseurl + "contest/quiz-result?id=" + adid + "&score=" + scoretext ;
-        // }, 5000);
+        //     window.location.href = baseurl + "contest/quiz-result?id=" + adid + "&score=" + scoretext;
+        // }, time_second*1000);
+
+
 
     }
 
