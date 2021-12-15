@@ -97,12 +97,16 @@ table {
     margin-right: 10px !important;
 }
 
-button.btn.btn-info.my-btn{
-    border: 0 !important;
-    background: #e89e1c !important;
+
+
+.my-btn:hover  {
+    /* padding-right: 25px; */
+    height: 55px;
+    background-color: #ffa300;
     color: var(--white-color) !important;
     font-weight: bold !important;
     border-radius: 6px !important;
     font-size: 16px !important;
     text-transform: uppercase !important;
 }
+
