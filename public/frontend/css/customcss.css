@@ -101,8 +101,8 @@ table {
 
 .my-btn:hover  {
     /* padding-right: 25px; */
-    height: 55px;
-    background-color: #ffa300;
+    height: 55px !important;
+    background-color: #ffa300 !important;
     color: var(--white-color) !important;
     font-weight: bold !important;
     border-radius: 6px !important;
@@ -110,3 +110,12 @@ table {
     text-transform: uppercase !important;
 }
 
+.my-btn:active  {
+    height: 50px !important;
+    background-color: #ffa300 !important;
+    color: var(--white-color) !important;
+    font-weight: bold !important;
+    border-radius: 6px !important;
+    font-size: 16px !important;
+    text-transform: uppercase !important;
+}
