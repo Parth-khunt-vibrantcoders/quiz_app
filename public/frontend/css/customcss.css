@@ -110,6 +110,18 @@ table {
     text-transform: uppercase !important;
 }
 
+.my-btn  {
+    width: 100%;
+    height: 50px;
+    border: 0;
+    background: #e89e1c;
+    color: var(--white-color);
+    font-weight: bold;
+    border-radius: 6px;
+    font-size: 16px;
+    text-transform: uppercase;
+}
+
 .my-btn:active  {
     height: 50px !important;
     background-color: #ffa300 !important;

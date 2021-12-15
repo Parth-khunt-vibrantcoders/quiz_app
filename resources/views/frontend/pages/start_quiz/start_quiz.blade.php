@@ -17,7 +17,7 @@
                 </div>
                 <div class="login-head">
                     <a href="{{ route('quiz-list', ['id' => $adid]) }}">
-                        <button class="btn btn-info my-btn" >LET'S START</button>
+                        <button class="my-btn" >LET'S START</button>
                     </a>
                 </div>
             </div>
