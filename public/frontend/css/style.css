@@ -41,7 +41,7 @@ body {
     overflow: hidden;
 }
 .menu-close {
-    background-color: var(--menu-bg-color);
+    /* background-color: var(--menu-bg-color); */
     position: fixed;
     top: 0;
     left: 280px;
@@ -739,6 +739,11 @@ header {
     width: 280px;
     background-color: var(--bg-color);
     z-index: 9;
+    -webkit-transition: all .3s ease-in-out;
+    -moz-transition:    all .3s ease-in-out;
+    -o-transition:      all .3s ease-in-out;
+    -ms-transition:     all .3s ease-in-out;
+    transition:         all .3s ease-in-out;
 }
 .main .sidebar-menu{
 	left: 0;
