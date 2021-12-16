@@ -6,7 +6,7 @@
             <div class="container">
                 <div class="header-top">
                     <div class="logo-menu">
-                        <button class="menu-open" type=""><i class="fal fa-angle-left"></i></button>
+                        <button class="menu-open" type=""><i class="fal fa-signal-alt-3"></i></button>
                         <div class="logo">
                             {{-- <img src="{{ asset('public/frontend/images/logo.png' ) }}"> --}}
                         </div>
