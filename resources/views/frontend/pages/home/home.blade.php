@@ -55,7 +55,7 @@
                             @endphp
                         @endforeach
                         <div class="sign-login">
-                            <a href="{{ route('sign-up', ['id' => $_GET['id'] ]) }}">Sign Up</a> · <a href="{{ route('sign-in', , ['id' => $_GET['id'] ]) }}">Login</a></a>
+                            <a href="{{ route('sign-up', ['id' => $_GET['id']]) }}">Sign Up</a> · <a href="{{ route('sign-in', ['id' => $_GET['id']]) }}">Login</a></a>
                         </div>
                     </div>
                 </form>

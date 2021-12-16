@@ -123,7 +123,7 @@
 
                 <div class="sign-login">
                     <a href="{{ route('sign-in', ['id'=> $adId]) }}">Already have an account</a>
-                    <a href="{{ route('quiz-list', ['id'=> $adId]) }}">Play as guest </a>
+
                 </div>
 
 
