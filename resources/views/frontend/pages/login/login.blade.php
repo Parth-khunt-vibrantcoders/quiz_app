@@ -7,9 +7,11 @@
                 <div class="header-top">
                     <div class="logo-menu">
                         <button class="menu-open" type=""><i class="fal fa-angle-left"></i></button>
-                        <div class="logo">
+                        <a href="{{ route('quiz-list' , ['id' => $_GET['id'] ]) }}" style="margin-top: 0px !importnat">
+                            <div class="logo">
                             {{-- <img src="{{ asset('public/frontend/images/logo.png' ) }}"> --}}
-                        </div>
+                            </div>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -29,33 +31,33 @@
             </div>
             <ul>
                 <li>
-                    <a href="{{ route('quiz-list')}}">
+                    <a href="{{ route('quiz-list' , ['id' => $_GET['id'] ])}}">
                         <i class="fa fa-home" aria-hidden="true"></i>Home
                     </a>
                 </li>
                 <li>
-                    <a href="{{ route('partner-us')}}" target="_blank">
+                    <a href="{{ route('partner-us' , ['id' => $_GET['id'] ])}}" target="_blank">
                         <i class="fa fa-handshake" aria-hidden="true"></i>Partner with us
                     </a>
                 </li>
                 <li>
-                    <a href="{{ route('contact-us')}}">
+                    <a href="{{ route('contact-us' , ['id' => $_GET['id'] ])}}">
                         <i class="fa fa-envelope" aria-hidden="true"></i>Contact us
                     </a>
                 </li>
                 <li>
-                    <a href="{{ route('quiz-rules') }}">
+                    <a href="{{ route('quiz-rules' , ['id' => $_GET['id'] ]) }}">
                         <i class="fa fa-flag" aria-hidden="true"></i>Qzop Rules
                     </a>
                 </li>
                 <li>
-                    <a href="{{ route('privacy-policy') }}">
+                    <a href="{{ route('privacy-policy' , ['id' => $_GET['id'] ]) }}">
                         <i class="fa fa-lock" aria-hidden="true"></i>Privacy Policy
                     </a>
                 </li>
 
                 <li>
-                    <a href="{{ route('terms-conditions') }}">
+                    <a href="{{ route('terms-conditions' , ['id' => $_GET['id'] ]) }}">
                         <i class="fa fa-bell" aria-hidden="true"></i>Terms & Conditions
                     </a>
                 </li>

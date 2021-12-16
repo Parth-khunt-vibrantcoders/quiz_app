@@ -27,5 +27,19 @@ class CmsSeeder extends Seeder
             'updated_at' => date("Y-m-d h:i:s"),
         ]);
 
+        DB::table('cms')->insert([
+            'identifier' => "contactus",
+            'text' => "Testing Contactus",
+            'created_at' => date("Y-m-d h:i:s"),
+            'updated_at' => date("Y-m-d h:i:s"),
+        ]);
+
+        DB::table('cms')->insert([
+            'identifier' => "terms",
+            'text' => "Testing terms",
+            'created_at' => date("Y-m-d h:i:s"),
+            'updated_at' => date("Y-m-d h:i:s"),
+        ]);
+
     }
 }
