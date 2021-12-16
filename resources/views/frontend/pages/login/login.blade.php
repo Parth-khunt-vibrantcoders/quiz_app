@@ -36,7 +36,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="{{ route('partner-us' , ['id' => $_GET['id'] ])}}" target="_blank">
+                    <a href="{{ route('partner-us')}}" target="_blank">
                         <i class="fa fa-handshake" aria-hidden="true"></i>Partner with us
                     </a>
                 </li>

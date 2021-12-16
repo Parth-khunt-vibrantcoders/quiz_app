@@ -10,11 +10,9 @@ use App\Models\Landingpageimage;
 use App\Models\Resultpageimage;
 use App\Models\Users;
 use App\Models\Cmspages;
+use App\Models\Partnerus;
 class QuizController extends Controller
 {
-    //
-
-
     public function quiz_list(Request $request){
         if($request->get('id')){
             $objQuiztype = new Quiztype();
@@ -176,8 +174,22 @@ class QuizController extends Controller
     }
 
     public function partner_us(Request $request){
-        if($request->get('id')){
 
+            if($request->isMethod('post')){
+                $objPartnerus = new Partnerus();
+                $res = $objPartnerus->add_partner_us($request);
+                if($res){
+                    $return['status'] = 'success';
+                    $return['message'] = 'Well Done login Successfully!';
+                    $return['redirect'] = route('partner-us');
+                } else {
+                    $return['status'] = 'error';
+                    $return['jscode'] = '$(".submitbtn:visible").removeAttr("disabled");$("#loader").hide();';
+                    $return['message'] = 'Invalid Login Id/Password';
+                }
+                return json_encode($return);
+                exit();
+            }
             $objCmspages  = new Cmspages();
             $data['details'] = $objCmspages->get_cms_details('contactus');
 
@@ -191,19 +203,24 @@ class QuizController extends Controller
             $data['css'] = array(
             );
             $data['plugincss'] = array(
+                'css/toastr/toastr.min.css'
             );
             $data['pluginjs'] = array(
+                'toastr/toastr.min.js',
+                'validate/jquery.validate.min.js',
             );
             $data['js'] = array(
+                'comman_function.js',
+                'ajaxfileupload.js',
+                'jquery.form.min.js',
+                'partner_us.js',
             );
             $data['funinit'] = array(
+                'Partnerus.init()',
             );
-
             return view('frontend.pages.quiz_list.partner_us', $data);
 
-        }else{
-            return redirect()->route('partner-us', 'id='.Config::get('constants.DEFULT_ID'));
-        }
+
     }
 
     public function quiz_result(Request $request){

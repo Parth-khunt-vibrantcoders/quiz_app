@@ -1,12 +1,33 @@
 <!doctype html>
 <html lang="en">
    <head>
-      <title>Contact Form 10</title>
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-      <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
-      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-      <link rel="stylesheet" href="{{ asset('public/partnerus/css/style.css') }}">
+        <title>Contact Form 10</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="{{ asset('public/partnerus/css/style.css') }}">
+
+        @if (!empty($css))
+            @foreach ($css as $value)
+                @if(!empty($value))
+                    <link rel="stylesheet" href="{{ asset('public/frontend/css/customcss/'.$value) }}">
+                @endif
+            @endforeach
+        @endif
+
+
+        @if (!empty($plugincss))
+            @foreach ($plugincss as $value)
+                @if(!empty($value))
+                    <link rel="stylesheet" href="{{ asset('public/frontend/'.$value) }}">
+                @endif
+            @endforeach
+        @endif
+
+        <script>
+            var baseurl = "{{ asset('/') }}";
+        </script>
    </head>
    <body>
       <section class="ftco-section" style="background-color: white">
@@ -21,9 +42,11 @@
                                <h3 class="mb-4">Drop your message here</h3>
                                <div id="form-message-warning" class="mb-4"></div>
                                <div id="form-message-success" class="mb-4">
-                                  Your message was sent, thank you!
+                                    @if($errors->any())
+                                        <h4>{{$errors->first()}}</h4>
+                                    @endif
                                </div>
-                               <form method="POST" id="contactForm" name="contactForm">
+                               <form method="POST" id="contactForm" name="contactForm">@csrf
                                   <div class="row">
                                      <div class="col-md-12">
                                         <div class="form-group">
@@ -57,7 +80,7 @@
                         </div>
 
                         <div class="col-lg-6 d-flex align-items-stretch">
-                           <div class="info-wrap w-100 p-5">
+                           <div class="info-wrap w-100 ">
                                 <div class="desktop">
                                     <div class="desktop-inner text-center">
                                         <div class="text-center">
@@ -89,10 +112,40 @@
             </div>
          </div>
       </section>
-      <script src="{{ asset('public/partnerus/js/jquery.min.js') }}"></script>
-      <script src="{{ asset('public/partnerus/js/popper.js') }}"></script>
-      <script src="{{ asset('public/partnerus/js/bootstrap.min.js') }}"></script>
-      <script src="{{ asset('public/partnerus/js/jquery.validate.min.js') }}"></script>
-      <script src="{{ asset('public/partnerus/js/main.js') }}"></script>
+        <script src="{{ asset('public/partnerus/js/jquery.min.js') }}"></script>
+        {{-- <script src="{{ asset('public/partnerus/js/popper.js') }}"></script> --}}
+        {{-- <script src="{{ asset('public/partnerus/js/bootstrap.min.js') }}"></script> --}}
+        {{-- <script src="{{ asset('public/partnerus/js/jquery.validate.min.js') }}"></script> --}}
+
+
+        <script type="text/javascript">
+            jQuery(document).ready(function () {
+                $('#loader').show();
+                $('#loader').fadeOut(2000);
+            });
+        </script>
+
+        @if (!empty($pluginjs))
+            @foreach ($pluginjs as $value)
+                <script src="{{ asset('public/frontend/js/plugins/'.$value) }}" type="text/javascript"></script>
+            @endforeach
+        @endif
+
+        @if (!empty($js))
+        @foreach ($js as $value)
+            <script src="{{ asset('public/frontend/js/customjs/'.$value) }}" type="text/javascript"></script>
+        @endforeach
+        @endif
+
+        <script>
+            jQuery(document).ready(function () {
+                @if (!empty($funinit))
+                        @foreach ($funinit as $value)
+                            {{  $value }}
+                        @endforeach
+                @endif
+            });
+        </script>
+
    </body>
 </html>
