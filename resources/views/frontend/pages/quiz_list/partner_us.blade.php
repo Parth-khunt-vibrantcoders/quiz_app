@@ -40,12 +40,7 @@
                         <div class="col-lg-6" style="border: 2px solid #e0e0e0 !important; border-radius: 10px !important">
                             <div class="contact-wrap w-100 p-md-5 p-4">
                                <h3 class="mb-4">Drop your message here</h3>
-                               <div id="form-message-warning" class="mb-4"></div>
-                               <div id="form-message-success" class="mb-4">
-                                    @if($errors->any())
-                                        <h4>{{$errors->first()}}</h4>
-                                    @endif
-                               </div>
+
                                <form method="POST" id="contactForm" name="contactForm">@csrf
                                   <div class="row">
                                      <div class="col-md-12">
@@ -113,9 +108,6 @@
          </div>
       </section>
         <script src="{{ asset('public/partnerus/js/jquery.min.js') }}"></script>
-        {{-- <script src="{{ asset('public/partnerus/js/popper.js') }}"></script> --}}
-        {{-- <script src="{{ asset('public/partnerus/js/bootstrap.min.js') }}"></script> --}}
-        {{-- <script src="{{ asset('public/partnerus/js/jquery.validate.min.js') }}"></script> --}}
 
 
         <script type="text/javascript">
