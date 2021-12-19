@@ -7,14 +7,16 @@ var Landingpage = function(){
             var question_no = $(this).attr('data-question');
             var correct_ans = $("#question"+question_no).val();
 
-            if(correct_ans == value){
-                $(this).closest('.answerui').addClass('right-ans');
-            }else{
-                $(this).closest('.answerui').addClass('wrong-ans');
-            }
-            var correct_ans_id =  'right_answer'+question_no;
+            // if(correct_ans == value){
+            //     $(this).closest('.answerui').addClass('right-ans');
+            // }else{
+            //     $(this).closest('.answerui').addClass('wrong-ans');
+            // }
+            $(this).closest('.answerui').addClass('right-ans');
 
-            $("#"+correct_ans_id).closest('.answerui').addClass('right-ans');
+            // var correct_ans_id =  'right_answer'+question_no;
+
+            // $("#"+correct_ans_id).closest('.answerui').addClass('right-ans');
 
             if(question_no != 2){
                 setTimeout(function() {

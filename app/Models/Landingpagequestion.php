@@ -93,7 +93,6 @@ class Landingpagequestion extends Model
         $objLandingpagequestion->answer2 = $request->input('answer2');
         $objLandingpagequestion->answer3 = $request->input('answer3');
         $objLandingpagequestion->answer4 = $request->input('answer4');
-        $objLandingpagequestion->right_answer = $request->input('answer');
         $objLandingpagequestion->status = $request->input('status');
         $objLandingpagequestion->created_at = date('Y-m-d h:i:s');
         $objLandingpagequestion->updated_at = date('Y-m-d h:i:s');
@@ -107,7 +106,6 @@ class Landingpagequestion extends Model
         $objLandingpagequestion->answer2 = $request->input('answer2');
         $objLandingpagequestion->answer3 = $request->input('answer3');
         $objLandingpagequestion->answer4 = $request->input('answer4');
-        $objLandingpagequestion->right_answer = $request->input('answer');
         $objLandingpagequestion->status = $request->input('status');
         $objLandingpagequestion->created_at = date('Y-m-d h:i:s');
         return $objLandingpagequestion->save();
@@ -115,7 +113,7 @@ class Landingpagequestion extends Model
 
     public function get_question_details($id){
         return Landingpagequestion::where('landing_page_question.id', $id)
-                ->select('landing_page_question.question', 'landing_page_question.answer1', 'landing_page_question.answer2', 'landing_page_question.answer3', 'landing_page_question.answer4', 'landing_page_question.right_answer', 'landing_page_question.id', 'landing_page_question.status' )
+                ->select('landing_page_question.question', 'landing_page_question.answer1', 'landing_page_question.answer2', 'landing_page_question.answer3', 'landing_page_question.answer4',  'landing_page_question.id', 'landing_page_question.status' )
                 ->get()
                 ->toArray();
     }
@@ -142,7 +140,7 @@ class Landingpagequestion extends Model
     }
 
     public function get_landing_page_question(){
-        return Landingpagequestion::select('question', 'answer1', 'answer2', 'answer3', 'answer4', 'right_answer')
+        return Landingpagequestion::select('question', 'answer1', 'answer2', 'answer3', 'answer4')
                 ->where('landing_page_question.status', 'Y')
                 ->where('landing_page_question.is_deleted', 'N')
                 ->inRandomOrder()
