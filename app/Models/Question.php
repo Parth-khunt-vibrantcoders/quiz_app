@@ -104,6 +104,7 @@ class Question extends Model
                                 ->join('quiz','quiz.id', '=', 'question.quiz_id')
                                 ->join('quiz_category','quiz_category.id', '=', 'quiz.category')
                                 ->join('quiz_type','quiz_type.id', '=', 'quiz_category.quiz_type')
+                                ->where('quiz.is_deleted', 'N')
                                 ->where('question.is_deleted', 'N');
 
 

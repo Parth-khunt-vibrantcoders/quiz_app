@@ -9,7 +9,7 @@ var Que = function(){
             'ajaxAction': 'getdatatable',
             'postData': dataArr,
             'hideColumnList': [],
-            'noSortingApply': [0,3],
+            'noSortingApply': [0, 6],
             'noSearchApply': [0,3],
             'defaultSortColumn': [0],
             'defaultSortOrder': 'DESC',

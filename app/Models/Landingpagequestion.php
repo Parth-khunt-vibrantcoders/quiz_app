@@ -16,7 +16,7 @@ class Landingpagequestion extends Model
         $columns = array(
             0 => 'landing_page_question.id',
             1 => 'landing_page_question.question',
-            1 => 'landing_page_question.status',
+            2 => 'landing_page_question.status',
         );
 
         $query = Landingpagequestion ::from('landing_page_question')

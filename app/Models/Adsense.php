@@ -18,11 +18,11 @@ class Adsense extends Model
             1 => 'adsense.image',
             2 => 'adsense.uniqe_id',
             3 => 'adsense.first_name',
-            4 => 'adsense.lasst_name',
+            4 => 'adsense.email',
             5 => 'adsense.phone_number',
-            6 => 'adsense.pan_number',
-            7 => 'adsense.doj',
-            8=> 'adsense.is_active',
+            6 => 'adsense.doj',
+            7 => 'adsense.is_active',
+            8 => 'adsense.last_name',
         );
 
         $query = Landingpagequestion ::from('adsense')->where('adsense.is_deleted', 'N');

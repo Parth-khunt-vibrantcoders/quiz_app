@@ -16,12 +16,14 @@ class Quiz extends Model
 
         $columns = array(
             0 => 'quiz.id',
-            1 => 'quiz_type.name',
-            2 => 'quiz_category.name',
-            3 => 'quiz.name',
-            4 => 'quiz.fee',
-            5 => 'quiz.prize',
-            6 => 'quiz.time',
+            1 => 'quiz.image',
+            2 => 'quiz_type.name',
+            3 => 'quiz_category.name',
+            4 => 'quiz.name',
+            5 => 'quiz.fee',
+            6 => 'quiz.prize',
+            7 => 'quiz.time',
+            8 => 'quiz.status',
         );
 
         $query = Quiztype ::from('quiz')
