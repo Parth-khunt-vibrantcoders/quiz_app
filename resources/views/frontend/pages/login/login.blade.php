@@ -86,14 +86,14 @@
                     <h2>Join qzop now!</h2>
                     <p>Play qzop and Win Coins</p>
                 </div>
-                <form method="POST" id="user-login">
+                <form method="POST" id="user-login" autocomplete="off">
                     @csrf
                     <div class="input-form">
                         <div class="form-group">
                             <label>Enter register email</label>
                             <div class="input-group">
                                 <span class="icon-box"><i class="fa fa-envelope"></i></span>
-                                <input type="text" class="form-control" placeholder="Please enter register email" name="email">
+                                <input type="text" class="" autocomplete="off" placeholder="Please enter register email" name="email">
                             </div>
                         </div>
                     </div>
@@ -103,7 +103,7 @@
                             <label>Enter Password</label>
                             <div class="input-group">
                                 <span class="icon-box"><i class="fa fa-key"></i></span>
-                                <input type="password" class="form-control" placeholder="Please enter your password" name="password">
+                                <input type="password" class="" autocomplete="off" placeholder="Please enter your password" name="password">
                             </div>
                         </div>
                     </div>
