@@ -1,5 +1,22 @@
 var Dashboard = function(){
-
+    var dash = function(){
+        var dataArr = {};
+        var columnWidth = { "width": "5%", "targets": 0 };
+        var arrList = {
+            'pageLength': 5,
+            'tableID': '#adsense-users-list',
+            'ajaxURL': baseurl + "admin/my-dashboard-ajaxcall",
+            'ajaxAction': 'getdatatable',
+            'postData': dataArr,
+            'hideColumnList': [],
+            'noSortingApply': [0, 1, 4],
+            'noSearchApply': [0, 1, 4],
+            'defaultSortColumn': [0],
+            'defaultSortOrder': 'DESC',
+            'setColumnWidth': columnWidth
+        };
+        getDataTable(arrList);
+    }
     var edit_profile = function (){
 
         var form = $('#edit-profile');
@@ -60,6 +77,9 @@ var Dashboard = function(){
     }
 
     return {
+        init:function(){
+            dash();
+        },
         edit:function(){
             edit_profile();
         },

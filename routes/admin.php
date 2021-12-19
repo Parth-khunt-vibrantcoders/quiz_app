@@ -19,10 +19,8 @@ Route::match(['get', 'post'], 'admin-logout', ['as' => 'admin-logout', 'uses' =>
 Route::match(['get', 'post'], 'common-ajaxcall', ['as' => 'common-ajaxcall', 'uses' => 'backend\CommonController@ajaxcall']);
 $prefix = 'admin';
 Route::group(['prefix' => $prefix, 'middleware' => ['admin']], function() {
-    // Dashboard
     Route::match(['get', 'post'], 'my-dashboard', ['as' => 'my-dashboard', 'uses' => 'backend\admin\dashboard\DashboardController@dashboard']);
-    // Dashboard
-
+    Route::match(['get', 'post'], 'my-dashboard-ajaxcall', ['as' => 'my-dashboard-ajaxcall', 'uses' => 'backend\admin\dashboard\DashboardController@ajaxcall']);
 });
 
 $prefix = 'profile';

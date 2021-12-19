@@ -4,7 +4,7 @@ namespace App\Http\Controllers\backend\admin\dashboard;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Users;
+use App\Models\Adsense;
 use Config;
 
 class DashboardController extends Controller
@@ -20,14 +20,24 @@ class DashboardController extends Controller
         $data['keywords'] = 'My Dashboard || '.Config::get('constants.PROJECT_NAME') ;
         $data['description'] = 'My Dashboard || '.Config::get('constants.PROJECT_NAME') ;
         $data['css'] = array(
+            'toastr/toastr.min.css'
         );
-        $data['plugin_css'] = array(
+        $data['plugincss'] = array(
+            'plugins/toastr/toastr.min.css',
+            'plugins/custom/datatables/datatables.bundle.css'
+        );
+        $data['pluginjs'] = array(
+            'plugins/custom/datatables/datatables.bundle.js',
+            'js/pages/crud/datatables/data-sources/html.js'
         );
         $data['js'] = array(
-        );
-        $data['plugin_js'] = array(
+            'comman_function.js',
+            'ajaxfileupload.js',
+            'jquery.form.min.js',
+            'dashboard.js'
         );
         $data['funinit'] = array(
+            'Dashboard.init()'
         );
         $data['header'] = array(
             'title' => 'My Dashboard',
@@ -142,5 +152,21 @@ class DashboardController extends Controller
             )
         );
         return view('backend.pages.admin.profile.changepassword', $data);
+    }
+
+    public function ajaxcall(Request $request){
+        $action = $request->input('action');
+
+        switch ($action) {
+
+
+            case 'getdatatable':
+
+                $objAdsense = new Adsense();
+                $list = $objAdsense->getdatatable_uers();
+
+                echo json_encode($list);
+                break;
+            }
     }
 }
