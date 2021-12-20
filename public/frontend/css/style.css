@@ -69,6 +69,9 @@ blockquote:before, blockquote:after, q:before, q:after {
     content: '';
     content: none;
 }
+.logo{
+    cursor: pointer !important;
+}
 
 table {
     border-collapse: collapse;

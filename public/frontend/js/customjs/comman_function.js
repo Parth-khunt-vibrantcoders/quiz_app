@@ -990,3 +990,10 @@ $("body").on('click', '.hide-prize-list', function(){
     $('#prize-list-table').addClass('hidden');
     $('.prize-list').text('View Prize List');
 });
+
+
+$('body').on('click', '.logo', function(){
+    var addid = $('#logoadd').val();
+    window.location.href = baseurl + 'users/quiz-list?id=' + addid ;
+});
+

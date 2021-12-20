@@ -7,11 +7,10 @@
                 <div class="header-top">
                     <div class="logo-menu">
                         <button class="menu-open" type=""><i class="fal fa-signal-alt-3"></i></button>
-                        <a href="{{ route('quiz-list' , ['id' => $_GET['id'] ]) }}" style="margin-top: 0px !importnat">
-                            <div class="logo">
-                            {{-- <img src="{{ asset('public/frontend/images/logo.png' ) }}"> --}}
-                            </div>
-                        </a>
+                        <input type="hidden" id="logoadd" value="{{ $_GET['id']}}">
+                        <div class="logo">
+                        {{-- <img src="{{ asset('public/frontend/images/logo.png' ) }}"> --}}
+                        </div>
                     </div>
                 </div>
             </div>

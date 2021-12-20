@@ -7,6 +7,7 @@
                 <div class="header-top">
                     <div class="logo-menu">
                         <button class="menu-open" type=""><i class="fal fa-signal-alt-3"></i></button>
+                        <input type="hidden" id="logoadd" value="{{ $_GET['id']}}">
                         <div class="logo">
                             {{-- <img src="{{ asset('public/frontend/images/logo.png' ) }}"> --}}
                         </div>

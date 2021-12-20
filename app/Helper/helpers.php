@@ -58,5 +58,7 @@ function get_users_coin($userid){
     }
 }
 
+function count_users(){
 
+}
 ?>
