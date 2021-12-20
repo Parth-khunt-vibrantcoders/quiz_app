@@ -9,7 +9,7 @@
                 <h3 class="card-title">{{ $header['title'] }}</h3>
             </div>
             <!--begin::Form-->
-            <form id="quiz-rules" enctype="multipart/form-data" method="POST">
+            <form id="terms-conditions" enctype="multipart/form-data" method="POST">
                 @csrf
                 <input class="form-control" type="hidden" aria-label="file example" name="editId" value="{{ $details[0]['id'] }}">
                 <div class="card-body">
