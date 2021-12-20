@@ -107,7 +107,7 @@ class QuizController extends Controller
             return view('frontend.pages.quiz_list.privacy_policy', $data);
 
         }else{
-            return redirect()->route('quiz-rules', 'id='.Config::get('constants.DEFULT_ID'));
+            return redirect()->route('privacy-policy', 'id='.Config::get('constants.DEFULT_ID'));
         }
     }
 
@@ -180,7 +180,7 @@ class QuizController extends Controller
                 $res = $objPartnerus->add_partner_us($request);
                 if($res){
                     $return['status'] = 'success';
-                    $return['message'] = 'Well Done login Successfully!';
+                    $return['message'] = 'Your details successfully received . We will contact you soon!';
                     $return['redirect'] = route('partner-us');
                 } else {
                     $return['status'] = 'error';
@@ -190,8 +190,8 @@ class QuizController extends Controller
                 return json_encode($return);
                 exit();
             }
-            $objCmspages  = new Cmspages();
-            $data['details'] = $objCmspages->get_cms_details('contactus');
+
+
 
             $objLandingpageimage = new Landingpageimage();
             $data['image'] = $objLandingpageimage->get_landing_page_image_details();
