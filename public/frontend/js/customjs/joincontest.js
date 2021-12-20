@@ -30,7 +30,7 @@ var Joincontest = function(){
                 scoretext = parseInt(scoretext) + 20;
                 $(this).closest('.answerui').addClass('right-ans');
             }else{
-                scoretext = parseInt(scoretext) - 20;
+                scoretext = parseInt(scoretext) - 10;
                 $(this).closest('.answerui').addClass('wrong-ans');
             }
 
