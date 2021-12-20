@@ -179,6 +179,14 @@ $currentRoute = Route::current()->getName();
                                 <span class="menu-text">Privacy Policy</span>
                             </a>
                         </li>
+                        <li class="menu-item {{  $currentRoute == 'admin-quiz-rules' ? 'menu-item-active' : ''}}" aria-haspopup="true">
+                            <a href="{{ route('admin-quiz-rules') }}" class="menu-link">
+                                <i class="menu-bullet menu-bullet-dot text-white">
+                                    <span></span>
+                                </i>
+                                <span class="menu-text">Quiz Rules</span>
+                            </a>
+                        </li>
 
                         <li class="menu-item {{  $currentRoute == 'admin-terms-conditions' ? 'menu-item-active' : ''}}" aria-haspopup="true">
                             <a href="{{ route('admin-terms-conditions') }}" class="menu-link">
