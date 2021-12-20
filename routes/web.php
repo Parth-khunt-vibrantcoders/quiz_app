@@ -49,3 +49,5 @@ Route::group(['prefix' => $prefix], function() {
 
     Route::match(['get','post'],'quiz-result',['as'=>'quiz-result','uses'=>'frontend\quiz\QuizController@quiz_result']);
 });
+
+

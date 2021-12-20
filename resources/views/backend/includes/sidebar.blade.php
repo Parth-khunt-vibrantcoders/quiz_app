@@ -209,6 +209,14 @@ $currentRoute = Route::current()->getName();
                 </div>
             </li>
 
+            <li class="menu-item {{ $currentRoute == 'admin-partner-us' || $currentRoute == 'admin-partner-us-add'  ? 'menu-item-active' : '' }} " aria-haspopup="true">
+                <a href="{{ route('admin-partner-us') }}" class="menu-link">
+                    <span class="menu-icon">
+                        <i class="fa fa-handshake-o" aria-hidden="true"></i>
+                    </span>
+                    <span class="menu-text">Partner Us</span>
+                </a>
+            </li>
 
         </ul>
         <!--end::Menu Nav-->

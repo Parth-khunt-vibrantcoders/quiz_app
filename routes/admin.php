@@ -113,4 +113,10 @@ Route::group(['prefix' => $prefix, 'middleware' => ['admin']], function() {
     Route::match(['get', 'post'], 'admin-contact-us', ['as' => 'admin-contact-us', 'uses' => 'backend\admin\cms\CmsController@contact_us']);
 });
 
+$prefix = 'partner-us';
+Route::group(['prefix' => $prefix, 'middleware' => ['admin']], function() {
+    Route::match(['get', 'post'], 'admin-partner-us', ['as' => 'admin-partner-us', 'uses' => 'backend\admin\partnerus\PartnerusController@list']);
+    Route::match(['get', 'post'], 'admin-partner-us-ajaxcall', ['as' => 'admin-partner-us-ajaxcall', 'uses' => 'backend\admin\partnerus\PartnerusController@ajaxcall']);
+});
+
 

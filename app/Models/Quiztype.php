@@ -98,7 +98,6 @@ class Quiztype extends Model
         $result = Quiztype::select('quiz_type.name', 'quiz_type.id',)
                         ->where('quiz_type.status', 'Y')
                         ->where('quiz_type.is_deleted', 'N')
-                        ->inRandomOrder()
                         ->get()
                         ->toArray();
 
@@ -115,6 +114,7 @@ class Quiztype extends Model
                         ->where('quiz.is_deleted', 'N')
                         ->where('quiz_type.id', $value['id'])
                         ->groupBy('question.quiz_id')
+                        ->inRandomOrder()
                         ->select('quiz.slug', 'quiz.image', 'quiz.name as quiz_app', 'quiz.fee', 'quiz.prize', 'quiz.time', 'quiz_category.name')
                         ->get()
                         ->toArray();
