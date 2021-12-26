@@ -25,7 +25,7 @@ class Adsense extends Model
             8 => 'adsense.last_name',
         );
 
-        $query = Adsense ::from('adsense')->where('adsense.is_deleted', 'N');
+        $query = Adsense ::from('adsense')->leftjoin('count_users', 'count_users.add_id', '=', 'adsense.uniqe_id')->where('adsense.is_deleted', 'N');
 
 
         if (!empty($requestData['search']['value'])) {   // if there is a search parameter, $requestData['search']['value'] contains search parameter
@@ -54,7 +54,7 @@ class Adsense extends Model
         $resultArr = $query->skip($requestData['start'])
                         ->take($requestData['length'])
                         ->select('adsense.id', 'adsense.image', 'adsense.uniqe_id','adsense.first_name', 'adsense.last_name',
-                        'adsense.email', 'adsense.phone_number', 'adsense.doj', 'adsense.is_active', 'adsense.uniqe_id')
+                        'adsense.email', 'adsense.phone_number', 'adsense.doj', 'adsense.is_active', 'adsense.uniqe_id', DB::raw("count(count_users.ip) as count"))
                         ->get();
         $data = array();
         $i = 0;
@@ -90,6 +90,7 @@ class Adsense extends Model
             $nestedData[] = $row['email'];
             $nestedData[] = $row['phone_number'];
             $nestedData[] = date_formate($row['doj']);
+            $nestedData[] = $row['count'];
             $nestedData[] = $status;
             $nestedData[] = $actionhtml;
             $data[] = $nestedData;
@@ -280,5 +281,9 @@ class Adsense extends Model
         }else{
             return false ;
         }
+    }
+
+    public function get_count_adsense(){
+        return Adsense::from('adsense')->where('adsense.is_active', 'Y')->where('adsense.is_deleted', 'N')->count();
     }
 }

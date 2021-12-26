@@ -5,6 +5,9 @@ namespace App\Http\Controllers\backend\admin\dashboard;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Adsense;
+use App\Models\Users;
+use App\Models\Quiz;
+use App\Models\Question;
 use Config;
 
 class DashboardController extends Controller
@@ -15,6 +18,17 @@ class DashboardController extends Controller
     }
 
     public function dashboard() {
+        $objAdsense = new Adsense();
+        $data['adsense_list'] = $objAdsense->get_count_adsense();
+
+        $objUsers = new Users();
+        $data['users_list'] = $objUsers->get_count_users();
+
+        $objQuiz = new Quiz();
+        $data['quiz_list'] = $objQuiz->get_count_quiz();
+
+        $objQuestion = new Question();
+        $data['question_list'] = $objQuestion->get_count_question();
 
         $data['title'] = 'My Dashboard || '.Config::get('constants.PROJECT_NAME') ;
         $data['keywords'] = 'My Dashboard || '.Config::get('constants.PROJECT_NAME') ;

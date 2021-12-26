@@ -219,4 +219,8 @@ class Quiz extends Model
                 ->get()
                 ->toArray();
     }
+
+    public function get_count_quiz(){
+        return Quiz::from('quiz')->where('quiz.is_deleted', 'N')->where('quiz.status', 'Y')->count();
+    }
 }

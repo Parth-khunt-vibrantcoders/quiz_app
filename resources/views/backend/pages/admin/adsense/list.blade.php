@@ -36,6 +36,7 @@
                             <th>Email</th>
                             <th>Ph. No</th>
                             <th>DOJ</th>
+                            <th>Active Users</th>
                             <th>Status</th>
                             <th>Action</th>
                         </tr>

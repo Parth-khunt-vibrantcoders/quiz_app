@@ -245,4 +245,16 @@ class Question extends Model
             ->get()
             ->toArray();
     }
+
+    public function get_count_question(){
+        return Question ::from('question')
+                ->join('quiz','quiz.id', '=', 'question.quiz_id')
+                ->join('quiz_category','quiz_category.id', '=', 'quiz.category')
+                ->join('quiz_type','quiz_type.id', '=', 'quiz_category.quiz_type')
+                ->where('quiz.is_deleted', 'N')
+                ->where('question.is_deleted', 'N')
+                ->where('quiz.status', 'Y')
+                ->where('question.is_active', 'Y')
+                ->count();
+    }
 }

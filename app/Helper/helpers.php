@@ -1,5 +1,8 @@
 <?php
 use App\Models\Users;
+use App\Models\Countusers;
+use GuzzleHttp\Psr7\Request;
+
 function date_formate($date){
     return date("d-m-Y", strtotime($date));
 }
@@ -58,7 +61,13 @@ function get_users_coin($userid){
     }
 }
 
-function count_users(){
+    function add_user_ip($addId){
+        $objCountusers =new Countusers();
+        $res = $objCountusers->add_ip($addId);
+        if($res){
 
-}
+        }else{
+            add_user_ip($addId);
+        }
+    }
 ?>

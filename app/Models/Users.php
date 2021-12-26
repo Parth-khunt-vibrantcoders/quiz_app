@@ -206,5 +206,7 @@ class Users extends Model
         return Users::where('id', $userid)->select('coins')->get()->toArray();
     }
 
-
+    public function get_count_users(){
+        return Users::from('users')->where('users.is_deleted', 'N')->where('users.is_active', 'Y')->where('users.user_type', 'U')->count();
+    }
 }
