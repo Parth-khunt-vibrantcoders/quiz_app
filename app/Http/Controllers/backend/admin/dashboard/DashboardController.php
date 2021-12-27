@@ -17,7 +17,14 @@ class DashboardController extends Controller
         $this->middleware('admin');
     }
 
-    public function dashboard() {
+    public function dashboard(Request $request) {
+
+        if($request->get('date')){
+            $data['date'] = date('d-M-Y', strtotime($request->get('date')));
+        }else{
+            $data['date'] = date('d-M-Y');
+        }
+
         $objAdsense = new Adsense();
         $data['adsense_list'] = $objAdsense->get_count_adsense();
 
@@ -170,14 +177,12 @@ class DashboardController extends Controller
 
     public function ajaxcall(Request $request){
         $action = $request->input('action');
+        $details = $request->input('data');
 
         switch ($action) {
-
-
             case 'getdatatable':
-
                 $objAdsense = new Adsense();
-                $list = $objAdsense->getdatatable_uers();
+                $list = $objAdsense->getdatatable_uers($details);
 
                 echo json_encode($list);
                 break;

@@ -1,10 +1,19 @@
 var Dashboard = function(){
     var dash = function(){
-        var dataArr = {};
+
+        $("#datepicker_date").datepicker({
+            format: 'd-M-yyyy',
+            todayHighlight: true,
+            autoclose: true,
+            orientation: "bottom auto"
+        });
+        var date = $("#datepicker_date").val();
+
+        var dataArr = {date:date};
         var columnWidth = { "width": "5%", "targets": 0 };
         var arrList = {
             'pageLength': 5,
-            'tableID': '#adsense-users-list',
+            'tableID': '#date-report',
             'ajaxURL': baseurl + "admin/my-dashboard-ajaxcall",
             'ajaxAction': 'getdatatable',
             'postData': dataArr,
@@ -16,6 +25,12 @@ var Dashboard = function(){
             'setColumnWidth': columnWidth
         };
         getDataTable(arrList);
+
+        $('body').on("click","#get_data",function(){
+            var date = $("#datepicker_date").val();
+            var url = baseurl + "admin/my-dashboard?date="+date;
+            location.replace(url);
+        })
     }
     var edit_profile = function (){
 

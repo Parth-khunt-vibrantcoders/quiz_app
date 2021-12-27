@@ -25,7 +25,8 @@ class Adsense extends Model
             8 => 'adsense.last_name',
         );
 
-        $query = Adsense ::from('adsense')->leftjoin('count_users', 'count_users.add_id', '=', 'adsense.uniqe_id')->where('adsense.is_deleted', 'N');
+        $query = Adsense ::from('adsense')
+                ->where('adsense.is_deleted', 'N');
 
 
         if (!empty($requestData['search']['value'])) {   // if there is a search parameter, $requestData['search']['value'] contains search parameter
@@ -54,7 +55,7 @@ class Adsense extends Model
         $resultArr = $query->skip($requestData['start'])
                         ->take($requestData['length'])
                         ->select('adsense.id', 'adsense.image', 'adsense.uniqe_id','adsense.first_name', 'adsense.last_name',
-                        'adsense.email', 'adsense.phone_number', 'adsense.doj', 'adsense.is_active', 'adsense.uniqe_id', DB::raw("count(count_users.ip) as count"))
+                        'adsense.email', 'adsense.phone_number', 'adsense.doj', 'adsense.is_active', 'adsense.uniqe_id')
                         ->get();
         $data = array();
         $i = 0;
@@ -90,7 +91,6 @@ class Adsense extends Model
             $nestedData[] = $row['email'];
             $nestedData[] = $row['phone_number'];
             $nestedData[] = date_formate($row['doj']);
-            $nestedData[] = $row['count'];
             $nestedData[] = $status;
             $nestedData[] = $actionhtml;
             $data[] = $nestedData;
@@ -105,7 +105,7 @@ class Adsense extends Model
         return $json_data;
     }
 
-    public function getdatatable_uers(){
+    public function getdatatable_uers($data){
         $requestData = $_REQUEST;
 
         $columns = array(
@@ -116,8 +116,9 @@ class Adsense extends Model
             4 => 'adsense.last_name',
         );
 
-        $query = Adsense ::from('adsense')
-                ->join('users', 'users.ad_id', '=', 'adsense.uniqe_id')
+        $query = Adsense ::from('count_users')
+                ->leftjoin('adsense', 'adsense.uniqe_id', '=', 'count_users.add_id')
+                ->whereDate('count_users.date', date('Y-m-d', strtotime($data['date'])))
                 ->where('adsense.is_deleted', 'N');
 
 
@@ -148,7 +149,7 @@ class Adsense extends Model
                         ->take($requestData['length'])
                         ->groupBy('adsense.uniqe_id')
                         ->select('adsense.id', 'adsense.image', 'adsense.first_name', 'adsense.last_name',
-                        'adsense.email', DB::raw("count(users.ad_id) as count"))
+                        'adsense.email', DB::raw("count(count_users.id) as count"))
                         ->get();
         $data = array();
         $i = 0;

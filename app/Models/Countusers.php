@@ -13,11 +13,12 @@ class Countusers extends Model
 
     public function add_ip($addId){
         $ip = $this->get_client_ip();
-        $count = Countusers::where('count_users.ip', $ip)->where('count_users.add_id', $addId)->count();
+        $count = Countusers::where('count_users.ip', $ip)->where('count_users.date', date('Y-m-d'))->where('count_users.add_id', $addId)->count();
         if($count == 0){
             $obCountusers = new Countusers();
             $obCountusers->ip = $ip;
             $obCountusers->add_id = $addId;
+            $obCountusers->date = date('Y-m-d');
             $obCountusers->created_at = date('Y-m-d H:i:s');
             $obCountusers->updated_at = date('Y-m-d H:i:s');
             return $obCountusers->save();
