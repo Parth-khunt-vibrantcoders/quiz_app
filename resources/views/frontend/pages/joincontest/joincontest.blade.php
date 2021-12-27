@@ -25,7 +25,7 @@ if (!empty(Auth()->guard('users')->user())) {
                     <ul>
                         <li>You've got 90 seconds to answer all questions</li>
                         <li>Answer as many questions as you can</li>
-                        <li>Entry fee </li>
+                        <li>Entry fee {{ $quiz_details[0]['fee'] }} <i class="fas fa-coins"></i></li>
                     </ul>
                 </div>
                 <div class="quiz-list-box-footer">

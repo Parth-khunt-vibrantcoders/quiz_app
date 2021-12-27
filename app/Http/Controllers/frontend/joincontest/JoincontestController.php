@@ -18,7 +18,7 @@ class JoincontestController extends Controller
         if($request->get('id')){
             $objQuiz = new Quiz();
             $data['quiz_details'] = $objQuiz->get_quiz_details($slug);
-
+            // ccd($data['quiz_details'][0]['fee']);
             $objLandingpageimage = new Landingpageimage();
             $data['image'] = $objLandingpageimage->get_landing_page_image_details();
 

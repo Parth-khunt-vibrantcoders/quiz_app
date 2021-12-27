@@ -51,7 +51,7 @@ var Joincontest = function(){
                 setTimeout(function() {
                     // $(".que-no").delay(1000).text(parseInt(parseInt(question_no)+1));
                     var scoretext = parseInt($("#score-text").val());
-                    window.location.href = baseurl + "contest/quiz-result?id=" + adid + "&score=" + scoretext;
+                    window.location.href = baseurl + "contest/submit-quiz?id=" + adid + "&score=" + scoretext;
                 }, 1000);
             }
 
@@ -60,10 +60,8 @@ var Joincontest = function(){
         setTimeout(function() {
             var adid = $("#adid").val();
             var scoretext = parseInt($("#score-text").val());
-            window.location.href = baseurl + "contest/quiz-result?id=" + adid + "&score=" + scoretext;
+            window.location.href = baseurl + "contest/submit-quiz?id=" + adid + "&score=" + scoretext;
         }, time_second*1000);
-
-
 
     }
 

@@ -223,7 +223,7 @@ class QuizController extends Controller
 
     }
 
-    public function quiz_result(Request $request){
+    public function submit_result(Request $request){
 
         if($request->get('id')){
 
@@ -278,6 +278,70 @@ class QuizController extends Controller
                 $total_coins = intval(session('user_coin')) + intval($coins);
                 session()->put('user_coin', $total_coins);
             }
+            $data['adid'] = $adid = $request->get('id');
+
+            return redirect()->route('quiz-result', ['id' => $adid, 'score' => $score ]);
+
+        }else{
+            return redirect()->route('quiz-list', 'id='.Config::get('constants.DEFULT_ID'));
+        }
+    }
+
+    public function quiz_result(Request $request){
+
+        if($request->get('id')){
+
+            $score = 0 ;
+            $score = $request->get('score');
+            if($score <= 0){
+                $coins = 0 ;
+            }else{
+                if($score > 0 &&  $score <= 20){
+                    $coins = 10 ;
+                }else{
+                    if($score >= 21 &&  $score <= 50){
+                        $coins = 30 ;
+                    }else{
+                        if($score >= 51 &&  $score <= 100){
+                            $coins = 40 ;
+                        }else{
+                            if($score >= 101 &&  $score <= 200){
+                                $coins = 50 ;
+                            }else{
+                                if($score >= 201 &&  $score <= 300){
+                                    $coins = 70 ;
+                                }else{
+                                    if($score >= 301 &&  $score <= 400){
+                                        $coins = 80 ;
+                                    }else{
+                                        if($score >= 401 &&  $score < 500){
+                                            $coins = 90 ;
+                                        }else{
+                                            if($score >= 500){
+                                                $coins = 100 ;
+                                            }else{
+                                                $coins = 0 ;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            $data_coin = [];
+
+            // if (!empty(Auth()->guard('users')->user())) {
+            //     $data_coin = Auth()->guard('users')->user();
+            //     $total_coins = intval($data_coin['coins']) + intval($coins);
+            //     $objUser = new Users();
+            //     $res = $objUser->update_coins($total_coins, $data_coin['id']);
+            // }else{
+            //     $total_coins = intval(session('user_coin')) + intval($coins);
+            //     session()->put('user_coin', $total_coins);
+            // }
 
 
             $data['score'] = $score ;
@@ -287,6 +351,7 @@ class QuizController extends Controller
             $data['result_page_image'] = $objResultpageimage->get_result_page_image_details();
 
             $data['adid'] = $request->get('id');
+
             $data['title'] =  'Quiz Result || '. Config::get('constants.PROJECT_NAME');
             $data['description'] =  'Quiz Result || '. Config::get('constants.PROJECT_NAME');
             $data['keywords'] =  'Quiz Result || '. Config::get('constants.PROJECT_NAME');
