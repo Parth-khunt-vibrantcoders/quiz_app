@@ -18,8 +18,8 @@
                             <div class="form-group">
                                 <label>IP Address
                                 <span class="text-danger">*</span></label>
-                                <input type="text" name="quiz_type" class="form-control" placeholder="Enter IP Address" value="{{ userIP() }}">
-                                <span>{{ getLocationInfoByIp() }}</span>
+                                <input type="text" name="quiz_type" class="form-control" placeholder="Enter IP Address" value="{{ $ip }}">
+                                <span>Country Name : {{ $countryName }}</span>
                             </div>
                         </div>
                     </div>

@@ -164,27 +164,12 @@ class QuiztypeController extends Controller
     }
     public function checkip(Request $request){
         if ($request->isMethod('post')) {
-
-            $ojQuiztype = new Quiztype();
-            $result = $ojQuiztype->edit_quiz_type($request);
-            if ($result == 'true') {
-                $return['status'] = 'success';
-                 $return['jscode'] = '$(".submitbtn:visible").removeAttr("disabled");$("#loader").hide();';
-                $return['message'] = 'Quiz type added successfully.';
-                $return['redirect'] = route('quiz-type-list');
-            } else {
-                if($result == 'quiz_type_exits') {
-                    $return['status'] = 'warning';
-                    $return['jscode'] = '$(".submitbtn:visible").removeAttr("disabled");$("#loader").hide();';
-                    $return['message'] = 'Quiz type already exit.';
-                }else{
-                    $return['status'] = 'error';
-                    $return['jscode'] = '$(".submitbtn:visible").removeAttr("disabled");$("#loader").hide();';
-                    $return['message'] = 'Something goes to wrong';
-                }
-            }
-            echo json_encode($return);
-            exit;
+            ccd($request->input());
+            $data['ip'] = userIP();
+            $data['countryName'] = getLocationInfo_by_ip($data['ip']);
+        }else{
+            $data['ip'] = userIP();
+            $data['countryName'] = getLocationInfo_by_ip($data['ip']);
         }
 
 
