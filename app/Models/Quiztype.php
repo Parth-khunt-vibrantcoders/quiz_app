@@ -100,15 +100,12 @@ class Quiztype extends Model
                         ->toArray();
     }
     public function get_quiz_type_frontend_list($country){
-        if($country == 'United States'){
-            $country = 'usa';
-        }else{
-            $country = 'other';
-        }
-        $result = Quiztype::select('quiz_type.name', 'quiz_type.id',)
+
+        $result = Quiztype::select('quiz_type.name', 'quiz_type.id')
+                        ->join('country','country.id', '=', 'quiz_type.country')
                         ->where('quiz_type.status', 'Y')
                         ->where('quiz_type.is_deleted', 'N')
-                        ->where('quiz_type.country', $country)
+                        ->where('country.name', $country)
                         ->orderBy('quiz_type.priority', 'ASC')
                         ->orderBy('quiz_type.created_at', 'ASC')
                         ->get()
