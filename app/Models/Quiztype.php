@@ -18,6 +18,8 @@ class Quiztype extends Model
         $columns = array(
             0 => 'quiz_type.id',
             1 => 'quiz_type.name',
+            2 => 'quiz_type.country',
+            3 => 'quiz_type.priority',
             2 => 'quiz_type.status',
         );
 
@@ -50,7 +52,7 @@ class Quiztype extends Model
 
         $resultArr = $query->skip($requestData['start'])
                         ->take($requestData['length'])
-                        ->select('quiz_type.id', 'quiz_type.name', 'quiz_type.status', 'quiz_type.country')
+                        ->select('quiz_type.id', 'quiz_type.name', 'quiz_type.priority', 'quiz_type.status', 'quiz_type.country')
                         ->get();
         $data = array();
         $i = 0;
@@ -74,6 +76,7 @@ class Quiztype extends Model
             $nestedData[] = $i;
             $nestedData[] = ucfirst($row['name']);
             $nestedData[] = ucfirst($row['country']);
+            $nestedData[] = ucfirst($row['priority']);
             $nestedData[] = $status;
             $nestedData[] = $actionhtml;
             $data[] = $nestedData;
@@ -105,6 +108,8 @@ class Quiztype extends Model
                         ->where('quiz_type.status', 'Y')
                         ->where('quiz_type.is_deleted', 'N')
                         ->where('quiz_type.country', $country)
+                        ->orderBy('quiz_type.priority', 'ASC')
+                        ->orderBy('quiz_type.created_at', 'ASC')
                         ->get()
                         ->toArray();
 
@@ -139,6 +144,7 @@ class Quiztype extends Model
             $objQuiztype = new Quiztype();
             $objQuiztype->name = $request->input('quiz_type');
             $objQuiztype->status = $request->input('status');
+            $objQuiztype->priority = $request->input('quiz_priority');
             $objQuiztype->country = $request->input('country');
             $objQuiztype->is_deleted = "N";
             $objQuiztype->created_at = date("Y-m-d H:i:s");
@@ -152,7 +158,7 @@ class Quiztype extends Model
     }
 
     public function get_quiz_type_details($id){
-        return Quiztype::select('quiz_type.name', 'quiz_type.country', 'quiz_type.id', 'quiz_type.status')->where('quiz_type.id', $id)->get()->toArray();
+        return Quiztype::select('quiz_type.name', 'quiz_type.country',  'quiz_type.priority', 'quiz_type.id', 'quiz_type.status')->where('quiz_type.id', $id)->get()->toArray();
     }
 
     public function edit_quiz_type($request){
@@ -165,6 +171,7 @@ class Quiztype extends Model
             $objQuiztype = Quiztype::find($request->input('editId'));
             $objQuiztype->name = $request->input('quiz_type');
             $objQuiztype->country = $request->input('country');
+            $objQuiztype->priority = $request->input('quiz_priority');
             $objQuiztype->status = $request->input('status');
             $objQuiztype->updated_at = date("Y-m-d H:i:s");
         if($objQuiztype->save()){

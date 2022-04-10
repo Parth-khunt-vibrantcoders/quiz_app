@@ -13,8 +13,8 @@ var Quiztype = function(){
             'hideColumnList': [],
             'noSortingApply': [0,3],
             'noSearchApply': [0,3],
-            'defaultSortColumn': [0],
-            'defaultSortOrder': 'DESC',
+            'defaultSortColumn': [3],
+            'defaultSortOrder': 'ASC',
             'setColumnWidth': columnWidth
         };
         getDataTable(arrList);
@@ -102,12 +102,16 @@ var Quiztype = function(){
         var rules = {
             quiz_type: {required: true},
             status: {required: true},
+            quiz_priority: {required: true},
             country: {required: true},
         };
 
         var message = {
             quiz_type :{
                 required : "Please enter quiz type"
+            },
+            quiz_priority :{
+                required : "Please enter quiz priority"
             },
             status : {
                 required : "Please select status"
@@ -128,6 +132,7 @@ var Quiztype = function(){
             editId: {required: true},
             quiz_type: {required: true},
             status: {required: true},
+            quiz_priority: {required: true},
             country: {required: true},
         };
 
@@ -137,6 +142,9 @@ var Quiztype = function(){
             },
             quiz_type :{
                 required : "Please enter quiz type"
+            },
+            quiz_priority :{
+                required : "Please enter quiz priority"
             },
             status : {
                 required : "Please select status"

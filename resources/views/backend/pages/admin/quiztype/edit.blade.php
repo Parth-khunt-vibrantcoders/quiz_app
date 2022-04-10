@@ -25,6 +25,14 @@
 
                         <div class="col-md-6">
                             <div class="form-group">
+                                <label>Quiz priority
+                                <span class="text-danger">*</span></label>
+                                <input type="text" name="quiz_priority" class="form-control onlyNumber" placeholder="Enter quiz priority" value="{{ $quiz_type_details[0]['priority'] }}">
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
                                 <label>Country<span class="text-danger">*</span></label>
                                 <div class="radio-inline" style="margin-top:10px">
                                     <label class="radio radio-lg radio-success" >
