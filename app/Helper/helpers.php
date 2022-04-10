@@ -112,7 +112,7 @@ function get_users_coin($userid){
         );
         if (filter_var($ip, FILTER_VALIDATE_IP) && in_array($purpose, $support)) {
             $ipdat = @json_decode(file_get_contents("http://www.geoplugin.net/json.gp?ip=" . $ip));
-            ccd($ipdat->geoplugin_countryName);
+
             return $ipdat->geoplugin_countryName;
         }
         return false;
