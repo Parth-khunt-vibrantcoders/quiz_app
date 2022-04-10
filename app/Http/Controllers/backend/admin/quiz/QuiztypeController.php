@@ -164,16 +164,12 @@ class QuiztypeController extends Controller
     }
     public function checkip(Request $request){
         if ($request->isMethod('post')) {
-            ccd($request->input());
-            $data['ip'] = userIP();
+            $data['ip'] = $request->input('userip');
             $data['countryName'] = getLocationInfo_by_ip($data['ip']);
         }else{
             $data['ip'] = userIP();
             $data['countryName'] = getLocationInfo_by_ip($data['ip']);
         }
-
-
-
         $data['title'] = 'Check Ip || '.Config::get('constants.PROJECT_NAME') ;
         $data['keywords'] = 'Check Ip || '.Config::get('constants.PROJECT_NAME') ;
         $data['description'] = 'Check Ip || '.Config::get('constants.PROJECT_NAME') ;
