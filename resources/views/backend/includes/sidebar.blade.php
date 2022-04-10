@@ -102,7 +102,7 @@ $currentRoute = Route::current()->getName();
                 </a>
             </li>
 
-            <li class="menu-item menu-item-submenu {{  $currentRoute == 'quiz-category-list'  || $currentRoute == 'quiz-category-add' || $currentRoute == 'quiz-category-edit' ||
+            <li class="menu-item menu-item-submenu {{  $currentRoute == 'check-ip'  || $currentRoute == 'quiz-category-list'  || $currentRoute == 'quiz-category-add' || $currentRoute == 'quiz-category-edit' ||
                      $currentRoute == 'admin-quiz-view'  ||  $currentRoute == 'admin-quiz-list'  || $currentRoute == 'admin-quiz-add' || $currentRoute == 'admin-quiz-edit' ||
                      $currentRoute == 'admin-quiz-add-question' ||  $currentRoute == 'admin-quiz-edit-question' ||
                     $currentRoute == 'quiz-type-list'  || $currentRoute == 'quiz-type-add' || $currentRoute == 'quiz-type-edit'
@@ -118,6 +118,15 @@ $currentRoute = Route::current()->getName();
                     <i class="menu-arrow"></i>
                     <ul class="menu-subnav">
 
+                        <li class="menu-item {{  $currentRoute == 'check-ip'   ? 'menu-item-active' : ''}}" aria-haspopup="true">
+                            <a href="{{ route('check-ip') }}" class="menu-link">
+                                <i class="menu-bullet menu-bullet-dot text-white">
+                                    <span></span>
+                                </i>
+                                <span class="menu-text">Check Ip</span>
+                            </a>
+                        </li>
+
                         <li class="menu-item {{  $currentRoute == 'quiz-type-list'  || $currentRoute == 'quiz-type-add' || $currentRoute == 'quiz-type-edit' ? 'menu-item-active' : ''}}" aria-haspopup="true">
                             <a href="{{ route('quiz-type-list') }}" class="menu-link">
                                 <i class="menu-bullet menu-bullet-dot text-white">
@@ -126,6 +135,7 @@ $currentRoute = Route::current()->getName();
                                 <span class="menu-text">Quiz Type</span>
                             </a>
                         </li>
+
 
                         <li class="menu-item {{  $currentRoute == 'quiz-category-list'  || $currentRoute == 'quiz-category-add' || $currentRoute == 'quiz-category-edit' ? 'menu-item-active' : ''}}" aria-haspopup="true">
                             <a href="{{ route('quiz-category-list') }}" class="menu-link">

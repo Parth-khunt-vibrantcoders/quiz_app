@@ -73,6 +73,9 @@ Route::group(['prefix' => $prefix, 'middleware' => ['admin']], function() {
 $prefix = 'quiz';
 Route::group(['prefix' => $prefix, 'middleware' => ['admin']], function() {
     // quiz-type
+
+    Route::match(['get', 'post'], 'check-ip', ['as' => 'check-ip', 'uses' => 'backend\admin\quiz\QuiztypeController@checkip']);
+
     Route::match(['get', 'post'], 'quiz-type-list', ['as' => 'quiz-type-list', 'uses' => 'backend\admin\quiz\QuiztypeController@list']);
     Route::match(['get', 'post'], 'quiz-type-add', ['as' => 'quiz-type-add', 'uses' => 'backend\admin\quiz\QuiztypeController@add']);
     Route::match(['get', 'post'], 'quiz-type-edit/{id}', ['as' => 'quiz-type-edit', 'uses' => 'backend\admin\quiz\QuiztypeController@edit']);

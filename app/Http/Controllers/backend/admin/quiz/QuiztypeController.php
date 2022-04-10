@@ -162,6 +162,62 @@ class QuiztypeController extends Controller
         );
         return view('backend.pages.admin.quiztype.edit', $data);
     }
+    public function checkip(Request $request){
+        if ($request->isMethod('post')) {
+
+            $ojQuiztype = new Quiztype();
+            $result = $ojQuiztype->edit_quiz_type($request);
+            if ($result == 'true') {
+                $return['status'] = 'success';
+                 $return['jscode'] = '$(".submitbtn:visible").removeAttr("disabled");$("#loader").hide();';
+                $return['message'] = 'Quiz type added successfully.';
+                $return['redirect'] = route('quiz-type-list');
+            } else {
+                if($result == 'quiz_type_exits') {
+                    $return['status'] = 'warning';
+                    $return['jscode'] = '$(".submitbtn:visible").removeAttr("disabled");$("#loader").hide();';
+                    $return['message'] = 'Quiz type already exit.';
+                }else{
+                    $return['status'] = 'error';
+                    $return['jscode'] = '$(".submitbtn:visible").removeAttr("disabled");$("#loader").hide();';
+                    $return['message'] = 'Something goes to wrong';
+                }
+            }
+            echo json_encode($return);
+            exit;
+        }
+
+
+
+        $data['title'] = 'Check Ip || '.Config::get('constants.PROJECT_NAME') ;
+        $data['keywords'] = 'Check Ip || '.Config::get('constants.PROJECT_NAME') ;
+        $data['description'] = 'Check Ip || '.Config::get('constants.PROJECT_NAME') ;
+        $data['plugincss'] = array(
+            'plugins/toastr/toastr.min.css'
+        );
+        $data['pluginjs'] = array(
+            'plugins/validate/jquery.validate.min.js',
+            'js/pages/crud/forms/widgets/select2.js',
+            'js/pages/crud/file-upload/image-input.js'
+        );
+        $data['js'] = array(
+            'comman_function.js',
+            'ajaxfileupload.js',
+            'jquery.form.min.js',
+            'quiztype.js'
+        );
+        $data['funinit'] = array(
+            'Quiztype.checkip()'
+        );
+        $data['header'] = array(
+            'title' => 'Check Ip',
+            'breadcrumb' => array(
+                'Dashboard' => route('my-dashboard'),
+                'Check Ip' => 'Check Ip',
+            )
+        );
+        return view('backend.pages.admin.quiztype.checkip', $data);
+    }
 
     public function ajaxcall(Request $request){
 
