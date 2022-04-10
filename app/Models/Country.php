@@ -150,4 +150,8 @@ class Country extends Model
             return false ;
         }
     }
+
+    public function get_country_list(){
+        return Country::where('country.is_deleted', 'N')->where('country.is_active', 'Y')->get()->toArray();
+    }
 }

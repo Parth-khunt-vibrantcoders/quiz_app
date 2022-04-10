@@ -34,14 +34,15 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Country<span class="text-danger">*</span></label>
-                                <div class="radio-inline" style="margin-top:10px">
-                                    <label class="radio radio-lg radio-success" >
-                                    <input type="radio" name="country" class="radio-btn" value="usa" {{ $quiz_type_details[0]['country'] == 'usa' ? 'checked="checked"': ''}} />
-                                    <span></span>USA</label>
-                                    <label class="radio radio-lg radio-success" >
-                                    <input type="radio" name="country" class="radio-btn" value="other" {{ $quiz_type_details[0]['country'] == 'other' ? 'checked="checked"': ''}}/>
-                                    <span></span>Other</label>
-                                </div>
+
+                                <select class="form-control select2" id="country"  name="country">
+                                    <option value="">Select your quiz type</option>
+
+                                     @foreach ($country_list as $key => $value)
+                                         <option value="{{ $value['id'] }}" {{ $quiz_type_details[0]['country'] == $value['id'] ? 'selected="selected"': ''}}>{{ $value['name'] }}</option>
+                                     @endforeach
+
+                                </select>
                             </div>
                         </div>
 

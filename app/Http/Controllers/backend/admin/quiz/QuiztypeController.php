@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Config;
 use App\Models\Quiztype;
+use App\Models\Country;
 class QuiztypeController extends Controller
 {
     function __construct()
@@ -73,6 +74,9 @@ class QuiztypeController extends Controller
 
         }
 
+        $objCountry = new Country();
+        $data['country_list'] = $objCountry->get_country_list();
+
         $data['title'] = 'Add Quiz type || '.Config::get('constants.PROJECT_NAME') ;
         $data['keywords'] = 'Add Quiz type || '.Config::get('constants.PROJECT_NAME') ;
         $data['description'] = 'Add Quiz type || '.Config::get('constants.PROJECT_NAME') ;
@@ -129,6 +133,9 @@ class QuiztypeController extends Controller
             exit;
         }
 
+        $objCountry = new Country();
+        $data['country_list'] = $objCountry->get_country_list();
+
         $objQuiztype = new Quiztype();
         $data['quiz_type_details'] = $objQuiztype->get_quiz_type_details($genderid);
 
@@ -162,6 +169,7 @@ class QuiztypeController extends Controller
         );
         return view('backend.pages.admin.quiztype.edit', $data);
     }
+
     public function checkip(Request $request){
         if ($request->isMethod('post')) {
             $data['ip'] = $request->input('userip');

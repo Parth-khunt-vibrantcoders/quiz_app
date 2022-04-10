@@ -18,12 +18,13 @@ class Quiztype extends Model
         $columns = array(
             0 => 'quiz_type.id',
             1 => 'quiz_type.name',
-            2 => 'quiz_type.country',
+            2 => 'country.name',
             3 => 'quiz_type.priority',
             2 => 'quiz_type.status',
         );
 
         $query = Quiztype ::from('quiz_type')
+                    ->join('country', 'country.id', '=', 'quiz_type.country')
                     ->where('quiz_type.is_deleted', 'N');
 
 
@@ -52,7 +53,7 @@ class Quiztype extends Model
 
         $resultArr = $query->skip($requestData['start'])
                         ->take($requestData['length'])
-                        ->select('quiz_type.id', 'quiz_type.name', 'quiz_type.priority', 'quiz_type.status', 'quiz_type.country')
+                        ->select('quiz_type.id', 'quiz_type.name', 'quiz_type.priority', 'quiz_type.status', 'country.name as countryName')
                         ->get();
         $data = array();
         $i = 0;
@@ -75,7 +76,7 @@ class Quiztype extends Model
             $nestedData = array();
             $nestedData[] = $i;
             $nestedData[] = ucfirst($row['name']);
-            $nestedData[] = ucfirst($row['country']);
+            $nestedData[] = ucfirst($row['countryName']);
             $nestedData[] = ucfirst($row['priority']);
             $nestedData[] = $status;
             $nestedData[] = $actionhtml;

@@ -33,16 +33,15 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Country<span class="text-danger">*</span></label>
-                                <div class="radio-inline" style="margin-top:10px">
-                                    <label class="radio radio-lg radio-success" >
-                                    <input type="radio" name="country" class="radio-btn" value="other" checked="checked"/>
-                                    <span></span>Other</label>
 
-                                    <label class="radio radio-lg radio-success" >
-                                    <input type="radio" name="country" class="radio-btn" value="usa" />
-                                    <span></span>USA</label>
+                                <select class="form-control select2" id="country"  name="country">
+                                    <option value="">Select your quiz type</option>
 
-                                </div>
+                                     @foreach ($country_list as $key => $value)
+                                         <option value="{{ $value['id'] }}" >{{ $value['name'] }}</option>
+                                     @endforeach
+
+                                </select>
                             </div>
                         </div>
 

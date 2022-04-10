@@ -97,7 +97,7 @@ var Quiztype = function(){
     }
 
     var add_quiz_category = function(){
-
+        $('.select2').select2();
         var form = $('#add-quiz-type');
         var rules = {
             quiz_type: {required: true},
@@ -126,7 +126,7 @@ var Quiztype = function(){
     }
 
     var edit_quiz_category = function(){
-
+        $('.select2').select2();
         var form = $('#edit-quiz-type');
         var rules = {
             editId: {required: true},
