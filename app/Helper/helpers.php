@@ -72,7 +72,7 @@ function get_users_coin($userid){
     }
 
     function getLocationInfoByIp(){
-        $purpose = "country";
+        $purpose = "location";
         $deep_detect = TRUE;
         $ip = '';
         if (getenv('HTTP_CLIENT_IP'))
