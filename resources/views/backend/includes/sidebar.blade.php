@@ -102,9 +102,11 @@ $currentRoute = Route::current()->getName();
                 </a>
             </li>
 
-            <li class="menu-item menu-item-submenu {{  $currentRoute == 'check-ip'  || $currentRoute == 'quiz-category-list'  || $currentRoute == 'quiz-category-add' || $currentRoute == 'quiz-category-edit' ||
-                     $currentRoute == 'admin-quiz-view'  ||  $currentRoute == 'admin-quiz-list'  || $currentRoute == 'admin-quiz-add' || $currentRoute == 'admin-quiz-edit' ||
-                     $currentRoute == 'admin-quiz-add-question' ||  $currentRoute == 'admin-quiz-edit-question' ||
+            <li class="menu-item menu-item-submenu {{  $currentRoute == 'country-list'  || $currentRoute == 'country-add' || $currentRoute == 'country-edit' ||
+                    $currentRoute == 'check-ip'  ||
+                    $currentRoute == 'quiz-category-list'  || $currentRoute == 'quiz-category-add' || $currentRoute == 'quiz-category-edit' ||
+                    $currentRoute == 'admin-quiz-view'  ||  $currentRoute == 'admin-quiz-list'  || $currentRoute == 'admin-quiz-add' || $currentRoute == 'admin-quiz-edit' ||
+                    $currentRoute == 'admin-quiz-add-question' ||  $currentRoute == 'admin-quiz-edit-question' ||
                     $currentRoute == 'quiz-type-list'  || $currentRoute == 'quiz-type-add' || $currentRoute == 'quiz-type-edit'
                       ? 'menu-item-open menu-item-active' :'' }}" aria-haspopup="true" data-menu-toggle="hover">
                 <a href="javascript:;" class="menu-link menu-toggle">
@@ -124,6 +126,15 @@ $currentRoute = Route::current()->getName();
                                     <span></span>
                                 </i>
                                 <span class="menu-text">Check Ip</span>
+                            </a>
+                        </li>
+
+                        <li class="menu-item {{  $currentRoute == 'country-list'  || $currentRoute == 'country-add' || $currentRoute == 'country-edit' ? 'menu-item-active' : ''}}" aria-haspopup="true">
+                            <a href="{{ route('country-list') }}" class="menu-link">
+                                <i class="menu-bullet menu-bullet-dot text-white">
+                                    <span></span>
+                                </i>
+                                <span class="menu-text">Country List</span>
                             </a>
                         </li>
 
