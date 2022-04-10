@@ -166,6 +166,7 @@ class QuiztypeController extends Controller
         if ($request->isMethod('post')) {
             $data['ip'] = $request->input('userip');
             $data['countryName'] = getLocationInfo_by_ip($data['ip']);
+            ccd($data['countryName']);
         }else{
             $data['ip'] = userIP();
             $data['countryName'] = getLocationInfo_by_ip($data['ip']);
