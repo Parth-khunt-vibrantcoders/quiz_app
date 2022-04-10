@@ -19,7 +19,7 @@
                                 <label>IP Address
                                 <span class="text-danger">*</span></label>
                                 <input type="text" name="quiz_type" class="form-control" placeholder="Enter IP Address" value="{{ userIP() }}">
-                                <span>{{ getLocationInfoByIp() }}</span>
+                                {{-- <span>{{ getLocationInfoByIp() }}</span> --}}
                             </div>
                         </div>
                     </div>
