@@ -25,6 +25,20 @@
 
                         <div class="col-md-6">
                             <div class="form-group">
+                                <label>Country<span class="text-danger">*</span></label>
+                                <div class="radio-inline" style="margin-top:10px">
+                                    <label class="radio radio-lg radio-success" >
+                                    <input type="radio" name="country" class="radio-btn" value="usa" {{ $quiz_type_details[0]['country'] == 'usa' ? 'checked="checked"': ''}} />
+                                    <span></span>USA</label>
+                                    <label class="radio radio-lg radio-success" >
+                                    <input type="radio" name="country" class="radio-btn" value="other" {{ $quiz_type_details[0]['country'] == 'other' ? 'checked="checked"': ''}}/>
+                                    <span></span>Other</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
                                 <label>Status<span class="text-danger">*</span></label>
                                 <div class="radio-inline" style="margin-top:10px">
                                     <label class="radio radio-lg radio-success" >

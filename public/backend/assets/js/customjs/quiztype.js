@@ -102,6 +102,7 @@ var Quiztype = function(){
         var rules = {
             quiz_type: {required: true},
             status: {required: true},
+            country: {required: true},
         };
 
         var message = {
@@ -110,6 +111,9 @@ var Quiztype = function(){
             },
             status : {
                 required : "Please select status"
+            },
+            country : {
+                required : "Please select country"
             }
         }
         handleFormValidateWithMsg(form, rules,message, function(form) {
@@ -124,6 +128,7 @@ var Quiztype = function(){
             editId: {required: true},
             quiz_type: {required: true},
             status: {required: true},
+            country: {required: true},
         };
 
         var message = {
@@ -135,6 +140,9 @@ var Quiztype = function(){
             },
             status : {
                 required : "Please select status"
+            },
+            country : {
+                required : "Please select country"
             }
         }
         handleFormValidateWithMsg(form, rules,message, function(form) {

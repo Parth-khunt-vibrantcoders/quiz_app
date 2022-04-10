@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use DB;
-class Landingpagequestion extends Seeder
+class LandingpagequestionSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -19,7 +19,6 @@ class Landingpagequestion extends Seeder
             'answer2' => "15 - 20",
             'answer3' => "20 - 25",
             'answer4' => "25 to Up",
-            'right_answer' => "1",
             'created_at' => date("Y-m-d h:i:s"),
             'updated_at' => date("Y-m-d h:i:s"),
         ]);
@@ -30,7 +29,6 @@ class Landingpagequestion extends Seeder
             'answer2' => "Mahatma Gandhi",
             'answer3' => "Sardar Vallabhbhai Patel",
             'answer4' => "Subhash Chandra Bose",
-            'right_answer' => "2",
             'created_at' => date("Y-m-d h:i:s"),
             'updated_at' => date("Y-m-d h:i:s"),
         ]);

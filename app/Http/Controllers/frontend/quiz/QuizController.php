@@ -15,6 +15,7 @@ class QuizController extends Controller
 {
     public function quiz_list(Request $request){
         if($request->get('id')){
+            ccd(getLocationInfoByIp());
             $objQuiztype = new Quiztype();
             $data['quiz_type'] = $objQuiztype->get_quiz_type_frontend_list();
 

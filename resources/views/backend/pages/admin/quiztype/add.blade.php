@@ -24,6 +24,22 @@
 
                         <div class="col-md-6">
                             <div class="form-group">
+                                <label>Country<span class="text-danger">*</span></label>
+                                <div class="radio-inline" style="margin-top:10px">
+                                    <label class="radio radio-lg radio-success" >
+                                    <input type="radio" name="country" class="radio-btn" value="other" checked="checked"/>
+                                    <span></span>Other</label>
+
+                                    <label class="radio radio-lg radio-success" >
+                                    <input type="radio" name="country" class="radio-btn" value="usa" />
+                                    <span></span>USA</label>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
                                 <label>Status<span class="text-danger">*</span></label>
                                 <div class="radio-inline" style="margin-top:10px">
                                     <label class="radio radio-lg radio-success" >
