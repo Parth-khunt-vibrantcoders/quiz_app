@@ -119,23 +119,10 @@ function get_users_coin($userid){
         // ccd($output);
     }
     function getLocationInfo_by_ip($ip){
+
         $purpose = "location";
         $deep_detect = TRUE;
 
-        if (getenv('HTTP_CLIENT_IP'))
-            $ip = getenv('HTTP_CLIENT_IP');
-        else if(getenv('HTTP_X_FORWARDED_FOR'))
-            $ip = getenv('HTTP_X_FORWARDED_FOR');
-        else if(getenv('HTTP_X_FORWARDED'))
-            $ip = getenv('HTTP_X_FORWARDED');
-        else if(getenv('HTTP_FORWARDED_FOR'))
-            $ip = getenv('HTTP_FORWARDED_FOR');
-        else if(getenv('HTTP_FORWARDED'))
-           $ip = getenv('HTTP_FORWARDED');
-        else if(getenv('REMOTE_ADDR'))
-            $ip = getenv('REMOTE_ADDR');
-        else
-            $ip = 'UNKNOWN';
         $output = NULL;
         if (filter_var($ip, FILTER_VALIDATE_IP) === FALSE) {
             $ip = $_SERVER["REMOTE_ADDR"];
