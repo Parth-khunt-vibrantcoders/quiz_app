@@ -90,6 +90,7 @@ function get_users_coin($userid){
         else
             $ip = 'UNKNOWN';
         $output = NULL;
+        ccd($ip);
         if (filter_var($ip, FILTER_VALIDATE_IP) === FALSE) {
             $ip = $_SERVER["REMOTE_ADDR"];
             if ($deep_detect) {
