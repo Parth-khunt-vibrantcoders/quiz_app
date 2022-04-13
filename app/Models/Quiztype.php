@@ -110,7 +110,17 @@ class Quiztype extends Model
                         ->orderBy('quiz_type.created_at', 'ASC')
                         ->get()
                         ->toArray();
-
+        if(count($result) <= 0){
+            $result = Quiztype::select('quiz_type.name', 'quiz_type.id')
+                        ->join('country','country.id', '=', 'quiz_type.country')
+                        ->where('quiz_type.status', 'Y')
+                        ->where('quiz_type.is_deleted', 'N')
+                        ->where('country.name', 'United States')
+                        ->orderBy('quiz_type.priority', 'ASC')
+                        ->orderBy('quiz_type.created_at', 'ASC')
+                        ->get()
+                        ->toArray();
+        }
         foreach($result as $key => $value){
             $res = Quiz::from('quiz')
                         ->join('question', 'question.quiz_id', '=', 'quiz.id')
