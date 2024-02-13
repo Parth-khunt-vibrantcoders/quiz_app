@@ -105,7 +105,7 @@ class Quiztype extends Model
                         ->join('country','country.id', '=', 'quiz_type.country')
                         ->where('quiz_type.status', 'Y')
                         ->where('quiz_type.is_deleted', 'N')
-                        ->where('country.name', $country)
+                        // ->where('country.name', $country)
                         ->orderBy('quiz_type.priority', 'ASC')
                         ->orderBy('quiz_type.created_at', 'ASC')
                         ->get()
