@@ -16,7 +16,7 @@
                     <p style="font-size: 18px !important;margin-top: 10px; color: #C8789C3  !important">Play more quizzes and win more coins</p>
                 </div>
                 <div class="login-head" style="padding: 0px !important">
-                    <a href="{{ route('quiz-list', ['id' => $adid]) }}">
+                    <a href="{{ route('quiz-list') }}">
                         <button class="my-btn" >LET'S START</button>
                     </a>
                 </div>

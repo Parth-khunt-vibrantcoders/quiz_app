@@ -30,20 +30,7 @@
                             </div>
                         </div>
 
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label>Country<span class="text-danger">*</span></label>
 
-                                <select class="form-control select2" id="country"  name="country">
-                                    <option value="">Select your quiz type</option>
-
-                                     @foreach ($country_list as $key => $value)
-                                         <option value="{{ $value['id'] }}" >{{ $value['name'] }}</option>
-                                     @endforeach
-
-                                </select>
-                            </div>
-                        </div>
 
                         <div class="col-md-6">
                             <div class="form-group">

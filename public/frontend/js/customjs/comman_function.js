@@ -893,88 +893,8 @@ $(".onlyNumber").keypress(function(e) {
 });
 
 
-$("body").on("change","#empCountry",function(){
-    var id = $(this).val();
-    var data = { id: id, _token: $('#_token').val() };
-
-    $.ajax({
-        type: "POST",
-        headers: {
-            'X-CSRF-TOKEN': $('input[name="_token"]').val(),
-        },
-        url: baseurl + "employee-ajaxaction",
-        data: { 'action': 'changeCountry', 'data': data },
-        success: function(data) {
-            var output = JSON.parse(data);
-            var temp_html = '';
-            var html ='<option value="">Please select employee state</option>';
 
 
-            for (var i = 0; i < output.length; i++) {
-                temp_html = '<option value="' + output[i].id + '">' + output[i].name + '</option>';
-                html = html + temp_html;
-            }
-
-            $('#empState').html(html);
-            $('#empCity').html('<option value="">Please select employee city</option>');
-        }
-    });
-});
-
-$("body").on("change","#empState",function(){
-    var id = $(this).val();
-    var data = { id: id, _token: $('#_token').val() };
-
-    $.ajax({
-        type: "POST",
-        headers: {
-            'X-CSRF-TOKEN': $('input[name="_token"]').val(),
-        },
-        url: baseurl + "employee-ajaxaction",
-        data: { 'action': 'changeState', 'data': data },
-        success: function(data) {
-            var output = JSON.parse(data);
-            // console.log(output);
-            // exit;
-            var temp_html = '';
-            var html ='<option value="">Please select employee city</option>';
-
-
-            for (var i = 0; i < output.length; i++) {
-                temp_html = '<option value="' + output[i].id + '">' + output[i].name + '</option>';
-                html = html + temp_html;
-            }
-
-            $('#empCity').html(html);
-        }
-    });
-});
-$("body").on("change","#empDepartment",function(){
-    var id = $(this).val();
-    var data = { id: id, _token: $('#_token').val() };
-
-    $.ajax({
-        type: "POST",
-        headers: {
-            'X-CSRF-TOKEN': $('input[name="_token"]').val(),
-        },
-        url: baseurl + "employee-ajaxaction",
-        data: { 'action': 'changeDepartment', 'data': data },
-        success: function(data) {
-            var output = JSON.parse(data);
-             var temp_html = '';
-            var html ='<option  value="">Select employee designation</option>';
-
-
-            for (var i = 0; i < output.length; i++) {
-                temp_html = '<option value="' + output[i].id + '">' + output[i].designation + '</option>';
-                html = html + temp_html;
-            }
-
-            $('#empDesignation').html(html);
-        }
-    });
-});
 
 
  $("body").on('click', '.show-prize-list', function(){
@@ -993,7 +913,6 @@ $("body").on('click', '.hide-prize-list', function(){
 
 
 $('body').on('click', '.logo', function(){
-    var addid = $('#logoadd').val();
-    window.location.href = baseurl + 'users/quiz-list?id=' + addid ;
+    window.location.href = baseurl + 'users/quiz-list' ;
 });
 

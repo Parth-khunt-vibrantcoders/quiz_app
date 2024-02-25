@@ -12,9 +12,6 @@ class Controller extends BaseController
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
     function __construct(Request $request)
     {
-        if($request->get('id')){
-            add_user_ip($request->get('id'));
-        }
 
     }
 }

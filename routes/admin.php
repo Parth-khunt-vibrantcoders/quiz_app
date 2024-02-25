@@ -74,17 +74,11 @@ $prefix = 'quiz';
 Route::group(['prefix' => $prefix, 'middleware' => ['admin']], function() {
     // quiz-type
 
-    Route::match(['get', 'post'], 'check-ip', ['as' => 'check-ip', 'uses' => 'backend\admin\quiz\QuiztypeController@checkip']);
-
     Route::match(['get', 'post'], 'quiz-type-list', ['as' => 'quiz-type-list', 'uses' => 'backend\admin\quiz\QuiztypeController@list']);
     Route::match(['get', 'post'], 'quiz-type-add', ['as' => 'quiz-type-add', 'uses' => 'backend\admin\quiz\QuiztypeController@add']);
     Route::match(['get', 'post'], 'quiz-type-edit/{id}', ['as' => 'quiz-type-edit', 'uses' => 'backend\admin\quiz\QuiztypeController@edit']);
     Route::match(['get', 'post'], 'quiz-type-ajaxcall', ['as' => 'quiz-type-ajaxcall', 'uses' => 'backend\admin\quiz\QuiztypeController@ajaxcall']);
 
-    Route::match(['get', 'post'], 'country-list', ['as' => 'country-list', 'uses' => 'backend\admin\quiz\CountryController@list']);
-    Route::match(['get', 'post'], 'country-add', ['as' => 'country-add', 'uses' => 'backend\admin\quiz\CountryController@add']);
-    Route::match(['get', 'post'], 'country-edit/{id}', ['as' => 'country-edit', 'uses' => 'backend\admin\quiz\CountryController@edit']);
-    Route::match(['get', 'post'], 'country-ajaxcall', ['as' => 'country-ajaxcall', 'uses' => 'backend\admin\quiz\CountryController@ajaxcall']);
 
     // quiz-category
     Route::match(['get', 'post'], 'quiz-category-list', ['as' => 'quiz-category-list', 'uses' => 'backend\admin\quiz\QuizcategoryController@list']);

@@ -104,61 +104,58 @@ class QuestionController extends Controller
     }
 
     public function edit(Request $request, $id){
-        if(check_id('landing_page_question', $id) != 0){
 
+        $objLandingpagequestion = new Landingpagequestion();
+        $data['details'] = $objLandingpagequestion->get_question_details($id);
+
+        if($request->isMethod('post')){
             $objLandingpagequestion = new Landingpagequestion();
-            $data['details'] = $objLandingpagequestion->get_question_details($id);
+            $result= $objLandingpagequestion->edit_question($request);
+            if ($result) {
+                $return['status'] = 'success';
+                $return['jscode'] = '$(".submitbtn:visible").removeAttr("disabled");$("#loader").hide();';
+                $return['message'] = 'Landing page question successfully updated.';
+                $return['redirect'] = route('landing-page-question-list');
+            } else {
 
-            if($request->isMethod('post')){
-                $objLandingpagequestion = new Landingpagequestion();
-                $result= $objLandingpagequestion->edit_question($request);
-                if ($result) {
-                    $return['status'] = 'success';
-                    $return['jscode'] = '$(".submitbtn:visible").removeAttr("disabled");$("#loader").hide();';
-                    $return['message'] = 'Landing page question successfully updated.';
-                    $return['redirect'] = route('landing-page-question-list');
-                } else {
+                $return['status'] = 'error';
+                $return['jscode'] = '$(".submitbtn:visible").removeAttr("disabled");$("#loader").hide();';
+                $return['message'] = 'Something goes to wrong';
 
-                    $return['status'] = 'error';
-                    $return['jscode'] = '$(".submitbtn:visible").removeAttr("disabled");$("#loader").hide();';
-                    $return['message'] = 'Something goes to wrong';
-
-                }
-                echo json_encode($return);
-                exit;
             }
-            $data['title'] = 'Edit landing page question || '.Config::get('constants.PROJECT_NAME') ;
-            $data['keywords'] = 'Edit landing page question || '.Config::get('constants.PROJECT_NAME') ;
-            $data['description'] = 'Edit landing page question || '.Config::get('constants.PROJECT_NAME') ;
-            $data['plugincss'] = array(
-                'plugins/toastr/toastr.min.css'
-            );
-            $data['pluginjs'] = array(
-                'plugins/validate/jquery.validate.min.js',
-                'js/pages/crud/forms/widgets/select2.js',
-                'js/pages/crud/file-upload/image-input.js'
-            );
-            $data['js'] = array(
-                'comman_function.js',
-                'ajaxfileupload.js',
-                'jquery.form.min.js',
-                'question.js'
-            );
-            $data['funinit'] = array(
-                'Question.edit()'
-            );
-            $data['header'] = array(
-                'title' => 'Edit landing page question',
-                'breadcrumb' => array(
-                    'Dashboard' => route('my-dashboard'),
-                    'Landing page question' => route('landing-page-question-list'),
-                    'Edit landing page question' => 'Edit landing page question',
-                )
-            );
-            return view('backend.pages.admin.landingpage.edit', $data);
-        }else{
-            return redirect()->route('landing-page-question-list');
+            echo json_encode($return);
+            exit;
         }
+        $data['title'] = 'Edit landing page question || '.Config::get('constants.PROJECT_NAME') ;
+        $data['keywords'] = 'Edit landing page question || '.Config::get('constants.PROJECT_NAME') ;
+        $data['description'] = 'Edit landing page question || '.Config::get('constants.PROJECT_NAME') ;
+        $data['plugincss'] = array(
+            'plugins/toastr/toastr.min.css'
+        );
+        $data['pluginjs'] = array(
+            'plugins/validate/jquery.validate.min.js',
+            'js/pages/crud/forms/widgets/select2.js',
+            'js/pages/crud/file-upload/image-input.js'
+        );
+        $data['js'] = array(
+            'comman_function.js',
+            'ajaxfileupload.js',
+            'jquery.form.min.js',
+            'question.js'
+        );
+        $data['funinit'] = array(
+            'Question.edit()'
+        );
+        $data['header'] = array(
+            'title' => 'Edit landing page question',
+            'breadcrumb' => array(
+                'Dashboard' => route('my-dashboard'),
+                'Landing page question' => route('landing-page-question-list'),
+                'Edit landing page question' => 'Edit landing page question',
+            )
+        );
+        return view('backend.pages.admin.landingpage.edit', $data);
+
     }
 
     public function ajaxcall(Request $request){

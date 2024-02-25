@@ -7,7 +7,7 @@
                 <div class="header-top">
                     <div class="logo-menu">
                         <button class="menu-open" type=""><i class="fal fa-signal-alt-3"></i></button>
-                        <input type="hidden" id="logoadd" value="{{ $_GET['id']}}">
+
                         <div class="logo">
                             {{-- <img src="{{ asset('public/frontend/images/logo.png' ) }}"> --}}
                         </div>
@@ -64,11 +64,11 @@
             <div class="submit-btn">
                 <p>Join qzop to play quiz and earn coins</p>
                 @if (!empty($data))
-                    <a href="{{ route('logout', ['id' => $_GET['id']]) }}">
+                    <a href="{{ route('logout') }}">
                         <button type="submit" class="btn">Logout</button>
                     </a>
                 @else
-                    <a href="{{ route('sign-in', ['id' => $_GET['id']]) }}">
+                    <a href="{{ route('sign-in') }}">
                         <button type="submit" class="btn">Join Now</button>
                     </a>
                 @endif

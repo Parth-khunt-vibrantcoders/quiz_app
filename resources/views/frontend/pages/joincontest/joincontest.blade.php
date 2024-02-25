@@ -35,11 +35,11 @@ if (!empty(Auth()->guard('users')->user())) {
                         <div class=" text-center " style="margin-bottom: 15px !important;color: var(--text-color);">Join now to save the coins you win! 👇</div>
 
                         @if(empty($data))
-                            <a href="{{ route('sign-in', ['id' => $adid])}}">
+                            <a href="{{ route('sign-in')}}">
                                 <button type="button">Login Now</button>
                             </a>
                         @else
-                            <a href="{{ route('play-contest', [$quiz_details[0]['slug'], 'id='.$adid])}}">
+                            <a href="{{ route('play-contest')}}">
                                 <button type="button">Play Now</button>
                             </a>
                         @endif
@@ -47,7 +47,7 @@ if (!empty(Auth()->guard('users')->user())) {
                             <div class=" text-center " style="color: var(--text-color); font-weight: bold !important ;margin-top: 15px !important; font-size: 12px !important">OR</div>
 
                             <br>
-                            <a href="{{ route('play-contest', [$quiz_details[0]['slug'], 'id='.$adid])}}">
+                            <a href="{{ route('play-contest')}}">
                                 <div class=" text-center ">
                                     <span class="guest-btn" >Play as Guest</span>
                                 </div>
@@ -62,7 +62,7 @@ if (!empty(Auth()->guard('users')->user())) {
 
             <div class="quiz-category text-center weight-bold" >
                 <span class="mr-8 cursor-pointer prize-list show-prize-list">View Prize List</span> ·
-                <a class="quiz-category link-anchor" href="{{ route('quiz-rules', ['id' => $adid ])}}" target="_blank"><span class="ml-8 cursor-pointer">Rules</span></a>
+                <a class="quiz-category link-anchor" href="{{ route('quiz-rules')}}" target="_blank"><span class="ml-8 cursor-pointer">Rules</span></a>
             </div>
 
 

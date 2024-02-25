@@ -59,7 +59,27 @@
                         </div>
                     </div>
 
-
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Answer<span class="text-danger">*</span></label>
+                                <div class="radio-inline " style="margin-top:10px">
+                                    <label class="radio radio-lg radio-success" >
+                                    <input type="radio" name="answer" class="radio-btn" value="1"/>
+                                    <span></span>Answer 1</label>
+                                    <label class="radio radio-lg radio-success" >
+                                    <input type="radio" name="answer" class="radio-btn" value="2"/>
+                                    <span></span>Answer 2</label>
+                                    <label class="radio radio-lg radio-success" >
+                                    <input type="radio" name="answer" class="radio-btn" value="3"/>
+                                    <span></span>Answer 3</label>
+                                    <label class="radio radio-lg radio-success" >
+                                    <input type="radio" name="answer" class="radio-btn" value="4" />
+                                    <span></span>Answer 4</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
                     <div class="row">
                         <div class="col-md-12">

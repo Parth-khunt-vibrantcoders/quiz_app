@@ -61,7 +61,27 @@
                     </div>
 
 
-
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Answer<span class="text-danger">*</span></label>
+                                <div class="radio-inline " style="margin-top:10px">
+                                    <label class="radio radio-lg radio-success" >
+                                    <input type="radio" name="answer" class="radio-btn" value="1" {{ $details[0]['right_answer'] == '1' ? 'checked="checked"' : ''}}/>
+                                    <span></span>Answer 1</label>
+                                    <label class="radio radio-lg radio-success" >
+                                    <input type="radio" name="answer" class="radio-btn" value="2" {{ $details[0]['right_answer'] == '2' ? 'checked="checked"' : ''}}/>
+                                    <span></span>Answer 2</label>
+                                    <label class="radio radio-lg radio-success" >
+                                    <input type="radio" name="answer" class="radio-btn" value="3" {{ $details[0]['right_answer'] == '3' ? 'checked="checked"' : ''}}/>
+                                    <span></span>Answer 3</label>
+                                    <label class="radio radio-lg radio-success" >
+                                    <input type="radio" name="answer" class="radio-btn" value="4"  {{ $details[0]['right_answer'] == '4' ? 'checked="checked"' : ''}}/>
+                                    <span></span>Answer 4</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">

@@ -5,7 +5,7 @@ $data = [];
 if (!empty(Auth()->guard('users')->user())) {
    $data = Auth()->guard('users')->user();
 }
-$ad_id = $_GET['id'] ;
+
 @endphp
 
 <div class="sidebar-menu">
@@ -56,11 +56,11 @@ $ad_id = $_GET['id'] ;
     <div class="submit-btn">
         <p>Join qzop to play quiz and earn coins</p>
         @if (!empty($data))
-            <a href="{{ route('logout', ['id' => $ad_id]) }}">
+            <a href="{{ route('logout') }}">
                 <button type="submit" class="btn">Logout</button>
             </a>
         @else
-            <a href="{{ route('sign-in', ['id' => $ad_id]) }}">
+            <a href="{{ route('sign-in') }}">
                 <button type="submit" class="btn">Join Now</button>
             </a>
         @endif

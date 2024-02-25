@@ -120,23 +120,9 @@ $currentRoute = Route::current()->getName();
                     <i class="menu-arrow"></i>
                     <ul class="menu-subnav">
 
-                        <li class="menu-item {{  $currentRoute == 'check-ip'   ? 'menu-item-active' : ''}}" aria-haspopup="true">
-                            <a href="{{ route('check-ip') }}" class="menu-link">
-                                <i class="menu-bullet menu-bullet-dot text-white">
-                                    <span></span>
-                                </i>
-                                <span class="menu-text">Check Ip</span>
-                            </a>
-                        </li>
 
-                        <li class="menu-item {{  $currentRoute == 'country-list'  || $currentRoute == 'country-add' || $currentRoute == 'country-edit' ? 'menu-item-active' : ''}}" aria-haspopup="true">
-                            <a href="{{ route('country-list') }}" class="menu-link">
-                                <i class="menu-bullet menu-bullet-dot text-white">
-                                    <span></span>
-                                </i>
-                                <span class="menu-text">Country List</span>
-                            </a>
-                        </li>
+
+
 
                         <li class="menu-item {{  $currentRoute == 'quiz-type-list'  || $currentRoute == 'quiz-type-add' || $currentRoute == 'quiz-type-edit' ? 'menu-item-active' : ''}}" aria-haspopup="true">
                             <a href="{{ route('quiz-type-list') }}" class="menu-link">

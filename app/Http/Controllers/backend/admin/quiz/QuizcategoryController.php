@@ -190,7 +190,7 @@ class QuizcategoryController extends Controller
 
                     if ($result) {
                         $return['status'] = 'success';
-                        $return['message'] = 'Country successfully deleted';
+                        $return['message'] = 'Quiz category successfully deleted';
                         $return['redirect'] = route('quiz-category-list');
                     } else {
                         $return['status'] = 'error';
@@ -208,7 +208,7 @@ class QuizcategoryController extends Controller
 
                     if ($result) {
                         $return['status'] = 'success';
-                        $return['message'] = 'Country successfully actived';
+                        $return['message'] = 'Quiz category successfully actived';
                         $return['redirect'] = route('quiz-category-list');
                     } else {
                         $return['status'] = 'error';
@@ -226,7 +226,7 @@ class QuizcategoryController extends Controller
 
                     if ($result) {
                         $return['status'] = 'success';
-                        $return['message'] = 'Country successfully deactived';
+                        $return['message'] = 'Quiz category successfully deactived';
                         $return['redirect'] = route('quiz-category-list');
                     } else {
                         $return['status'] = 'error';

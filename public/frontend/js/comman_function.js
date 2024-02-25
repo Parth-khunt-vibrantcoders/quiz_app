@@ -889,6 +889,5 @@ $(".onlyNumber").keypress(function(e) {
 
 
 $('body').on('click', '.logo', function(){
-    var addid = $('#logoadd').val();
-    window.location.href = baseurl + 'users/quiz-list?id=' + addid ;
+    window.location.href = baseurl + 'users/quiz-list' ;
 });

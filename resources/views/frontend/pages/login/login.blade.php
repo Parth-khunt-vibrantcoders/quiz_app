@@ -7,9 +7,7 @@
                 <div class="header-top">
                     <div class="logo-menu">
                         <button class="menu-open" type=""><i class="fal fa-signal-alt-3"></i></button>
-                        <input type="hidden" id="logoadd" value="{{ $_GET['id']}}">
                         <div class="logo">
-                        {{-- <img src="{{ asset('public/frontend/images/logo.png' ) }}"> --}}
                         </div>
                     </div>
                 </div>
@@ -30,7 +28,7 @@
             </div>
             <ul>
                 <li>
-                    <a href="{{ route('quiz-list' , ['id' => $_GET['id'] ])}}">
+                    <a href="{{ route('quiz-list')}}">
                         <i class="fa fa-home" aria-hidden="true"></i>Home
                     </a>
                 </li>
@@ -40,23 +38,23 @@
                     </a>
                 </li>
                 <li>
-                    <a href="{{ route('contact-us' , ['id' => $_GET['id'] ])}}">
+                    <a href="{{ route('contact-us')}}">
                         <i class="fa fa-envelope" aria-hidden="true"></i>Contact us
                     </a>
                 </li>
                 <li>
-                    <a href="{{ route('quiz-rules' , ['id' => $_GET['id'] ]) }}">
+                    <a href="{{ route('quiz-rules') }}">
                         <i class="fa fa-flag" aria-hidden="true"></i>Qzop Rules
                     </a>
                 </li>
                 <li>
-                    <a href="{{ route('privacy-policy' , ['id' => $_GET['id'] ]) }}">
+                    <a href="{{ route('privacy-policy') }}">
                         <i class="fa fa-lock" aria-hidden="true"></i>Privacy Policy
                     </a>
                 </li>
 
                 <li>
-                    <a href="{{ route('terms-conditions' , ['id' => $_GET['id'] ]) }}">
+                    <a href="{{ route('terms-conditions') }}">
                         <i class="fa fa-bell" aria-hidden="true"></i>Terms & Conditions
                     </a>
                 </li>
@@ -64,11 +62,11 @@
             <div class="submit-btn">
                 <p>Join qzop to play quiz and earn coins</p>
                 @if (!empty($data))
-                    <a href="{{ route('logout', ['id' => $_GET['id']]) }}">
+                    <a href="{{ route('logout') }}">
                         <button type="submit" class="btn">Logout</button>
                     </a>
                 @else
-                    <a href="{{ route('sign-in', ['id' => $_GET['id']]) }}">
+                    <a href="{{ route('sign-in') }}">
                         <button type="submit" class="btn">Join Now</button>
                     </a>
                 @endif

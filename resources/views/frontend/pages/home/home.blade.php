@@ -8,7 +8,7 @@
                     <h2>Let’s Get Started</h2>
                     <p>Share your Prefrence to get <i class="fas fa-coins"></i> 100 coins free!</p>
                 </div>
-                <input type="hidden" id="adid" value="{{ $adid }}">
+
                 <form>
                     <div class="question-head">
                         @php
@@ -18,10 +18,7 @@
                             <div class="{{ $i == 1 ? '' : 'hidden'}} questiondiv" id="question_answer{{$i}}">
                                 <h6>Question {{$i}} <small>/ {{ count($question_list) }}</small></h6>
                                 <h2>{{ $value['question']}}</h2>
-
-
                                 <ul>
-
                                     <li class="answerui" >
                                         <label>
                                             <input type="radio" id="" class="answer-btn" data-question="{{$i}}" value="1" id="1" name="age-rang">
@@ -53,7 +50,7 @@
                             @endphp
                         @endforeach
                         <div class="sign-login">
-                            <a href="{{ route('sign-up', ['id' => $_GET['id']]) }}">Sign Up</a> · <a href="{{ route('sign-in', ['id' => $_GET['id']]) }}">Login</a></a>
+                            <a href="{{ route('sign-up') }}">Sign Up</a> · <a href="{{ route('sign-in') }}">Login</a></a>
                         </div>
                     </div>
                 </form>

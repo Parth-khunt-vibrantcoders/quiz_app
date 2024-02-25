@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Config;
 use App\Models\Quiztype;
-use App\Models\Country;
 class QuiztypeController extends Controller
 {
     function __construct()
@@ -74,9 +73,6 @@ class QuiztypeController extends Controller
 
         }
 
-        $objCountry = new Country();
-        $data['country_list'] = $objCountry->get_country_list();
-
         $data['title'] = 'Add Quiz type || '.Config::get('constants.PROJECT_NAME') ;
         $data['keywords'] = 'Add Quiz type || '.Config::get('constants.PROJECT_NAME') ;
         $data['description'] = 'Add Quiz type || '.Config::get('constants.PROJECT_NAME') ;
@@ -133,9 +129,6 @@ class QuiztypeController extends Controller
             exit;
         }
 
-        $objCountry = new Country();
-        $data['country_list'] = $objCountry->get_country_list();
-
         $objQuiztype = new Quiztype();
         $data['quiz_type_details'] = $objQuiztype->get_quiz_type_details($genderid);
 
@@ -170,43 +163,7 @@ class QuiztypeController extends Controller
         return view('backend.pages.admin.quiztype.edit', $data);
     }
 
-    public function checkip(Request $request){
-        if ($request->isMethod('post')) {
-            $data['ip'] = $request->input('userip');
-            $data['countryName'] = getLocationInfo_by_ip($data['ip']);
-        }else{
-            $data['ip'] = userIP();
-            $data['countryName'] = getLocationInfo_by_ip($data['ip']);
-        }
-        $data['title'] = 'Check Ip || '.Config::get('constants.PROJECT_NAME') ;
-        $data['keywords'] = 'Check Ip || '.Config::get('constants.PROJECT_NAME') ;
-        $data['description'] = 'Check Ip || '.Config::get('constants.PROJECT_NAME') ;
-        $data['plugincss'] = array(
-            'plugins/toastr/toastr.min.css'
-        );
-        $data['pluginjs'] = array(
-            'plugins/validate/jquery.validate.min.js',
-            'js/pages/crud/forms/widgets/select2.js',
-            'js/pages/crud/file-upload/image-input.js'
-        );
-        $data['js'] = array(
-            'comman_function.js',
-            'ajaxfileupload.js',
-            'jquery.form.min.js',
-            'quiztype.js'
-        );
-        $data['funinit'] = array(
-            'Quiztype.checkip()'
-        );
-        $data['header'] = array(
-            'title' => 'Check Ip',
-            'breadcrumb' => array(
-                'Dashboard' => route('my-dashboard'),
-                'Check Ip' => 'Check Ip',
-            )
-        );
-        return view('backend.pages.admin.quiztype.checkip', $data);
-    }
+
 
     public function ajaxcall(Request $request){
 

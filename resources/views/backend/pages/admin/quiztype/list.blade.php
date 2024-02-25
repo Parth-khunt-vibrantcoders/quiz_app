@@ -29,7 +29,6 @@
                         <tr>
                             <th>Sr. No</th>
                             <th>Type</th>
-                            <th>Country</th>
                             <th>Priority</th>
                             <th>Status</th>
                             <th>Action</th>
