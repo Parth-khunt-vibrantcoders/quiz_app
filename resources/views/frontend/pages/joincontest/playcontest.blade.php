@@ -12,21 +12,7 @@
                 <h4 class="quiz-category">{{ $quiz_details[0]['name']}} <i class="fas fa-coins" style="color: #e89d1d;"></i> {{ $quiz_details[0]['prize']}}</h4>
             </div>
         </div>
-        <div class="progress-top">
-            <div class="progress-main">
-                <div class="question-head">
-                    <h6>Question <span class="que-no">1 </span><small>/ {{ count($question_list) }}</small></h6>
-                    <div class="progress">
-                        <div class="bar-main">
-                            <div class="timer">
-                              <span class="second">{{ Config::get('constants.TIME_SECOND') }}</span>
-                            </div>
-                        </div>
-                       </div>
-                </div>
-            </div>
-        </div>
-        <input type="hidden" id="adid" value="{{ $adid }}">
+
         <form>
             <div class="question-head">
                 @php

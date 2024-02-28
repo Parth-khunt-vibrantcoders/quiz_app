@@ -242,6 +242,7 @@ class Question extends Model
             ->where('question.is_deleted', 'N')
             ->select('question.question', 'question.answer1', 'question.answer2', 'question.answer3', 'question.right_answer', 'question.answer4')
             ->inRandomOrder()
+            ->limit(5)
             ->get()
             ->toArray();
     }

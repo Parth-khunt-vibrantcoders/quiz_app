@@ -39,7 +39,7 @@ if (!empty(Auth()->guard('users')->user())) {
                                 <button type="button">Login Now</button>
                             </a>
                         @else
-                            <a href="{{ route('play-contest')}}">
+                        <a href="{{ route('play-contest', $quiz_details[0]['slug'])}}">
                                 <button type="button">Play Now</button>
                             </a>
                         @endif
@@ -47,7 +47,7 @@ if (!empty(Auth()->guard('users')->user())) {
                             <div class=" text-center " style="color: var(--text-color); font-weight: bold !important ;margin-top: 15px !important; font-size: 12px !important">OR</div>
 
                             <br>
-                            <a href="{{ route('play-contest')}}">
+                            <a href="{{ route('play-contest', $quiz_details[0]['slug'])}}">
                                 <div class=" text-center ">
                                     <span class="guest-btn" >Play as Guest</span>
                                 </div>

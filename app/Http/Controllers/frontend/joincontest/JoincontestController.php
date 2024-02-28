@@ -89,7 +89,7 @@ class JoincontestController extends Controller
             );
             $data['js'] = array(
                 'joincontest.js',
-                'timer.js'
+                // 'timer.js'
             );
             $data['funinit'] = array(
                 'Joincontest.init()'

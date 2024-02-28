@@ -20,7 +20,6 @@ var Joincontest = function(){
             $('.answer-btn:visible').attr('disabled', true);
 
             var value = $(this).val();
-            var adid = $("#adid").val();
             var scoretext = parseInt($("#score-text").val());
             var question_no = $(this).attr('data-question');
             var correct_ans = $("#question"+question_no).val();
@@ -41,7 +40,7 @@ var Joincontest = function(){
 
             // $(".que-no").text(parseInt(parseInt(question_no)+1));
 
-            if(question_no != 25){
+            if(question_no != 10){
                 setTimeout(function() {
                     $(".que-no").delay(1000).text(parseInt(parseInt(question_no)+1));
                     $("#question_answer"+question_no).delay(1000).addClass('hidden');
@@ -51,7 +50,7 @@ var Joincontest = function(){
                 setTimeout(function() {
                     // $(".que-no").delay(1000).text(parseInt(parseInt(question_no)+1));
                     var scoretext = parseInt($("#score-text").val());
-                    window.location.href = baseurl + "contest/submit-quiz?id=" + adid + "&score=" + scoretext;
+                    window.location.href = baseurl + "contest/submit-quiz?score=" + scoretext;
                 }, 1000);
             }
 
@@ -60,7 +59,7 @@ var Joincontest = function(){
         setTimeout(function() {
             var adid = $("#adid").val();
             var scoretext = parseInt($("#score-text").val());
-            window.location.href = baseurl + "contest/submit-quiz?id=" + adid + "&score=" + scoretext;
+            window.location.href = baseurl + "contest/submit-quiz?score=" + scoretext;
         }, time_second*1000);
 
     }
